@@ -5,31 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Component Inventory</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#fbf6ec">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="../assets/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/css/site.css">
 <style>
   /* Inventory chrome only. Every specimen below uses site.css as-is. */
-  .inv-intro { padding: clamp(2.5rem, 6vw, 4.5rem) 0 1.5rem; border-bottom: 1.5px solid var(--ink); }
+  .inv-intro { padding: clamp(2.5rem, 6vw, 4.5rem) 0 1.5rem; border-bottom: 1.5px solid var(--fg); }
   .inv-intro .lede { margin: 1rem 0 0; }
   .inv-toc { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.75rem; padding: 0; list-style: none; }
-  .inv-toc a { font-family: var(--mono); font-size: 0.8rem; text-decoration: none; border: 1.5px solid var(--ink); border-radius: 999px; padding: 0.3rem 0.75rem; background: var(--paper); }
-  .inv-toc a:hover { background: var(--manila); }
+  .inv-toc a { font-family: var(--mono); font-size: 0.8rem; text-decoration: none; border: 1.5px solid var(--fg); border-radius: 999px; padding: 0.3rem 0.75rem; background: var(--bg); }
+  .inv-toc a:hover { background: var(--fill); }
 
-  .inv-group { padding: clamp(2.5rem, 6vw, 4rem) 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 5rem; }
+  .inv-group { padding: clamp(2.5rem, 6vw, 4rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 5rem; }
   .inv-group > .wrap > h2 { margin-bottom: 0.5rem; }
-  .inv-group > .wrap > p { color: var(--ink-soft); margin-bottom: 2rem; }
+  .inv-group > .wrap > p { color: var(--muted); margin-bottom: 2rem; }
 
   .spec { margin: 0 0 2.5rem; }
   .spec:last-child { margin-bottom: 0; }
   .spec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1rem; margin-bottom: 0.75rem; }
   .spec-head h3 { font-size: 1.3rem; }
-  .spec-head code { font-family: var(--mono); font-size: 0.78rem; color: var(--coral-ink); }
-  .spec-head .where { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); margin-left: auto; }
-  .stage { border: 1.5px dashed var(--rule); border-radius: 0.5rem; padding: clamp(1.25rem, 3vw, 2rem); background: var(--paper); overflow: hidden; }
+  .spec-head code { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+  .spec-head .where { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-left: auto; }
+  .stage { border: 1.5px dashed var(--line); border-radius: 0.5rem; padding: clamp(1.25rem, 3vw, 2rem); background: var(--bg); overflow: hidden; }
   .stage.flush { padding: 0; }
-  .stage.dark { background: var(--ink); }
+  .stage.dark { background: var(--fg); }
   .row { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; }
   .grid-2 { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
   .grid-diag { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr)); }
@@ -38,14 +37,14 @@
   /* Neutralise sticky/animated behaviour inside the stage */
   .stage .site-header, .stage .chapters { position: static; }
 
-  .swatch { border: 1.5px solid var(--ink); border-radius: 0.4rem; overflow: hidden; background: var(--paper); }
-  .swatch i { display: block; height: 4.5rem; border-bottom: 1.5px solid var(--ink); }
+  .swatch { border: 1.5px solid var(--fg); border-radius: 0.4rem; overflow: hidden; background: var(--bg); }
+  .swatch i { display: block; height: 4.5rem; border-bottom: 1.5px solid var(--fg); }
   .swatch div { padding: 0.6rem 0.75rem; font-family: var(--mono); font-size: 0.75rem; line-height: 1.5; }
-  .swatch b { display: block; font-family: var(--serif); font-size: 1rem; font-weight: 500; }
+  .swatch b { display: block; font-family: var(--font); font-size: 1rem; font-weight: 500; }
 
-  .type-row { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 0.5rem 1.5rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+  .type-row { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 0.5rem 1.5rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--line); }
   .type-row:last-child { border-bottom: 0; }
-  .type-row > span { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); }
+  .type-row > span { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
   .type-row > * { min-width: 0; }
   @media (max-width: 40rem) { .type-row { grid-template-columns: 1fr; } }
 
@@ -56,7 +55,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="../"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#ff664a" stroke="#231f20" stroke-width="3"/><circle cx="32" cy="32" r="22" fill="none" stroke="#231f20" stroke-width="1.5" stroke-dasharray="2 3"/><text x="32" y="41" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="24" fill="#231f20">AT</text></svg><span>Ali Taylor</span></a>
+    <a class="brand" href="../"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="currentColor">AT</text></svg><span>Ali Taylor</span></a>
     <nav class="nav" aria-label="Main">
       <a class="hide-sm" href="../">Home</a>
       <a href="../about/">About</a>
@@ -75,7 +74,7 @@
       <li><a href="#foundations">Foundations</a></li>
       <li><a href="#navigation">Navigation</a></li>
       <li><a href="#actions">Buttons and links</a></li>
-      <li><a href="#cards">Catalogue cards</a></li>
+      <li><a href="#cards">Info cards</a></li>
       <li><a href="#shelf">Case study cards</a></li>
       <li><a href="#images">Image frames</a></li>
       <li><a href="#casestudy">Case study layout</a></li>
@@ -95,21 +94,20 @@
     <div class="spec">
       <div class="spec-head"><h3>Colour</h3><code>:root</code></div>
       <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))">
-        <div class="swatch"><i style="background:var(--paper)"></i><div><b>Paper</b>--paper #fbf6ec<br>Page background</div></div>
-        <div class="swatch"><i style="background:var(--manila)"></i><div><b>Manila</b>--manila #ecdcb6<br>Catalogue cards</div></div>
-        <div class="swatch"><i style="background:var(--rule)"></i><div><b>Rule</b>--rule #d9c9a4<br>Card ruling, dividers</div></div>
-        <div class="swatch"><i style="background:var(--ink)"></i><div><b>Ink</b>--ink #231f20<br>Text, borders</div></div>
-        <div class="swatch"><i style="background:var(--ink-soft)"></i><div><b>Ink soft</b>--ink-soft #5a5148<br>Secondary text</div></div>
-        <div class="swatch"><i style="background:var(--coral)"></i><div><b>Coral</b>--coral #ff664a<br>Accent, CTAs</div></div>
-        <div class="swatch"><i style="background:var(--coral-ink)"></i><div><b>Coral ink</b>--coral-ink #c23a22<br>Coral as text</div></div>
-        <div class="swatch"><i style="background:var(--blue)"></i><div><b>Blue</b>--blue #2d4e9e<br>Multi-Brand Design System</div></div>
-        <div class="swatch"><i style="background:var(--mustard)"></i><div><b>Mustard</b>--mustard #f2c230<br>Dealer Pricing Insights</div></div>
-        <div class="swatch"><i style="background:var(--pink)"></i><div><b>Pink</b>--pink #f2b8c6<br>Selling Cars Across Europe</div></div>
+        <div class="swatch"><i style="background:var(--bg)"></i><div><b>Background</b>--bg<br>Page</div></div>
+        <div class="swatch"><i style="background:var(--fg)"></i><div><b>Foreground</b>--fg<br>Text, borders</div></div>
+        <div class="swatch"><i style="background:var(--muted)"></i><div><b>Muted</b>--muted<br>Secondary text</div></div>
+        <div class="swatch"><i style="background:var(--line)"></i><div><b>Line</b>--line<br>Dividers</div></div>
+        <div class="swatch"><i style="background:var(--fill)"></i><div><b>Fill</b>--fill<br>Boxes, cards, panels</div></div>
+        <div class="swatch"><i style="background:var(--fill-strong)"></i><div><b>Fill strong</b>--fill-strong<br>Emphasis, contact block</div></div>
+        <div class="swatch"><i style="background:var(--tone-1)"></i><div><b>Tone 1</b>--tone-1<br>Multi-Brand Design System</div></div>
+        <div class="swatch"><i style="background:var(--tone-2)"></i><div><b>Tone 2</b>--tone-2<br>Dealer Pricing Insights</div></div>
+        <div class="swatch"><i style="background:var(--tone-3)"></i><div><b>Tone 3</b>--tone-3<br>Selling Cars Across Europe</div></div>
       </div>
     </div>
 
     <div class="spec">
-      <div class="spec-head"><h3>Type scale</h3><code>Fraunces + DM Mono</code></div>
+      <div class="spec-head"><h3>Type scale</h3><code>System fonts</code></div>
       <div class="stage">
         <div class="type-row"><span>.display</span><p class="display" style="margin:0;max-width:none">I design the tools</p></div>
         <div class="type-row"><span>h2 / .h2</span><h2>Selected work</h2></div>
@@ -136,7 +134,7 @@
       <div class="stage flush menu-stage">
         <header class="site-header">
           <div class="wrap">
-            <a class="brand" href="#navigation"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#ff664a" stroke="#231f20" stroke-width="3"/><circle cx="32" cy="32" r="22" fill="none" stroke="#231f20" stroke-width="1.5" stroke-dasharray="2 3"/><text x="32" y="41" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="24" fill="#231f20">AT</text></svg><span>Ali Taylor</span></a>
+            <a class="brand" href="#navigation"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="currentColor">AT</text></svg><span>Ali Taylor</span></a>
             <nav class="nav" aria-label="Example">
               <a class="hide-sm" href="#navigation" aria-current="page">Home</a>
               <details class="work-menu" open>
@@ -193,7 +191,7 @@
 <section class="inv-group" id="actions" aria-labelledby="actions-h">
   <div class="wrap">
     <h2 id="actions-h">Buttons and links</h2>
-    <p>Hover and press to see the offset-shadow states.</p>
+    <p>Primary, small and secondary buttons, plus text links.</p>
 
     <div class="spec">
       <div class="spec-head"><h3>Button</h3><code>.btn .btn.small .btn.ghost</code><span class="where">Header, hero, contact, results</span></div>
@@ -219,13 +217,13 @@
 <!-- ============ Catalogue cards ============ -->
 <section class="inv-group" id="cards" aria-labelledby="cards-h">
   <div class="wrap">
-    <h2 id="cards-h">Catalogue cards</h2>
-    <p>The library-card device and its variants.</p>
+    <h2 id="cards-h">Info cards</h2>
+    <p>Key/value info cards and their variants.</p>
 
     <div class="spec">
       <div class="spec-head"><h3>Hero card with stamp</h3><code>.card .card-top dl .stamp</code><span class="where">About hero</span></div>
       <div class="stage">
-        <aside class="card" aria-label="Catalogue card" style="max-width:26rem;--margin:4.9rem;padding-bottom:4rem;transform:rotate(2deg)">
+        <aside class="card" aria-label="Catalogue card" style="max-width:26rem;--margin:4.9rem;padding-bottom:4rem">
           <div class="card-top"><span>741.6 TAY</span><span>Amsterdam, NL</span></div>
           <dl>
             <div><dt>Name</dt><dd>Taylor, Ali</dd></div>
@@ -241,7 +239,7 @@
     <div class="spec">
       <div class="spec-head"><h3>Project details card</h3><code>.cs-hero .card</code><span class="where">Case study heroes</span></div>
       <div class="stage">
-        <aside class="card" aria-label="Project details" style="max-width:22rem;transform:rotate(1.5deg);box-shadow:5px 5px 0 var(--ink)">
+        <aside class="card" aria-label="Project details" style="max-width:22rem">
           <div class="card-top"><span>Case study 1 of 3</span><span>AutoScout24</span></div>
           <dl>
             <div><dt>Role</dt><dd>Design system owner</dd></div>
@@ -305,7 +303,7 @@
 <section class="inv-group" id="shelf" aria-labelledby="shelf-h">
   <div class="wrap">
     <h2 id="shelf-h">Case study cards</h2>
-    <p>One per project colour. Hover to see the lift.</p>
+    <p>One per case study. Each picks up its project tone.</p>
 
     <div class="spec">
       <div class="spec-head"><h3>Book</h3><code>.shelf .book.blue|.mustard|.pink</code><span class="where">Home, "Three case studies"</span></div>
@@ -425,7 +423,7 @@
               <li>Figma and the codebase were drifting apart.</li>
               <li>An acquisition meant the system had to carry more than one brand.</li>
             </ul>
-            <p>Bulleted lists use coral markers.</p>
+            <p>Body copy and bullets sit in the right-hand column.</p>
           </div>
         </div>
       </div>

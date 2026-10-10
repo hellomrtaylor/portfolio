@@ -1,6 +1,8 @@
 # alitaylor.nl
 
-Plain HTML and CSS. No build step, no dependencies. Fonts are self-hosted (no Google Fonts calls, so no cookie or GDPR questions).
+Plain HTML and CSS. No build step, no dependencies.
+
+The site is currently a **wireframe**: greyscale, system fonts, no brand styling. Layout, spacing and responsive behaviour are all in place, so styling it means editing `assets/css/site.css`, starting with the tokens at the top.
 
 ## Publish on GitHub Pages
 
@@ -54,4 +56,4 @@ Each page is one HTML file:
 
 The header, footer and contact block repeat on every page, so change them in all four.
 
-Colours and type live at the top of `assets/css/site.css`.
+Colours, fonts and the three project tones (`--tone-1` to `--tone-3`) live at the top of `assets/css/site.css`. `components/` shows every component in one place for checking your styles.
