@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Showcar, a case study by Ali Taylor</title>
+<meta name="description" content="Scaling a multi-brand, code-synced design system without a dedicated team.">
+<link rel="canonical" href="https://alitaylor.nl/work/showcar/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Showcar, a case study by Ali Taylor">
+<meta property="og:description" content="Scaling a multi-brand, code-synced design system without a dedicated team.">
+<meta property="og:url" content="https://alitaylor.nl/work/showcar/">
+<meta property="og:image" content="https://alitaylor.nl/assets/img/og.jpg">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#ff664a" stroke="#231f20" stroke-width="3"/><circle cx="32" cy="32" r="22" fill="none" stroke="#231f20" stroke-width="1.5" stroke-dasharray="2 3"/><text x="32" y="41" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="24" fill="#231f20">AT</text></svg><span>Ali Taylor</span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="../../">Home</a>
+      <details class="work-menu">
+        <summary>Work</summary>
+        <ul>
+<li><a href="../../work/showcar/" aria-current="page"><span class="dot blue"></span>Showcar</a></li>
+<li><a href="../../work/competitive-insights/"><span class="dot mustard"></span>Competitive Insights</a></li>
+<li><a href="../../work/cross-border/"><span class="dot pink"></span>Cross-Border B2B Selling</a></li>
+        </ul>
+      </details>
+      <a class="btn small" href="mailto:hello@alastairtaylor.com?subject=Hello%20Ali">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="cs-hero blue">
+  <div class="wrap">
+    <a class="crumb" href="../../#work">Back to all work</a>
+    <div class="cs-hero-grid">
+      <div>
+        <h1 class="display">Showcar</h1>
+        <p class="lede">Scaling a multi-brand, code-synced design system without a dedicated team.</p>
+      </div>
+      <aside class="card" aria-label="Project details">
+        <div class="card-top"><span>Case study 1 of 3</span><span>AutoScout24</span></div>
+        <dl>
+<div><dt>Role</dt><dd>Design system owner</dd></div>
+<div><dt>When</dt><dd>2022–2025</dd></div>
+<div><dt>Team</dt><dd>No dedicated DS team</dd></div>
+<div><dt>Scope</dt><dd>Figma to code, multi-brand</dd></div>
+        </dl>
+      </aside>
+    </div>
+    <div class="hero-shot"><div class="shot ">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Full-bleed, dense grid of real Showcar components, cropped to read as texture. Or the same screen in two brands side by side.<code>assets/img/showcar/hero.jpg</code></div>
+  <img src="../../assets/img/showcar/hero.jpg" alt="Showcar hero image" loading="lazy" onerror="this.remove()">
+</div></div>
+  </div>
+</section>
+
+<nav class="chapters" aria-label="Chapters"><ol>
+<li><a href="#context">Context</a></li>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#foundations">Foundations</a></li>
+<li><a href="#governance">Governance</a></li>
+<li><a href="#impact">Impact</a></li>
+<li><a href="#next">Next</a></li>
+</ol></nav>
+
+<section class="chapter" id="context" aria-labelledby="context-h">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div>
+        <span class="chapter-label">Chapter 1. Context and role</span>
+        <h2 id="context-h">One owner, no dedicated team</h2>
+      </div>
+      <div class="body">
+
+<p>I owned AutoScout24's design system for three years, alongside full-time product work. There was no dedicated design systems team, in design or in engineering.</p>
+<p>I designed and contributed many of the components myself. To scale beyond one person, I set up and ran a UI Guild that opened contribution to the wider design team. I stayed the final quality gate on every addition.</p>
+      </div>
+    </div>
+<div class="figs-wrap"><div class="figs two">
+<figure><div class="diagram"><p class="diagram-title">How contributions reached the system</p>
+<div class="hub">
+  <div class="side"><div class="node">Product designers</div><div class="node">UI Guild proposals</div><div class="node">Engineering requests</div></div>
+  <div class="gate"><div>Quality gate<small>that was me</small></div></div>
+  <div class="side"><div class="node out">Showcar</div></div>
+</div></div></figure>
+<figure><div class="shot ">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>A photo or screenshot of a real UI Guild session.<code>assets/img/showcar/ui-guild.jpg</code></div>
+  <img src="../../assets/img/showcar/ui-guild.jpg" alt="A UI Guild session" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">The UI Guild, where the wider team proposed and discussed additions.</figcaption></figure>
+</div></div>
+  </div>
+</section>
+<section class="chapter" id="problem" aria-labelledby="problem-h">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div>
+        <span class="chapter-label">Chapter 2. The problem</span>
+        <h2 id="problem-h">Eleven modals</h2>
+      </div>
+      <div class="body">
+
+<p>There were a handful of components, text styles and colours, with no system behind them. What Figma showed and what the codebase did were drifting further apart.</p>
+<div class="decision"><span class="typed">What the audit found</span><p>11 different modal styles live in production.</p></div>
+<p>Then an acquisition in 2025 meant the system suddenly had to carry more than one brand.</p>
+      </div>
+    </div>
+<div class="figs-wrap"><div class="figs"><figure><div class="shot wide contain">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Screenshot all 11 modal variants and lay them out in a grid. Keep the inconsistencies visible.<code>assets/img/showcar/modals.jpg</code></div>
+  <img src="../../assets/img/showcar/modals.jpg" alt="Eleven different modal styles found in production" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">The eleven modal variants, side by side.</figcaption></figure></div></div>
+  </div>
+</section>
+<section class="chapter" id="foundations" aria-labelledby="foundations-h">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div>
+        <span class="chapter-label">Chapter 3. Foundations</span>
+        <h2 id="foundations-h">Tokens that carry the brand</h2>
+      </div>
+      <div class="body">
+
+<p>I audited the system and the product, finding components that were missing and components nobody used.</p>
+<p>With engineering, I built a token naming convention. Engineering then wrote a script that imports tokens from Figma straight into the codebase. Because the tokens carry brand theming, designers and engineers can switch brand in one click.</p>
+<p>I documented every component, and recruited the UX team to help.</p>
+      </div>
+    </div>
+<div class="figs-wrap"><div class="figs">
+<figure><div class="diagram"><p class="diagram-title">The token pipeline</p><ol class="flow">
+<li>Figma variables<small>One mode per brand</small></li>
+<li>Import script<small>Written by engineering</small></li>
+<li>Codebase<small>Shared CSS variables</small></li>
+<li>Product<small>Every brand, one system</small></li>
+</ol></div></figure>
+<div class="figs two">
+<figure><div class="shot contain">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Figma variables panel showing the brand switch.<code>assets/img/showcar/variables.jpg</code></div>
+  <img src="../../assets/img/showcar/variables.jpg" alt="Figma variables panel with brand modes" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">Brand themes as variable modes in Figma.</figcaption></figure>
+<figure><div class="shot contain">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>The same component rendered in two brands.<code>assets/img/showcar/two-brands.jpg</code></div>
+  <img src="../../assets/img/showcar/two-brands.jpg" alt="One component rendered in two brands" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">One component, two brands.</figcaption></figure>
+</div></div></div>
+  </div>
+</section>
+<section class="chapter" id="governance" aria-labelledby="governance-h">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div>
+        <span class="chapter-label">Chapter 4. Governance</span>
+        <h2 id="governance-h">A bar everyone can see</h2>
+      </div>
+      <div class="body">
+
+<p>The UI Guild gave the wider team a place to propose and discuss additions. Before anything was built, it went through a recurring review with engineering. I held the quality bar on every contribution.</p>
+<p>Most recently, I integrated Figma Code Connect with MCP to automate AI-assisted design-to-code handoff.</p>
+      </div>
+    </div>
+<div class="figs-wrap"><div class="figs">
+<figure><div class="diagram"><p class="diagram-title">From idea to documented component</p><ol class="flow">
+<li>Propose<small>Anyone on the team</small></li>
+<li>Guild discussion</li>
+<li class="me">Review with engineering<small>Where I held the bar</small></li>
+<li>Build</li>
+<li>Documented</li>
+</ol></div></figure>
+<figure><div class="shot wide contain">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Screenshot of a real component&#x27;s documentation page.<code>assets/img/showcar/docs.jpg</code></div>
+  <img src="../../assets/img/showcar/docs.jpg" alt="A Showcar component documentation page" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">The documentation standard every component meets.</figcaption></figure>
+</div></div>
+  </div>
+</section>
+<section class="chapter" id="impact" aria-labelledby="impact-h">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div>
+        <span class="chapter-label">Chapter 5. Impact</span>
+        <h2 id="impact-h">One system, every surface</h2>
+      </div>
+      <div class="body">
+
+<div class="facts">
+  <div class="fact"><b>60+</b><span>components</span></div>
+  <div class="fact"><b>30+</b><span>repositories using it</span></div>
+</div>
+<p>Showcar is foundational to search, the private seller web flow and every key dealer interface. Designers and engineers work from the same CSS variables, so implementation is faster and more accurate.</p>
+<p>Multi-brand support had to land before any product work on the acquired brands could start.</p>
+      </div>
+    </div>
+<div class="figs-wrap"><div class="figs two">
+<figure><div class="shot ">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Search results page.<code>assets/img/showcar/search.jpg</code></div>
+  <img src="../../assets/img/showcar/search.jpg" alt="AutoScout24 search" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">Search</figcaption></figure>
+<figure><div class="shot ">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Private seller web flow.<code>assets/img/showcar/private-seller.jpg</code></div>
+  <img src="../../assets/img/showcar/private-seller.jpg" alt="Private seller flow" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">Private seller</figcaption></figure>
+<figure><div class="shot ">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>A key dealer interface.<code>assets/img/showcar/dealer-1.jpg</code></div>
+  <img src="../../assets/img/showcar/dealer-1.jpg" alt="Dealer interface" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">Dealer tools</figcaption></figure>
+<figure><div class="shot ">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>A second dealer interface, same scale and treatment.<code>assets/img/showcar/dealer-2.jpg</code></div>
+  <img src="../../assets/img/showcar/dealer-2.jpg" alt="Dealer interface" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">Dealer tools</figcaption></figure>
+</div>
+<div class="restricted">
+  <div class="card" aria-label="Results withheld">
+    <div class="card-top"><span>Results</span><span>Showcar</span></div>
+    <dl>
+<div><dt>Business</dt><dd><span class="redact">████████████</span></dd></div>
+<div><dt>Brands</dt><dd><span class="redact">██ brands, ██ markets</span></dd></div>
+<div><dt>Story</dt><dd><span class="redact">████████ ██████</span></dd></div>
+    </dl>
+    <span class="stamp">REFERENCE<br>ONLY</span>
+  </div>
+  <div>
+    <h3>The rest is in the full case study</h3>
+    <p>How the system became part of the company's wider story, and what multi-brand unlocked, is something I'll walk you through in person.</p>
+    <a class="btn" href="mailto:hello@alastairtaylor.com?subject=Full%20case%20study:%20Showcar">Ask for the full case study</a>
+  </div>
+</div></div>
+  </div>
+</section>
+<section class="pull-wrap" id="next" aria-label="Next steps">
+  <div class="wrap">
+    <span class="chapter-label">Chapter 6. Next</span>
+    <p class="pull">AI agents are becoming a customer for the design system.</p>
+    <div class="chapter-grid" style="margin-top:2.5rem"><div></div><div class="body">
+      <p>Next is unlocking the system in Figma Make and Codex, and building workflows for designers to contribute directly to the codebase. Documentation is being adapted so agents can read it and implement to the same standard as the design team.</p>
+    </div></div>
+  </div>
+</section>
+</main>
+
+<nav class="pager" aria-label="More case studies">
+  <a class="pink" href="../../work/cross-border/"><span class="typed">Previous case study</span><span class="h3">Cross-Border B2B Selling</span></a>
+  <a class="mustard" href="../../work/competitive-insights/"><span class="typed">Next case study</span><span class="h3">Competitive Insights</span></a>
+</nav>
+<section class="contact section" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <div>
+      <h2 id="contact-h">Want the full story?</h2>
+    </div>
+    <div>
+      <p>The full Showcar case study, with the numbers, is a conversation away.</p>
+      <a class="btn" href="mailto:hello@alastairtaylor.com?subject=Full%20case%20study:%20Showcar">Email me</a>
+      <a class="mail" href="mailto:hello@alastairtaylor.com">hello@alastairtaylor.com</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Ali Taylor. Amsterdam.</span>
+    <nav aria-label="Footer">
+      <a href="../../">Home</a>
+<a href="../../work/showcar/">Showcar</a>
+<a href="../../work/competitive-insights/">Competitive Insights</a>
+<a href="../../work/cross-border/">Cross-Border B2B Selling</a>
+      <a href="mailto:hello@alastairtaylor.com">hello@alastairtaylor.com</a>
+    </nav>
+  </div>
+</footer>
+<script src="../../assets/js/site.js" defer></script>
+</body>
+</html>
