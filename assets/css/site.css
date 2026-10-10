@@ -231,6 +231,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .hero .card { transform: rotate(2deg); max-width: 26rem; justify-self: end; width: 100%; }
 .hero .stamp { right: 1.2rem; bottom: 1rem; }
 .hero .card { padding-bottom: 4rem; --margin: 4.9rem; }
+.hero.solo .wrap { grid-template-columns: 1fr; }
+.hero.solo h1 { max-width: 14ch; }
 
 @media (max-width: 56rem) {
   .hero .wrap { grid-template-columns: 1fr; }
@@ -318,6 +320,17 @@ figcaption.cap { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-
 .drawer .card .card-top { color: var(--ink-soft); border-bottom: 1px solid var(--coral); margin: 0 -1.3rem 0.9rem; padding: 0 1.3rem 0.6rem; }
 .drawer .card h3 { font-size: 1.3rem; line-height: 1.2; margin: 0 0 0.5rem; }
 .drawer .card p { font-family: var(--mono); font-size: 0.82rem; line-height: 1.6; margin: 0; }
+
+/* ---------- About: interest cards ---------- */
+
+.interests {
+  display: grid; gap: 1.5rem; margin-top: clamp(2rem, 5vw, 3rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+}
+.interests .card { background-image: none; padding: 1rem 1.3rem 1.4rem; box-shadow: 4px 4px 0 var(--ink); }
+.interests .card .card-top { color: var(--ink-soft); border-bottom: 1px solid var(--coral); margin: 0 -1.3rem 0.9rem; padding: 0 1.3rem 0.6rem; }
+.interests .card h3 { font-size: 1.3rem; line-height: 1.2; margin: 0 0 0.5rem; }
+.interests .card p { font-family: var(--mono); font-size: 0.82rem; line-height: 1.6; margin: 0; }
 
 /* ---------- Contact block ---------- */
 
