@@ -272,26 +272,43 @@
     </div>
 
     <div class="spec">
-      <div class="spec-head"><h3>Index cards in the drawer</h3><code>.drawer .drawer-grid .card</code><span class="where">Home, "Also in the catalogue"</span></div>
+      <div class="spec-head"><h3>Roundels</h3><code>.drawer .roundels .roundel</code><span class="where">Home, "Areas of expertise"</span></div>
       <div class="stage flush">
         <div class="drawer" style="padding:clamp(1.25rem,3vw,2rem)">
-          <div class="drawer-grid">
-            <article class="card">
-              <div class="card-top"><span>AutoScout24</span><span>2026 to now</span></div>
-              <h3>Leading the dealer design team</h3>
-              <p>Three designers and two externals across the dealer-facing products.</p>
-            </article>
-            <article class="card">
-              <div class="card-top"><span>AutoScout24</span><span>2021 to now</span></div>
-              <h3>Hiring designers</h3>
-              <p>Portfolio reviews, whiteboard sessions and interviews for more than ten design roles.</p>
-            </article>
-            <article class="card">
-              <div class="card-top"><span>Booking.com</span><span>2016–2021</span></div>
-              <h3>BookingSuite</h3>
-              <p>Revenue and operations tools for hotel partners.</p>
-            </article>
-          </div>
+          <svg class="roundel-defs" width="0" height="0" aria-hidden="true" focusable="false">
+            <defs>
+              <path id="roundel-top" d="M 30,100 A 70,70 0 0 1 170,100" />
+              <path id="roundel-bottom" d="M 19,100 A 81,81 0 0 0 181,100" />
+              <g id="roundel-frame" fill="none" stroke="currentColor">
+                <circle cx="100" cy="100" r="94" stroke-width="3" />
+                <path d="M 40.9,82 A 62,62 0 0 0 40.9,118" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M 159.1,82 A 62,62 0 0 1 159.1,118" stroke-width="2.5" stroke-linecap="round" />
+              </g>
+            </defs>
+          </svg>
+          <ul class="roundels">
+<li><svg class="roundel" viewBox="0 0 200 200" role="img" aria-label="B2B Specialist">
+  <use href="#roundel-frame" />
+  <text class="roundel-arc"><textPath href="#roundel-top" startOffset="50%">B2B SPECIALIST</textPath></text>
+  <text class="roundel-main" x="100" y="104">DEALERS</text>
+  <text class="roundel-sub" x="100" y="122">& HOTELIERS</text>
+  <text class="roundel-arc"><textPath href="#roundel-bottom" startOffset="50%">SAAS TOOLS</textPath></text>
+</svg></li>
+<li><svg class="roundel" viewBox="0 0 200 200" role="img" aria-label="AI Workflow">
+  <use href="#roundel-frame" />
+  <text class="roundel-arc"><textPath href="#roundel-top" startOffset="50%">AI WORKFLOW</textPath></text>
+  <text class="roundel-main" x="100" y="104">AGENTS</text>
+  <text class="roundel-sub" x="100" y="122">IN THE PROCESS</text>
+  <text class="roundel-arc"><textPath href="#roundel-bottom" startOffset="50%">DESIGN TO CODE</textPath></text>
+</svg></li>
+<li><svg class="roundel" viewBox="0 0 200 200" role="img" aria-label="Hiring">
+  <use href="#roundel-frame" />
+  <text class="roundel-arc"><textPath href="#roundel-top" startOffset="50%">HIRING</textPath></text>
+  <text class="roundel-main long" x="100" y="104">10+ ROLES</text>
+  <text class="roundel-sub" x="100" y="122">HIGH BAR</text>
+  <text class="roundel-arc"><textPath href="#roundel-bottom" startOffset="50%">INTERVIEWS</textPath></text>
+</svg></li>
+          </ul>
         </div>
       </div>
     </div>

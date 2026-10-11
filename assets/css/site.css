@@ -264,7 +264,21 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
 }
 .drawer .card, .interests .card { background: var(--bg); padding: 1rem 1.25rem 1.25rem; }
-.drawer .card { background: var(--strawberry-20); }
+
+/* ---------- Home: areas of expertise roundels ---------- */
+
+.roundel-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.roundels {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+.roundel { display: block; width: clamp(9.5rem, 14vw, 11.5rem); height: auto; color: var(--strawberry-80); }
+.roundel text { fill: currentColor; font-family: var(--sans); font-weight: 700; text-anchor: middle; text-transform: uppercase; }
+.roundel-arc { font-size: 14px; letter-spacing: 0.1em; }
+.roundel-main { font-size: 19px; letter-spacing: 0.04em; }
+.roundel-main.long { font-size: 15px; letter-spacing: 0.02em; } /* keeps longer words inside the side brackets */
+.roundel-sub { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; }
 .drawer .card h3, .interests .card h3 { font-size: 1.15rem; line-height: 1.25; margin: 0 0 0.5rem; }
 .drawer .card p, .interests .card p { font-size: 0.9rem; line-height: 1.55; margin: 0; }
 
