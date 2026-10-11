@@ -184,7 +184,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 /* Homepage hero colours */
 .home-hero h1, .home-hero .lede { color: var(--chocolate-100); }
-.home-hero .btn { background: var(--chocolate-80); border-color: var(--chocolate-80); color: var(--bg); }
+.home-hero .btn { background: var(--chocolate-80); border-color: var(--chocolate-80); border-bottom: 2px solid var(--strawberry-40); color: var(--bg); }
 .home-hero .textlink { color: var(--chocolate-80); }
 
 @media (max-width: 56rem) {
