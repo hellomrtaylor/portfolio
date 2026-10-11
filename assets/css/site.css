@@ -182,6 +182,11 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .hero.solo .wrap { grid-template-columns: 1fr; }
 .hero.solo h1 { max-width: 16ch; }
 
+/* Homepage hero colours */
+.home-hero h1, .home-hero .lede { color: var(--chocolate-100); }
+.home-hero .btn { background: var(--chocolate-80); border-color: var(--chocolate-80); color: var(--bg); }
+.home-hero .textlink { color: var(--chocolate-80); }
+
 @media (max-width: 56rem) {
   .hero .wrap { grid-template-columns: 1fr; }
   .hero .card { justify-self: start; }
