@@ -57,14 +57,18 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="../"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="40" text-anchor="middle" font-family="Instrument Sans, system-ui, sans-serif" font-weight="700" font-size="22" fill="currentColor">AT</text></svg><span>Ali Taylor</span></a>
-    <nav class="nav" aria-label="Main">
-      <a class="hide-sm" href="../">Home</a>
-      <a href="../about/">About</a>
-      <a href="./" aria-current="page">Components</a>
-    </nav>
-  </div>
+  <nav class="nav" aria-label="Main">
+    <a href="../">Home</a>
+    <details class="work-menu">
+      <summary>Work</summary>
+        <ul>
+<li><a href="../work/showcar/"><span class="dot blue"></span>Multi-Brand Design System</a></li>
+<li><a href="../work/competitive-insights/"><span class="dot mustard"></span>Dealer Pricing Insights</a></li>
+<li><a href="../work/cross-border/"><span class="dot pink"></span>Selling Cars Across Europe</a></li>
+        </ul>
+    </details>
+    <a href="../about/">About</a>
+  </nav>
 </header>
 
 <main id="main">
@@ -129,7 +133,8 @@
       <div class="stage">
         <div class="type-row"><span>.display</span><p class="display" style="margin:0;max-width:none">I design the tools</p></div>
         <div class="type-row"><span>.book h3</span><div class="book" style="border:0;background:none;display:block"><h3>Multi-Brand Design System</h3></div></div>
-        <div class="type-row"><span>h2 / .h2</span><h2>Selected work</h2></div>
+        <div class="type-row"><span>.section-head h2</span><div class="section-head" style="margin:0"><h2>Selected work</h2></div></div>
+        <div class="type-row"><span>h2 / .h2</span><h2>Eleven modals</h2></div>
         <div class="type-row"><span>h3 / .h3</span><h3>Leading the dealer design team</h3></div>
         <div class="type-row"><span>.pull</span><p class="pull">AI agents are becoming a customer.</p></div>
         <div class="type-row"><span>.lede</span><p class="lede" style="margin:0">Scaling a multi-brand, code-synced design system without a dedicated team.</p></div>
@@ -149,25 +154,22 @@
     <p>Header, Work menu, chapter index and pager.</p>
 
     <div class="spec">
-      <div class="spec-head"><h3>Site header</h3><code>.site-header .brand .nav</code><span class="where">Every page</span></div>
+      <div class="spec-head"><h3>Floating nav</h3><code>.site-header .nav .work-menu</code><span class="where">Every page</span></div>
       <div class="stage flush menu-stage">
         <header class="site-header">
-          <div class="wrap">
-            <a class="brand" href="#navigation"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="40" text-anchor="middle" font-family="Instrument Sans, system-ui, sans-serif" font-weight="700" font-size="22" fill="currentColor">AT</text></svg><span>Ali Taylor</span></a>
-            <nav class="nav" aria-label="Example">
-              <a class="hide-sm" href="#navigation" aria-current="page">Home</a>
-              <details class="work-menu" open>
-                <summary>Work</summary>
-                <ul>
-                  <li><a href="#navigation"><span class="dot blue"></span>Multi-Brand Design System</a></li>
-                  <li><a href="#navigation"><span class="dot mustard"></span>Dealer Pricing Insights</a></li>
-                  <li><a href="#navigation"><span class="dot pink"></span>Selling Cars Across Europe</a></li>
-                </ul>
-              </details>
-              <a class="btn small" href="#navigation">Get in touch</a>
-            </nav>
-          </div>
-        </header>
+  <nav class="nav" aria-label="Example">
+    <a href="#navigation" aria-current="page">Home</a>
+    <details class="work-menu" open>
+      <summary>Work</summary>
+        <ul>
+<li><a href="#navigation"><span class="dot blue"></span>Multi-Brand Design System</a></li>
+<li><a href="#navigation"><span class="dot mustard"></span>Dealer Pricing Insights</a></li>
+<li><a href="#navigation"><span class="dot pink"></span>Selling Cars Across Europe</a></li>
+        </ul>
+    </details>
+    <a href="#navigation">About</a>
+  </nav>
+</header>
       </div>
     </div>
 
