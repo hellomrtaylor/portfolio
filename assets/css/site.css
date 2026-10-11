@@ -6,7 +6,21 @@
    ========================================================================== */
 
 :root {
-  /* Greys. Every colour on the site comes from these tokens. */
+  /* Palette, from the Portfolio 2024 Figma file (colour variables + styles).
+     Not used directly yet: map them onto the role tokens below. */
+  --chocolate-40: #efe2db;
+  --chocolate-80: #6d4c3b;
+  --chocolate-100: #3f2c22;
+  --strawberry-20: #fff0f4;
+  --strawberry-40: #ffd3e0;
+  --strawberry-80: #e21212;
+  --vanilla-20: #fefaf1;
+  --vanilla-40: #fdeec7;
+  --blueberry-80: #4a5aa8;
+  --orange: #ff664a;   /* Figma style "Orange" */
+  --copy: #333333;     /* Figma style "Copy" */
+
+  /* Role tokens. Every colour on the site comes from these. Currently greys (wireframe). */
   --bg: #ffffff;        /* page */
   --fg: #111111;        /* text, borders */
   --muted: #666666;     /* secondary text */
