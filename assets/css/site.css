@@ -41,6 +41,8 @@
   --gutter: clamp(1rem, 4vw, 3rem);
   --wide: 76rem;
   --radius: 4px;
+  --frame: clamp(6px, 1vw, 12px);   /* white frame around the viewport */
+  --header-h: 4.75rem;              /* floating nav + its top gap */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -58,6 +60,12 @@ body {
 }
 
 img { max-width: 100%; display: block; }
+
+/* White frame around the whole viewport, drawn over the page */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 40; pointer-events: none;
+  border: var(--frame) solid #ffffff;
+}
 
 a { color: inherit; text-underline-offset: 0.18em; }
 
@@ -88,7 +96,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .site-header {
   position: sticky; top: 0; z-index: 20;
   display: flex; justify-content: center;
-  padding: 1rem var(--gutter) 0;
+  padding: 1.25rem var(--gutter) 0;
   pointer-events: none; /* only the nav pill is clickable */
 }
 .nav {
@@ -305,8 +313,8 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
    Case study pages
    ========================================================================== */
 
-/* Pulled up under the floating nav (4.5rem tall) so its colour runs to the top of the page */
-.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: -4.5rem; padding: calc(4.5rem + clamp(2.5rem, 6vw, 4.5rem)) 0 0; }
+/* Pulled up under the floating nav so its colour runs to the top of the page */
+.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-h)); padding: calc(var(--header-h) + clamp(2.5rem, 6vw, 4.5rem)) 0 0; }
 .cs-hero .crumb { font-size: 0.85rem; margin-bottom: 1.5rem; display: inline-block; }
 .cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .cs-hero h1 { margin-bottom: 1.2rem; }
@@ -321,7 +329,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 }
 
 /* Chapter index */
-.chapters { border-bottom: 1px solid var(--fg); background: var(--bg); position: sticky; top: 4.75rem; z-index: 10; }
+.chapters { border-bottom: 1px solid var(--fg); background: var(--bg); position: sticky; top: var(--header-h); z-index: 10; }
 .chapters ol { list-style: none; margin: 0 auto; padding: 0 var(--gutter); max-width: var(--wide); display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
 .chapters ol::-webkit-scrollbar { display: none; }
 .chapters a { display: block; white-space: nowrap; font-size: 0.85rem; text-decoration: none; padding: 0.85rem 0.8rem; border-bottom: 3px solid transparent; }
@@ -329,7 +337,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .chapters a.active { border-bottom-color: var(--fg); font-weight: 600; }
 
 /* Chapters */
-.chapter { padding: clamp(3.5rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 8.5rem; }
+.chapter { padding: clamp(3.5rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 3.75rem); }
 .chapter:last-of-type { border-bottom: 0; }
 .chapter-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 2rem clamp(2rem, 5vw, 5rem); }
 .chapter-label { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin-bottom: 0.9rem; display: block; text-transform: uppercase; letter-spacing: 0.05em; }
