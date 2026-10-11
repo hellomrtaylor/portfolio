@@ -190,6 +190,37 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .hero.solo .wrap { grid-template-columns: 1fr; }
 .hero.solo h1 { max-width: 16ch; }
 
+/* ---------- Home: intro (type-led hero with a signature stamp) ---------- */
+
+.intro { padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 4.5rem); }
+.intro-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem clamp(2rem, 5vw, 5rem); align-items: center;
+}
+.intro-kicker { font-size: 16px; font-weight: 700; letter-spacing: 1px; color: var(--chocolate-80); margin: 0 0 1.25rem; }
+.intro h1 { font-size: clamp(3.2rem, 1.6rem + 6.6vw, 8rem); line-height: 0.95; max-width: 13ch; margin-bottom: 1.75rem; }
+.intro h1 em { font-style: italic; color: var(--chocolate-80); }
+.intro .lede { margin-bottom: 2rem; }
+.intro .intro-stamp { width: clamp(12rem, 24vw, 21rem); transform: rotate(-8deg); align-self: start; margin-top: clamp(2rem, 6vw, 5rem); }
+.intro-facts {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem;
+  margin: clamp(2.5rem, 6vw, 4rem) 0 0; padding-top: 1.25rem; border-top: 1px solid var(--chocolate-40);
+}
+.intro-facts dt { font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--strawberry-80); }
+.intro-facts dd { margin: 0.25rem 0 0; color: var(--chocolate-100); }
+@media (max-width: 48rem) {
+  .intro-grid { grid-template-columns: 1fr; }
+  .intro .intro-stamp { grid-row: 1; justify-self: end; width: 7.5rem; margin: 0 0 -1.5rem; }
+  .intro-kicker { margin-bottom: 1rem; }
+  .intro-facts { grid-template-columns: 1fr; gap: 0.75rem; }
+  .intro-facts div { display: grid; grid-template-columns: 5rem 1fr; align-items: baseline; }
+  .intro-facts dd { margin: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .intro-stamp { animation: stamp-in 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) 0.2s backwards; }
+  @keyframes stamp-in { from { opacity: 0; transform: scale(1.25) rotate(-8deg); } }
+}
+
 /* Homepage hero colours */
 .home-hero h1, .home-hero .lede { color: var(--chocolate-100); }
 .home-hero .btn { background: var(--chocolate-80); border-color: var(--chocolate-80); border-bottom: 2px solid var(--strawberry-40); color: var(--bg); }
