@@ -26,10 +26,10 @@
   --fill: #f2f2f2;      /* boxes, cards, panels */
   --fill-strong: #dcdcdc; /* emphasised boxes (current step, CTA areas) */
 
-  /* Project tones. All the same grey in the wireframe; give each case study its own colour later. */
-  --tone-1: var(--fill);  /* Multi-Brand Design System */
-  --tone-2: var(--fill);  /* Dealer Pricing Insights */
-  --tone-3: var(--fill);  /* Selling Cars Across Europe */
+  /* Project tones. Each case study is themed by its tone (see "Project themes" at the end). */
+  --tone-1: var(--chocolate-80);   /* Multi-Brand Design System */
+  --tone-2: var(--strawberry-80);  /* Dealer Pricing Insights */
+  --tone-3: var(--blueberry-80);   /* Selling Cars Across Europe */
 
   /* Type. Instrument Serif for display headings and case study titles; Instrument Sans for everything else.
      Loaded from Google Fonts in each page's <head>. */
@@ -210,9 +210,6 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   background: var(--tone, var(--fill));
 }
 .book:hover .book-cta { text-decoration: underline; }
-.book.blue { --tone: var(--tone-1); }
-.book.mustard { --tone: var(--tone-2); }
-.book.pink { --tone: var(--tone-3); }
 
 .book-text { padding: clamp(1.5rem, 3vw, 2.25rem); display: flex; flex-direction: column; gap: 0.9rem; }
 .book-meta { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
@@ -260,13 +257,14 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* ---------- Home: other work grid ---------- */
 
-.drawer { background: var(--fill); border-block: 1px solid var(--line); }
+.drawer { background: var(--strawberry-20); border-block: 1px solid var(--line); }
 .drawer .section-head p { color: var(--muted); }
 .drawer-grid {
   display: grid; gap: 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
 }
 .drawer .card, .interests .card { background: var(--bg); padding: 1rem 1.25rem 1.25rem; }
+.drawer .card { background: var(--strawberry-20); }
 .drawer .card h3, .interests .card h3 { font-size: 1.15rem; line-height: 1.25; margin: 0 0 0.5rem; }
 .drawer .card p, .interests .card p { font-size: 0.9rem; line-height: 1.55; margin: 0; }
 
@@ -293,10 +291,8 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
    Case study pages
    ========================================================================== */
 
-.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); padding: clamp(2.5rem, 6vw, 4.5rem) 0 0; }
-.cs-hero.blue { --tone: var(--tone-1); }
-.cs-hero.mustard { --tone: var(--tone-2); }
-.cs-hero.pink { --tone: var(--tone-3); }
+/* Pulled up under the floating nav (4.5rem tall) so its colour runs to the top of the page */
+.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: -4.5rem; padding: calc(4.5rem + clamp(2.5rem, 6vw, 4.5rem)) 0 0; }
 .cs-hero .crumb { font-size: 0.85rem; margin-bottom: 1.5rem; display: inline-block; }
 .cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .cs-hero h1 { margin-bottom: 1.2rem; }
@@ -361,9 +357,6 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .pager { border-top: 1px solid var(--fg); display: grid; grid-template-columns: 1fr 1fr; }
 .pager a { display: block; padding: clamp(1.75rem, 4vw, 2.5rem) var(--gutter); text-decoration: none; background: var(--tone, var(--fill)); }
 .pager a + a { border-left: 1px solid var(--fg); text-align: right; }
-.pager a.blue { --tone: var(--tone-1); }
-.pager a.mustard { --tone: var(--tone-2); }
-.pager a.pink { --tone: var(--tone-3); }
 .pager .typed { display: block; margin-bottom: 0.4rem; color: var(--muted); }
 .pager a:hover .h3 { text-decoration: underline; }
 @media (max-width: 40rem) {
@@ -444,3 +437,61 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .hub .gate small { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem; }
 .hub .out { background: var(--fill-strong); font-weight: 600; }
 @media (max-width: 40rem) { .hub { grid-template-columns: 1fr; justify-items: stretch; } .hub .gate { margin: 0 auto; } }
+
+/* ==========================================================================
+   Project themes
+   .project-1/2/3 sets --project to that case study's tone. It sits on each
+   case study's <body> (theming the whole page) and on the homepage cards,
+   Work-menu dots and pager links.
+   ========================================================================== */
+
+.project-1 { --project: var(--tone-1); }
+.project-2 { --project: var(--tone-2); }
+.project-3 { --project: var(--tone-3); }
+.project-1, .project-2, .project-3 {
+  --project-tint: color-mix(in srgb, var(--project) 8%, var(--bg));   /* soft surfaces */
+  --project-soft: color-mix(in srgb, var(--project) 20%, var(--bg));  /* stronger fills */
+  --on-project: var(--bg);                                            /* text on --project */
+}
+
+/* Dots, homepage cards, pager */
+.dot[class*="project-"] { background: var(--project); border-color: var(--project); }
+.book[class*="project-"] { background: var(--project); border-color: var(--project); color: var(--on-project); }
+.book[class*="project-"] .shot { border-color: var(--project); }
+.pager a[class*="project-"] { background: var(--project); color: var(--on-project); }
+.pager a[class*="project-"] .typed { color: inherit; opacity: 0.8; }
+
+/* Case study hero */
+.cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
+.cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
+.cs-hero[class*="project-"] .hero-shot .shot { border-color: var(--project); }
+
+/* Everything inside a themed case study page */
+[class*="project-"] .work-menu.current summary { background: var(--project-tint); }
+[class*="project-"] .chapters { border-bottom-color: var(--project-soft); }
+[class*="project-"] .chapters a.active { border-bottom-color: var(--project); color: var(--project); }
+[class*="project-"] .chapter-label { color: var(--project); }
+[class*="project-"] .chapter .body li::marker { color: var(--project); }
+[class*="project-"] .pull { color: var(--project); }
+[class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
+[class*="project-"] .decision { background: var(--project-tint); border-color: var(--project); }
+[class*="project-"] .decision .typed { color: var(--project); }
+[class*="project-"] .fact { border-top-color: var(--project); }
+[class*="project-"] .fact b { color: var(--project); }
+[class*="project-"] .restricted .card { border-color: var(--project); }
+[class*="project-"] .restricted .stamp { color: var(--project); border-color: var(--project); }
+[class*="project-"] .redact { background: var(--project-soft); }
+[class*="project-"] .contact { background: var(--project-tint); border-top-color: var(--project); }
+
+/* Diagrams: tinted nodes, the key step in full project colour */
+[class*="project-"] .diagram { border-color: var(--project-soft); }
+[class*="project-"] .diagram-title { color: var(--project); }
+[class*="project-"] :is(.flow li, .hub .node, .funnel li, .fork .branch, .fork .root) { background: var(--project-tint); border-color: var(--project); }
+[class*="project-"] :is(.flow li.me, .hub .gate, .hub .out, .funnel li:nth-child(4), .fork .branch.shipped) { background: var(--project); color: var(--on-project); }
+[class*="project-"] :is(.flow li.me, .hub .gate, .funnel li:nth-child(4), .fork .branch.shipped) :is(small, .typed) { color: inherit; opacity: 0.85; }
+[class*="project-"] .flow li:not(:last-child)::after { border-color: var(--project); }
+[class*="project-"] .fork::before { border-color: var(--project); }
+[class*="project-"] .fork .branch.rec .later { border-color: var(--project); color: var(--project); }
+[class*="project-"] .venn .set { border-color: var(--project); }
+[class*="project-"] .venn .a { background: var(--project-tint); }
+[class*="project-"] .venn .b { background: var(--project-soft); }
