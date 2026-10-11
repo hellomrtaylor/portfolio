@@ -19,7 +19,7 @@
   --blueberry-80: #4a5aa8;
 
   /* Role tokens. Every colour on the site comes from these. Currently greys (wireframe). */
-  --bg: #ffffff;        /* page */
+  --bg: var(--vanilla-20); /* page */
   --fg: #111111;        /* text, borders */
   --muted: #666666;     /* secondary text */
   --line: #d4d4d4;      /* dividers, light borders */
