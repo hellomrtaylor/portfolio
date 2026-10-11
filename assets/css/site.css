@@ -103,6 +103,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   padding: 0.5rem 0.75rem; border-radius: var(--radius); cursor: pointer;
 }
 .nav a:hover, .nav summary:hover, .nav a[aria-current="page"] { background: var(--fill); }
+.nav .btn { font-size: 16px; }
+.nav .btn:hover { background: var(--fg); }
 
 .work-menu { position: relative; }
 .work-menu summary { list-style: none; display: inline-flex; align-items: center; gap: 0.35rem; }
@@ -123,13 +125,13 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  font: inherit; font-size: 0.9rem; font-weight: 600;
+  font: inherit; font-size: 16px; font-weight: 700; line-height: 1.2;
   background: var(--fg); color: var(--bg);
   border: 1px solid var(--fg); border-radius: var(--radius);
   padding: 0.7rem 1.2rem; text-decoration: none;
 }
 .btn:hover { opacity: 0.85; }
-.btn.small { padding: 0.45rem 0.85rem; font-size: 0.85rem; }
+.btn.small { padding: 0.45rem 0.85rem; }
 .btn.ghost { background: var(--bg); color: var(--fg); }
 
 @media (max-width: 40rem) {
