@@ -462,15 +462,42 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .fact span { font-size: 0.85rem; color: var(--muted); }
 
 /* Next / previous */
-.pager { border-top: 1px solid var(--fg); display: grid; grid-template-columns: 1fr 1fr; }
-.pager a { display: block; padding: clamp(1.75rem, 4vw, 2.5rem) var(--gutter); text-decoration: none; background: transparent; color: var(--chocolate-100); }
-.pager a + a { border-left: 1px solid var(--fg); text-align: right; }
-.pager .typed { display: block; margin-bottom: 0.4rem; color: var(--muted); }
-.pager a:hover .h3 { text-decoration: underline; }
-.pager a:hover .h3::before { transform: scale(1.15); box-shadow: 0 3px 8px color-mix(in srgb, var(--project, var(--fg)) 50%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+/* Previous / next case study: two compact links, each with a circle that carries an arrow on hover */
+.pager {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem 2rem;
+  max-width: var(--wide); margin: 0 auto; padding: clamp(2rem, 5vw, 3.5rem) var(--gutter);
+}
+.pager a {
+  display: grid; align-items: center; column-gap: 0.9rem;
+  grid-template-columns: auto auto; grid-template-areas: "dot label" "dot title";
+  padding: 0.4rem 0.6rem; border-radius: 0.9rem;
+  text-decoration: none; color: var(--chocolate-100);
+}
+.pager a + a { grid-template-areas: "label dot" "title dot"; text-align: right; }
+.pager .typed { grid-area: label; display: block; margin-bottom: 0.15rem; color: var(--muted); }
+.pager .h3 { grid-area: title; }
+/* the circle: the current case study's colour, switching to the destination's on hover */
+.pager a::before {
+  content: ""; grid-area: dot; width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  background: var(--page-tone, var(--project, var(--fg)));
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--chocolate-100) 25%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+/* the arrow, hidden until hover */
+.pager a::after {
+  content: "←"; grid-area: dot; place-self: center; position: relative; z-index: 1; /* above the scaled circle */
+  font-family: var(--sans); font-size: 1.25rem; font-weight: 700; line-height: 1; color: var(--on-project, var(--bg));
+  opacity: 0; transform: translateX(0.4rem);
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+.pager a + a::after { content: "→"; transform: translateX(-0.4rem); }
+.pager a:is(:hover, :focus-visible)::before { background: var(--project, var(--fg)); transform: scale(1.06); }
+.pager a:is(:hover, :focus-visible)::after { opacity: 1; transform: none; }
+.pager a:hover .h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
 @media (max-width: 40rem) {
-  .pager { grid-template-columns: 1fr; }
-  .pager a + a { border-left: 0; border-top: 1px solid var(--fg); text-align: left; }
+  .pager { flex-direction: column; align-items: stretch; }
+  .pager a { justify-self: start; align-self: flex-start; }
+  .pager a + a { align-self: flex-end; }
 }
 
 /* ---------- Diagrams (built in HTML, no images needed) ---------- */
@@ -562,6 +589,8 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* Case study pages keep neutral text; the chocolate defaults apply everywhere else */
 body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666; }
+/* the current case study's colour, kept even inside links that set --project to another study */
+body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var(--tone-2); } body.project-3 { --page-tone: var(--tone-3); }
 
 .project-1 { --project: var(--tone-1); }
 .project-2 { --project: var(--tone-2); }
@@ -577,13 +606,6 @@ body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666
 /* Dots, homepage cards, pager */
 .dot[class*="project-"] { background: var(--project); border-color: var(--project); }
 .book[class*="project-"] { background: var(--project); border-color: var(--project); color: var(--on-project); }
-/* Pager: transparent, with a circle in the case study's colour before its title */
-.pager .h3 { display: inline-flex; align-items: center; gap: 0.6rem; }
-.pager a[class*="project-"] .h3::before {
-  content: ""; flex: none; width: 0.75em; height: 0.75em; border-radius: 50%; background: var(--project);
-  box-shadow: 0 2px 4px color-mix(in srgb, var(--project) 40%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
 
 /* Case study hero */
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
