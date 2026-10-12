@@ -298,7 +298,9 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* ---------- Home: other work grid ---------- */
 
-.drawer { background: var(--strawberry-20); border-block: 1px solid var(--line); }
+.drawer { background: var(--strawberry-20); border-block: 1px solid var(--strawberry-80); }
+/* Section title one step up the scale (h3), in Strawberry 80 */
+.drawer .section-head h2 { font-family: var(--serif); font-weight: 400; letter-spacing: 0; line-height: 1.1; font-size: clamp(1.45rem, 1.25rem + 0.8vw, 1.9rem); color: var(--strawberry-80); }
 .drawer .section-head p { color: var(--muted); }
 .drawer-grid {
   display: grid; gap: 1.5rem;
