@@ -431,6 +431,10 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .chapter-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 2rem clamp(2rem, 5vw, 5rem); }
 .chapter-label { font-family: var(--sans); font-size: 0.8rem; color: var(--chocolate-80); margin-bottom: 0.9rem; display: block; text-transform: uppercase; letter-spacing: 0.05em; }
 .chapter h2 { margin-bottom: 1rem; }
+/* A chapter whose image sits in the narrow left column, under the heading; the text runs alongside */
+.chapter-grid.with-fig { grid-template-rows: auto 1fr; }
+.chapter-grid.with-fig > .body { grid-column: 2; grid-row: 1 / span 2; }
+.chapter-grid.with-fig > .chapter-fig { grid-column: 1; grid-row: 2; align-self: start; }
 .chapter .body p:last-child { margin-bottom: 0; }
 .chapter .body ul { margin: 0 0 1em; padding-left: 1.1em; max-width: var(--measure); }
 .chapter .body li { margin-bottom: 0.45em; padding-left: 0.2em; }
@@ -439,6 +443,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .figs.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 52rem) {
   .chapter-grid, .figs.two { grid-template-columns: 1fr; }
+  .chapter-grid.with-fig > .body, .chapter-grid.with-fig > .chapter-fig { grid-column: auto; grid-row: auto; }
 }
 
 /* Pull statement */
