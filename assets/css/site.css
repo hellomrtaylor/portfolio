@@ -576,6 +576,8 @@ body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
 .cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
 .cs-hero[class*="project-"] .hero-shot .shot { border-color: var(--project); }
+/* A hero image shown at its own proportions (no cropping at any width) */
+.cs-hero .hero-shot .shot.natural { aspect-ratio: 2000 / 932; background: #ffffff; }
 
 /* Everything inside a themed case study page */
 [class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project); }
