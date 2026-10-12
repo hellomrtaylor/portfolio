@@ -42,6 +42,10 @@
   --wide: 76rem;
   --radius: 4px;
   --frame: clamp(6px, 1vw, 12px);   /* white frame around the viewport */
+  /* Depth for clickable things, mixed from Chocolate 100 */
+  --shadow-press: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 1px 2px color-mix(in srgb, var(--chocolate-100) 18%, transparent);
+  --shadow-sm: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 20%, transparent), 0 3px 8px -3px color-mix(in srgb, var(--chocolate-100) 22%, transparent);
+  --shadow-md: 0 2px 4px color-mix(in srgb, var(--chocolate-100) 18%, transparent), 0 10px 22px -10px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
   --nav-space: 5rem;                /* clearance under the sticky glass bar for #section jumps */
   --header-flow: 3.45rem;           /* height the glass bar takes up at the top of the page */
 }
@@ -101,10 +105,13 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   padding: 0.6rem var(--gutter) 0;
   pointer-events: none; /* only the bar itself is clickable */
 }
+/* The bar only lays out two separate glass pills: site nav (left) and chapters (right) */
 .bar {
-  pointer-events: auto;
   max-width: var(--wide); margin: 0 auto;
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.25rem 1rem;
+  display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.5rem 1rem;
+}
+.bar > .nav, .bar > .chapters {
+  pointer-events: auto;
   padding: 0.3rem;
   border-radius: 0.9rem;
   background: color-mix(in srgb, var(--vanilla-20) 62%, transparent);
@@ -116,7 +123,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
     0 10px 30px -14px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
 }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .bar { background: color-mix(in srgb, var(--vanilla-20) 94%, transparent); }
+  .bar > .nav, .bar > .chapters { background: color-mix(in srgb, var(--vanilla-20) 94%, transparent); }
 }
 
 .nav, .chapters ol { display: flex; align-items: center; gap: 0.15rem; }
@@ -124,21 +131,21 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   display: block; white-space: nowrap; cursor: pointer;
   font-size: 0.85rem; line-height: 1.4; color: var(--chocolate-100); text-decoration: none;
   padding: 0.45rem 0.8rem; border-radius: 0.6rem;
-  transition: background-color 0.15s, color 0.15s;
+  transition: background-color 0.15s, color 0.15s, box-shadow 0.15s;
 }
-.nav a:hover, .nav summary:hover, .chapters a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); }
-.nav a[aria-current="page"], .work-menu.current summary { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); font-weight: 600; }
+.nav a:hover, .nav summary:hover, .chapters a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); box-shadow: var(--shadow-press); }
+.nav a[aria-current="page"], .work-menu.current summary { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); font-weight: 600; box-shadow: var(--shadow-press); }
 
 .chapters { min-width: 0; }
 .chapters ol { list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
 .chapters ol::-webkit-scrollbar { display: none; }
 .chapters a { color: var(--chocolate-80); }
-.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; }
+.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; box-shadow: var(--shadow-press); }
 
 @media (max-width: 52rem) {
-  :root { --nav-space: 8rem; --header-flow: 6.05rem; } /* the bar is two rows here */
-  /* chapters drop to their own row inside the bar and scroll sideways */
-  .chapters { flex: 1 1 100%; border-top: 1px solid color-mix(in srgb, var(--chocolate-40) 85%, transparent); padding-top: 0.25rem; }
+  :root { --nav-space: 8.5rem; --header-flow: 6.75rem; } /* two pills stacked here */
+  /* the chapters pill drops below the site nav, full width, and scrolls sideways */
+  .bar > .chapters { flex: 1 1 100%; }
 }
 
 .work-menu { position: relative; }
@@ -151,7 +158,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   list-style: none; margin: 0; padding: 0.3rem;
   width: max-content; max-width: calc(100vw - 2rem);
   border-radius: 0.9rem;
-  background: color-mix(in srgb, var(--vanilla-20) 80%, transparent);
+  background: color-mix(in srgb, var(--vanilla-20) 95%, transparent);
   -webkit-backdrop-filter: blur(16px) saturate(1.6);
   backdrop-filter: blur(16px) saturate(1.6);
   border: 1px solid color-mix(in srgb, var(--chocolate-40) 85%, transparent);
@@ -162,6 +169,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   font-size: 0.9rem; padding: 0.55rem 0.75rem;
 }
 .work-menu li a[aria-current="page"] { font-weight: 600; }
+.work-menu li a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); box-shadow: var(--shadow-press); }
 .dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; border: 1px solid var(--fg); background: var(--fill); }
 
 .btn {
@@ -170,8 +178,11 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   background: var(--fg); color: var(--bg);
   border: 1px solid var(--fg); border-radius: var(--radius);
   padding: 0.7rem 1.2rem; text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.btn:hover { opacity: 0.85; }
+.btn:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--shadow-md); }
+.btn:active { transform: translateY(1px); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); }
 .btn.small { padding: 0.45rem 0.85rem; }
 .btn.ghost { background: var(--bg); color: var(--fg); }
 
@@ -279,7 +290,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   text-decoration: none; color: var(--fg);
   background: var(--tone, var(--fill));
 }
-.book { position: relative; }
+.book { position: relative; box-shadow: var(--shadow-sm); }
 
 /* Hover: the card lifts, the arrow nudges, any cover image zooms */
 .book-arrow { display: inline-block; }
@@ -448,6 +459,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .pager a + a { border-left: 1px solid var(--fg); text-align: right; }
 .pager .typed { display: block; margin-bottom: 0.4rem; color: var(--muted); }
 .pager a:hover .h3 { text-decoration: underline; }
+.pager a:hover .h3::before { transform: scale(1.15); box-shadow: 0 3px 8px color-mix(in srgb, var(--project, var(--fg)) 50%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
 @media (max-width: 40rem) {
   .pager { grid-template-columns: 1fr; }
   .pager a + a { border-left: 0; border-top: 1px solid var(--fg); text-align: left; }
@@ -552,6 +564,8 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .pager .h3 { display: inline-flex; align-items: center; gap: 0.6rem; }
 .pager a[class*="project-"] .h3::before {
   content: ""; flex: none; width: 0.75em; height: 0.75em; border-radius: 50%; background: var(--project);
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--project) 40%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Case study hero */
