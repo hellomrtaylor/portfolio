@@ -334,15 +334,13 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* ---------- Contact block ---------- */
 
-.contact { background: var(--vanilla-20); border-top: 1px solid var(--fg); }
+.contact { background: var(--vanilla-20); }
 .contact .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: center; }
 .contact h2 { font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem); }
-.contact .mail { font-family: var(--sans); font-size: 0.85rem; display: block; margin-top: 1rem; }
 @media (max-width: 48rem) { .contact .wrap { grid-template-columns: 1fr; } }
 
-.site-footer { border-top: 1px solid var(--fg); padding: 1.5rem 0 2rem; font-size: 0.85rem; }
+.site-footer { padding: 1.5rem 0 2rem; font-size: 0.85rem; }
 .site-footer .wrap { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; justify-content: space-between; }
-.site-footer nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
 
 /* ==========================================================================
    Case study pages
@@ -537,7 +535,6 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 [class*="project-"] .restricted .card { border-color: var(--project); }
 [class*="project-"] .restricted .stamp { color: var(--project); border-color: var(--project); }
 [class*="project-"] .redact { background: var(--project-soft); }
-[class*="project-"] .contact { border-top-color: var(--project); }
 
 /* Diagrams: tinted nodes, the key step in full project colour */
 [class*="project-"] .diagram { border-color: var(--project-soft); }
