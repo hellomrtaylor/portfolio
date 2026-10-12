@@ -18,7 +18,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 
 | Path | What goes there |
 |---|---|
-| `assets/img/showcar/cover.jpg` | Homepage card. Tight crop of components, or one screen in two brands |
+| `assets/img/showcar/cover.webp` | Homepage card. Homepages across the brands (added) |
 | `assets/img/showcar/hero.webp` | Added: spread of real components across brands |
 | `assets/img/showcar/modals.webp` | Added: the 6 modal variants found in production |
 | `assets/img/showcar/variables.webp` | Added: tokens across brand modes, with the mode switcher |
