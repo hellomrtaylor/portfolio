@@ -20,7 +20,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 |---|---|
 | `assets/img/showcar/cover.jpg` | Homepage card. Tight crop of components, or one screen in two brands |
 | `assets/img/showcar/hero.webp` | Added: spread of real components across brands |
-| `assets/img/showcar/modals.jpg` | The 6 modal variants in a grid (very wide) |
+| `assets/img/showcar/modals.webp` | Added: the 6 modal variants found in production |
 | `assets/img/showcar/variables.webp` | Added: tokens across brand modes, with the mode switcher |
 | `assets/img/showcar/two-brands.jpg` | One component in two brands |
 | `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
