@@ -47,6 +47,7 @@
   --frame: clamp(6px, 1vw, 12px);   /* white frame around the viewport */
   /* Depth for clickable things, mixed from Chocolate 100 */
   --shadow-sm: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 20%, transparent), 0 3px 8px -3px color-mix(in srgb, var(--chocolate-100) 22%, transparent);
+  --shadow-img: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 10%, transparent), 0 10px 28px -14px color-mix(in srgb, var(--chocolate-100) 32%, transparent);
   --shadow-md: 0 2px 4px color-mix(in srgb, var(--chocolate-100) 18%, transparent), 0 10px 22px -10px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
   --nav-space: 5rem;                /* clearance under the sticky glass bar for #section jumps */
   --header-flow: 3.56rem;           /* height the glass nav takes up at the top of the page */
@@ -307,11 +308,11 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .book h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; font-size: clamp(2rem, 1.6rem + 1.8vw, 3.2rem); }
 .book p { margin: 0; line-height: 1.45; }
 .book-cta { margin-top: auto; padding-top: 1rem; font-size: 0.9rem; font-weight: 600; }
-.book .shot { border: 0; border-left: 1px solid var(--fg); border-radius: 0; min-height: 18rem; aspect-ratio: auto; height: 100%; }
+.book .shot { border: 0; box-shadow: none; border-radius: 0; min-height: 18rem; aspect-ratio: auto; height: 100%; }
 
 @media (max-width: 52rem) {
   .book { grid-template-columns: 1fr; }
-  .book .shot { border-left: 0; border-top: 1px solid var(--fg); min-height: 14rem; aspect-ratio: 16 / 10; }
+  .book .shot { min-height: 14rem; aspect-ratio: 16 / 10; }
 }
 
 /* ---------- Image frames with built-in placeholder ---------- */
@@ -320,7 +321,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .shot {
   position: relative; overflow: hidden;
   background: var(--fill);
-  border: 1px solid var(--fg); border-radius: var(--radius);
+  border: 0; border-radius: var(--radius);
+  box-shadow: var(--shadow-img);
   aspect-ratio: 16 / 10;
   margin: 0;
 }
@@ -468,8 +470,10 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 .diagram { border: 1px solid var(--fg); border-radius: var(--radius); background: var(--bg); padding: clamp(1.25rem, 3vw, 2rem); }
 .diagram-title { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); margin: 0 0 1.25rem; }
+/* A diagram without its container: no border, padding or background */
+.diagram.bare, [class*="project-"] .diagram.bare { border: 0; padding: 0; background: none; }
 
-.flow { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.6rem; }
+.flow { --flow-gap: 2.25rem; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--flow-gap); }
 .flow li {
   flex: 1 1 8rem; position: relative;
   border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
@@ -477,15 +481,18 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 }
 .flow li small { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
 .flow li.me { background: var(--fill-strong); font-weight: 600; }
+/* chevron centred in the gap between steps */
 .flow li:not(:last-child)::after {
-  content: ""; position: absolute; right: -0.55rem; top: 50%; z-index: 1;
-  width: 0.5rem; height: 0.5rem; border-top: 1px solid var(--fg); border-right: 1px solid var(--fg);
-  background: var(--bg); transform: translateY(-50%) rotate(45deg);
+  content: ""; position: absolute; top: 50%; z-index: 1;
+  right: calc(var(--flow-gap) / -2 - 0.3rem);
+  width: 0.6rem; height: 0.6rem; border-top: 1.5px solid var(--fg); border-right: 1.5px solid var(--fg);
+  transform: translate(-0.15rem, -50%) rotate(45deg);
 }
 @media (max-width: 40rem) {
   .flow { flex-direction: column; }
   .flow li { flex-basis: auto; } /* stacked steps size to their content */
-  .flow li:not(:last-child)::after { right: auto; left: 1.2rem; top: auto; bottom: -0.55rem; transform: rotate(135deg); }
+  .flow { --flow-gap: 1.75rem; }
+  .flow li:not(:last-child)::after { right: auto; left: 1.2rem; top: auto; bottom: calc(var(--flow-gap) / -2 - 0.3rem); transform: translateY(-0.15rem) rotate(135deg); }
 }
 
 /* Venn */
@@ -563,7 +570,6 @@ body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666
 /* Dots, homepage cards, pager */
 .dot[class*="project-"] { background: var(--project); border-color: var(--project); }
 .book[class*="project-"] { background: var(--project); border-color: var(--project); color: var(--on-project); }
-.book[class*="project-"] .shot { border-color: var(--project); }
 /* Pager: transparent, with a circle in the case study's colour before its title */
 .pager .h3 { display: inline-flex; align-items: center; gap: 0.6rem; }
 .pager a[class*="project-"] .h3::before {
@@ -575,7 +581,6 @@ body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666
 /* Case study hero */
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
 .cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
-.cs-hero[class*="project-"] .hero-shot .shot { border-color: var(--project); }
 /* An image shown at its own proportions (no cropping at any width); set --ar inline, e.g. style="--ar: 2000 / 932" */
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
