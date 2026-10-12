@@ -17,8 +17,11 @@
   --vanilla-20: #fefaf1;
   --vanilla-40: #fdeec7;
   --blueberry-80: #4a5aa8;
+  --mint-100: #284124;
+  --mint-40: #c2dbbd;
+  --mint-20: #e4eee2;
 
-  /* Role tokens. Every colour on the site comes from these. Currently greys (wireframe). */
+  /* Role tokens. Every colour on the site comes from these. */
   --bg: var(--vanilla-20); /* page */
   --fg: var(--chocolate-100);   /* text, borders */
   --muted: var(--chocolate-80); /* secondary text */
@@ -27,7 +30,7 @@
   --fill-strong: #dcdcdc; /* emphasised boxes (current step, CTA areas) */
 
   /* Project tones. Each case study is themed by its tone (see "Project themes" at the end). */
-  --tone-1: var(--chocolate-80);   /* Multi-Brand Design System */
+  --tone-1: var(--mint-100);       /* Multi-Brand Design System */
   --tone-2: var(--strawberry-80);  /* Dealer Pricing Insights */
   --tone-3: var(--blueberry-80);   /* Selling Cars Across Europe */
 
@@ -554,6 +557,8 @@ body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666
   --project-soft: color-mix(in srgb, var(--project) 20%, var(--bg));  /* stronger fills */
   --on-project: var(--bg);                                            /* text on --project */
 }
+/* Mint has its own light shades, so the design system case study uses them instead of mixed tints */
+.project-1 { --project-tint: var(--mint-20); --project-soft: var(--mint-40); }
 
 /* Dots, homepage cards, pager */
 .dot[class*="project-"] { background: var(--project); border-color: var(--project); }
