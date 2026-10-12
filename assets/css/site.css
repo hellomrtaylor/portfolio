@@ -248,6 +248,9 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .intro h1 em { font-style: italic; color: var(--chocolate-80); }
 .intro .lede { margin-bottom: 2rem; }
 .intro .intro-stamp { width: clamp(12rem, 24vw, 21rem); transform: rotate(-8deg); align-self: start; margin-top: clamp(2rem, 6vw, 5rem); }
+/* Standalone holding page: the intro alone, filling the screen, footer at the bottom */
+body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+.home-solo { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .intro-facts {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem;
   margin: clamp(2.5rem, 6vw, 4rem) 0 0; padding-block: 1.25rem; border-block: 1px solid var(--chocolate-40);

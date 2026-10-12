@@ -4,6 +4,14 @@ Plain HTML and CSS. No build step, no dependencies.
 
 The site is currently a **wireframe**: greyscale, system fonts, no brand styling. Layout, spacing and responsive behaviour are all in place, so styling it means editing `assets/css/site.css`, starting with the tokens at the top.
 
+## Holding page and hidden draft
+
+The public homepage (`index.html`) is a holding page: just the intro, with no links to anything else.
+
+The full site lives in `draft/` at **alitaylor.nl/draft/**. Nothing on the public page or the 404 page links there, and every page in it carries `noindex, nofollow`. It is unlisted, not private: anyone with the URL, or anyone reading the repo, can find it.
+
+To launch the full site, move the contents of `draft/` back to the root and remove the extra `../` from the asset paths. Or ask Claude to do it.
+
 ## Publish on GitHub Pages
 
 1. Copy everything in this folder into the root of the repo your domain already points at. Replace what's there. Keep the `CNAME` file (it contains `alitaylor.nl`).
