@@ -38,7 +38,7 @@
   .grid-3 { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
 
   /* Neutralise sticky/animated behaviour inside the stage */
-  .stage .site-header { position: static; }
+  .stage .site-header, .stage .chapters { position: static; }
 
   .swatch { border: 1.5px solid var(--fg); border-radius: 0.4rem; overflow: hidden; background: var(--bg); }
   .swatch i { display: block; height: 4.5rem; border-bottom: 1.5px solid var(--fg); }
@@ -179,36 +179,16 @@
     </div>
 
     <div class="spec">
-      <div class="spec-head"><h3>Contents</h3><code>.chapters</code><span class="where">Case studies, under the hero</span></div>
-      <div class="stage flush project-1">
-        <nav class="chapters" aria-label="Example contents" style="border-bottom:0">
-          <div class="wrap">
-            <p class="chapter-label">Contents</p>
-            <ol>
-              <li><a href="#navigation">Context</a></li>
-              <li><a href="#navigation">Problem</a></li>
-              <li><a href="#navigation">Foundations</a></li>
-              <li><a href="#navigation">Governance</a></li>
-              <li><a href="#navigation">Impact</a></li>
-              <li><a href="#navigation">Next</a></li>
-            </ol>
-          </div>
-        </nav>
-      </div>
-    </div>
-
-    <div class="spec">
-      <div class="spec-head"><h3>Reading progress</h3><code>.progress</code><span class="where">Case studies, under the nav once you scroll past the contents (built by site.js)</span></div>
-      <div class="stage project-1" style="min-height:17rem">
-        <details class="progress is-on" open style="position:relative;left:auto;top:auto;transform:none;margin:0 auto">
-          <summary><span class="progress-name">Problem</span><span class="progress-count">2 of 6</span><span class="progress-bar" aria-hidden="true" style="--p:0.3"><i></i></span></summary>
-          <ol>
-            <li><a href="#navigation">Context</a></li>
-            <li><a href="#navigation" aria-current="step">Problem</a></li>
-            <li><a href="#navigation">Foundations</a></li>
-            <li><a href="#navigation">Governance</a></li>
-          </ol>
-        </details>
+      <div class="spec-head"><h3>Chapter index</h3><code>.chapters a.active</code><span class="where">Case studies</span></div>
+      <div class="stage flush">
+        <nav class="chapters" aria-label="Example chapters" style="border-bottom:0"><ol>
+          <li><a href="#navigation">Context</a></li>
+          <li><a href="#navigation" class="active">Problem</a></li>
+          <li><a href="#navigation">Foundations</a></li>
+          <li><a href="#navigation">Governance</a></li>
+          <li><a href="#navigation">Impact</a></li>
+          <li><a href="#navigation">Next</a></li>
+        </ol></nav>
       </div>
     </div>
 

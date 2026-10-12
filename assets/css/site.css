@@ -361,51 +361,16 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
   .cs-hero .hero-shot .shot { aspect-ratio: 4 / 3; }
 }
 
-/* Contents: a plain, numbered list of chapters under the hero (not sticky) */
-.chapters { padding: clamp(2rem, 5vw, 3rem) 0; border-bottom: 1px solid var(--line); }
-.chapters ol {
-  list-style: none; margin: 0; padding: 0; counter-reset: chapter;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: 0 2rem;
-}
-.chapters li { counter-increment: chapter; }
-.chapters a {
-  display: flex; align-items: baseline; gap: 0.75rem;
-  padding: 0.7rem 0; border-top: 1px solid var(--line);
-  font-family: var(--serif); font-size: 1.4rem; line-height: 1.2; text-decoration: none; color: var(--chocolate-100);
-}
-.chapters a::before { content: counter(chapter, decimal-leading-zero); font-family: var(--sans); font-size: 0.8rem; color: var(--project, var(--muted)); }
-.chapters a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
-
-/* Reading progress: a small pill under the nav, shown once the contents list is scrolled past.
-   Built by site.js from the contents list. */
-.progress {
-  position: absolute; top: calc(100% + 0.5rem); left: 50%; z-index: 1;
-  width: min(calc(100% - 2 * var(--gutter)), 22rem);
-  transform: translate(-50%, -0.4rem); opacity: 0; visibility: hidden;
-  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-  pointer-events: auto;
-  background: #ffffff; border-radius: 1.1rem;
-  box-shadow: 0 2px 0 var(--strawberry-20), 0 6px 18px rgba(226, 18, 18, 0.06);
-}
-.progress.is-on { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.progress summary {
-  list-style: none; position: relative; cursor: pointer;
-  display: flex; align-items: baseline; gap: 0.6rem;
-  padding: 0.55rem 1.1rem 0.8rem; font-size: 0.95rem; color: var(--chocolate-100);
-}
-.progress summary::-webkit-details-marker { display: none; }
-.progress summary::after { content: "▾"; font-size: 0.6em; margin-left: auto; }
-.progress[open] summary::after { content: "▴"; }
-.progress-count { font-size: 0.8rem; color: var(--project, var(--muted)); }
-.progress-bar { position: absolute; left: 1.1rem; right: 1.1rem; bottom: 0.4rem; height: 2px; border-radius: 2px; background: var(--project-soft, var(--line)); overflow: hidden; }
-.progress-bar i { display: block; height: 100%; background: var(--project, var(--fg)); transform-origin: left; transform: scaleX(var(--p, 0)); }
-.progress ol { list-style: none; margin: 0; padding: 0.3rem 0.35rem 0.45rem; border-top: 1px solid var(--line); }
-.progress li a { display: block; padding: 0.45rem 0.75rem; border-radius: 0.8rem; font-size: 0.95rem; color: var(--chocolate-100); text-decoration: none; }
-.progress li a:hover, .progress li a[aria-current="step"] { background: var(--project-tint, var(--fill)); }
-.work-menu ul { z-index: 2; } /* the Work menu opens over the progress pill */
+/* Chapter index */
+.chapters { border-bottom: 1px solid var(--fg); background: var(--bg); position: sticky; top: var(--header-h); z-index: 10; }
+.chapters ol { list-style: none; margin: 0 auto; padding: 0 var(--gutter); max-width: var(--wide); display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
+.chapters ol::-webkit-scrollbar { display: none; }
+.chapters a { display: block; white-space: nowrap; font-size: 0.85rem; text-decoration: none; padding: 0.85rem 0.8rem; border-bottom: 3px solid transparent; }
+.chapters a:hover { border-bottom-color: var(--line); }
+.chapters a.active { border-bottom-color: var(--fg); font-weight: 600; }
 
 /* Chapters */
-.chapter { padding: clamp(3.5rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 3.5rem); }
+.chapter { padding: clamp(3.5rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 3.75rem); }
 .chapter:last-of-type { border-bottom: 0; }
 .chapter-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 2rem clamp(2rem, 5vw, 5rem); }
 .chapter-label { font-family: var(--sans); font-size: 0.8rem; color: var(--chocolate-80); margin-bottom: 0.9rem; display: block; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -422,7 +387,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* Pull statement */
 .pull { font-family: var(--serif); font-size: clamp(2rem, 1.4rem + 2.8vw, 3.6rem); line-height: 1.05; font-weight: 400; max-width: 22ch; margin: 0; }
-.pull-wrap { padding: clamp(3rem, 7vw, 5rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 3.5rem); }
+.pull-wrap { padding: clamp(3rem, 7vw, 5rem) 0; border-bottom: 1px solid var(--line); }
 
 /* Key decision callout */
 .decision { border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill); padding: 1.1rem 1.25rem; margin: 1.5rem 0; max-width: var(--measure); }
@@ -474,7 +439,6 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 }
 @media (max-width: 40rem) {
   .flow { flex-direction: column; }
-  .flow li { flex-basis: auto; } /* stacked steps size to their content */
   .flow li:not(:last-child)::after { right: auto; left: 1.2rem; top: auto; bottom: -0.55rem; transform: rotate(135deg); }
 }
 
@@ -559,6 +523,8 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* Everything inside a themed case study page */
 [class*="project-"] .work-menu.current summary { background: var(--project-tint); }
+[class*="project-"] .chapters { border-bottom-color: var(--project-soft); }
+[class*="project-"] .chapters a.active { border-bottom-color: var(--project); color: var(--project); }
 [class*="project-"] .chapter .body li::marker { color: var(--project); }
 [class*="project-"] .pull { color: var(--project); }
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
