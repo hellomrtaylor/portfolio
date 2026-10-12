@@ -456,14 +456,6 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .fact b { display: block; font-size: clamp(2.4rem, 2rem + 2vw, 3.5rem); font-weight: 700; line-height: 1; }
 .fact span { font-size: 0.85rem; color: var(--muted); }
 
-/* Restricted results */
-.restricted { margin-top: clamp(2rem, 5vw, 3rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: center; }
-.restricted .card { --margin: 7.2rem; padding-bottom: 3.5rem; }
-.redact { display: inline-block; background: var(--fill-strong); color: transparent; border-radius: 2px; user-select: none; line-height: 1.1; }
-.restricted .stamp { right: 1.2rem; bottom: 1rem; }
-.restricted h3 { margin-bottom: 0.8rem; }
-@media (max-width: 52rem) { .restricted { grid-template-columns: 1fr; } }
-
 /* Next / previous */
 .pager { border-top: 1px solid var(--fg); display: grid; grid-template-columns: 1fr 1fr; }
 .pager a { display: block; padding: clamp(1.75rem, 4vw, 2.5rem) var(--gutter); text-decoration: none; background: transparent; color: var(--chocolate-100); }
@@ -606,9 +598,6 @@ body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666
 [class*="project-"] .decision .typed { color: var(--project); }
 [class*="project-"] .fact { border-top-color: var(--project); }
 [class*="project-"] .fact b { color: var(--project); }
-[class*="project-"] .restricted .card { border-color: var(--project); }
-[class*="project-"] .restricted .stamp { color: var(--project); border-color: var(--project); }
-[class*="project-"] .redact { background: var(--project-soft); }
 
 /* Diagrams: tinted nodes, the key step in full project colour */
 [class*="project-"] .diagram { border-color: var(--project-soft); }
