@@ -43,11 +43,10 @@
   --radius: 4px;
   --frame: clamp(6px, 1vw, 12px);   /* white frame around the viewport */
   /* Depth for clickable things, mixed from Chocolate 100 */
-  --shadow-press: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 1px 2px color-mix(in srgb, var(--chocolate-100) 18%, transparent);
   --shadow-sm: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 20%, transparent), 0 3px 8px -3px color-mix(in srgb, var(--chocolate-100) 22%, transparent);
   --shadow-md: 0 2px 4px color-mix(in srgb, var(--chocolate-100) 18%, transparent), 0 10px 22px -10px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
   --nav-space: 5rem;                /* clearance under the sticky glass bar for #section jumps */
-  --header-flow: 3.45rem;           /* height the glass bar takes up at the top of the page */
+  --header-flow: 3.56rem;           /* height the glass nav takes up at the top of the page */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -126,24 +125,24 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   .bar > .nav, .bar > .chapters { background: color-mix(in srgb, var(--vanilla-20) 94%, transparent); }
 }
 
-.nav, .chapters ol { display: flex; align-items: center; gap: 0.15rem; }
+.nav, .chapters ol { display: flex; align-items: center; gap: 0.4rem; }
 .nav a, .nav summary, .chapters a {
   display: block; white-space: nowrap; cursor: pointer;
-  font-size: 0.85rem; line-height: 1.4; color: var(--chocolate-100); text-decoration: none;
+  font-size: 0.975rem; line-height: 1.4; color: var(--chocolate-100); text-decoration: none;
   padding: 0.45rem 0.8rem; border-radius: 0.6rem;
-  transition: background-color 0.15s, color 0.15s, box-shadow 0.15s;
+  transition: background-color 0.15s, color 0.15s;
 }
-.nav a:hover, .nav summary:hover, .chapters a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); box-shadow: var(--shadow-press); }
-.nav a[aria-current="page"], .work-menu.current summary { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); font-weight: 600; box-shadow: var(--shadow-press); }
+.nav a:hover, .nav summary:hover, .chapters a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); }
+.nav a[aria-current="page"], .work-menu.current summary { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); font-weight: 600; }
 
 .chapters { min-width: 0; }
 .chapters ol { list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
 .chapters ol::-webkit-scrollbar { display: none; }
 .chapters a { color: var(--chocolate-80); }
-.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; box-shadow: var(--shadow-press); }
+.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; }
 
 @media (max-width: 52rem) {
-  :root { --nav-space: 8.5rem; --header-flow: 6.75rem; } /* two pills stacked here */
+  :root { --nav-space: 8.5rem; --header-flow: 7.06rem; } /* two pills stacked here */
   /* the chapters pill drops below the site nav, full width, and scrolls sideways */
   .bar > .chapters { flex: 1 1 100%; }
 }
@@ -169,7 +168,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   font-size: 0.9rem; padding: 0.55rem 0.75rem;
 }
 .work-menu li a[aria-current="page"] { font-weight: 600; }
-.work-menu li a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); box-shadow: var(--shadow-press); }
+.work-menu li a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); }
 .dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; border: 1px solid var(--fg); background: var(--fill); }
 
 .btn {
