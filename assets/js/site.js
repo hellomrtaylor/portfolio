@@ -33,9 +33,38 @@ if (links.length && 'IntersectionObserver' in window) {
 }
 
 // Start every fresh page visit at the top (e.g. after "Next case study"),
-// even in viewers that carry scroll position across pages. Back/forward and
-// links to a #section keep the browser's normal behaviour.
+// even in viewers that carry the old scroll position across pages and re-apply
+// it after load. Back/forward and links to a #section keep normal behaviour.
+const TOP_KEY = 'at:start-at-top';
+document.addEventListener('click', (e) => {
+  const a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  const url = new URL(a.href, location.href);
+  if (url.origin === location.origin && url.pathname !== location.pathname && !url.hash) {
+    try { sessionStorage.setItem(TOP_KEY, '1'); } catch (err) { /* storage unavailable */ }
+  }
+});
+
+let startAtTop = false;
+try {
+  startAtTop = sessionStorage.getItem(TOP_KEY) === '1';
+  sessionStorage.removeItem(TOP_KEY);
+} catch (err) { /* storage unavailable */ }
 const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-if (nav && nav.type === 'navigate' && !location.hash) {
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+if (nav && nav.type === 'navigate') startAtTop = true;
+
+if (startAtTop && !location.hash) {
+  let userMoved = false;
+  const stop = () => { userMoved = true; };
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach((t) => window.addEventListener(t, stop, { once: true, passive: true }));
+  const toTop = () => {
+    if (userMoved) return;
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // if an outer viewer scrolls instead of this page, bring the top into its view too
+    if (window.parent !== window) document.documentElement.scrollIntoView({ block: 'start', behavior: 'instant' });
+  };
+  toTop();
+  const settle = () => [0, 60, 150, 300, 600, 1000].forEach((ms) => setTimeout(toTop, ms));
+  if (document.readyState === 'complete') settle();
+  else window.addEventListener('load', settle, { once: true });
 }
