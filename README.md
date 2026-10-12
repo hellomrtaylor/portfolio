@@ -1,0 +1,63 @@
+# alitaylor.nl
+
+Plain HTML and CSS. No build step, no dependencies.
+
+The site is currently a **wireframe**: greyscale, system fonts, no brand styling. Layout, spacing and responsive behaviour are all in place, so styling it means editing `assets/css/site.css`, starting with the tokens at the top.
+
+## Holding page and hidden draft
+
+The public homepage (`index.html`) is a holding page: just the intro, with no links to anything else.
+
+The full site lives in `draft/` at **alitaylor.nl/draft/**. Nothing on the public page or the 404 page links there, and every page in it carries `noindex, nofollow`. It is unlisted, not private: anyone with the URL, or anyone reading the repo, can find it.
+
+To launch the full site, move the contents of `draft/` back to the root and remove the extra `../` from the asset paths. Or ask Claude to do it.
+
+## Publish on GitHub Pages
+
+1. Copy everything in this folder into the root of the repo your domain already points at. Replace what's there. Keep the `CNAME` file (it contains `alitaylor.nl`).
+2. Commit and push to the branch Pages publishes from (usually `main`).
+3. In the repo: Settings > Pages. Check the source branch is `main` / root, and that "Enforce HTTPS" is ticked.
+
+`.nojekyll` tells GitHub to serve the files as they are.
+
+## Adding your images
+
+Every image frame on the site shows a hatched placeholder with a brief and a file path until a file exists at that path. Save each image with exactly that name and it appears. JPG, around 2400px wide, under 400KB each.
+
+| Path | What goes there |
+|---|---|
+| `assets/img/showcar/cover.webp` | Homepage card. Homepages across the brands (added) |
+| `assets/img/showcar/hero.webp` | Added: spread of real components across brands |
+| `assets/img/showcar/modals.webp` | Added: the 6 modal variants found in production |
+| `assets/img/showcar/variables.webp` | Added: tokens across brand modes, with the mode switcher |
+| `assets/img/showcar/brand-components.webp` | Added: the same components in six brands |
+| `assets/img/showcar/brand-homepages.webp` | Added: the homepage on four brands |
+| `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
+| `assets/img/competitive-insights/cover.jpg` | Homepage card. Shipped feature |
+| `assets/img/competitive-insights/hero.jpg` | Product shot of the feature in the inventory list |
+| `assets/img/competitive-insights/old-workflow.jpg` | The manual workflow, messy |
+| `assets/img/competitive-insights/workshop.jpg` | Workshop photos or artefacts |
+| `assets/img/competitive-insights/iterations.jpg` | Prototype before and after testing |
+| `assets/img/competitive-insights/feature.jpg` | Close-up of the feature in use |
+| `assets/img/competitive-insights/bad-match.jpg` | A bad default match, annotated |
+| `assets/img/cross-border/cover.jpg` | Homepage card. Europe price map |
+| `assets/img/cross-border/hero.jpg` | Europe price map, Italy and Denmark called out |
+| `assets/img/cross-border/same-car.jpg` | Same car, two markets, two prices |
+| `assets/img/cross-border/flow-1.jpg` to `flow-3.jpg` | Publishing flow screens |
+| `assets/img/cross-border/marketplace.jpg` | B2B marketplace listing view |
+| `assets/img/cross-border/offers.jpg` | Offer or response screens |
+
+Frames marked `contain` in the HTML show the whole image (good for UI screenshots). The rest crop to fill.
+
+## Editing copy
+
+Each page is one HTML file:
+
+- `index.html` (homepage)
+- `work/showcar/index.html`
+- `work/competitive-insights/index.html`
+- `work/cross-border/index.html`
+
+The header, footer and contact block repeat on every page, so change them in all four.
+
+Colours, fonts and the three project tones (`--tone-1` to `--tone-3`) live at the top of `assets/css/site.css`. `components/` shows every component in one place for checking your styles. It is linked from the footer for now and is noindexed.

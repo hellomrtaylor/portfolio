@@ -1,0 +1,642 @@
+/* ==========================================================================
+   Ali Taylor — portfolio
+   WIREFRAME STYLESHEET
+   Layout, spacing and responsive behaviour only. No brand styling.
+   Replace the tokens below (and the font stacks) to apply a visual style.
+   ========================================================================== */
+
+:root {
+  /* Palette, from the Portfolio 2024 Figma file (colour variables).
+     Not used directly yet: map them onto the role tokens below. */
+  --chocolate-40: #efe2db;
+  --chocolate-80: #6d4c3b;
+  --chocolate-100: #3f2c22;
+  --strawberry-20: #fff0f4;
+  --strawberry-40: #ffd3e0;
+  --strawberry-80: #e21212;
+  --vanilla-20: #fefaf1;
+  --vanilla-40: #fdeec7;
+  --blueberry-80: #4a5aa8;
+  --mint-100: #284124;
+  --mint-40: #c2dbbd;
+  --mint-20: #e4eee2;
+
+  /* Role tokens. Every colour on the site comes from these. */
+  --bg: var(--vanilla-20); /* page */
+  --fg: var(--chocolate-100);   /* text, borders */
+  --muted: var(--chocolate-80); /* secondary text */
+  --line: #d4d4d4;      /* dividers, light borders */
+  --fill: #f2f2f2;      /* boxes, cards, panels */
+  --fill-strong: #dcdcdc; /* emphasised boxes (current step, CTA areas) */
+
+  /* Project tones. Each case study is themed by its tone (see "Project themes" at the end). */
+  --tone-1: var(--mint-100);       /* Multi-Brand Design System */
+  --tone-2: var(--strawberry-80);  /* Dealer Pricing Insights */
+  --tone-3: var(--blueberry-80);   /* Selling Cars Across Europe */
+
+  /* Type. Instrument Serif for display headings and case study titles; Instrument Sans for everything else.
+     Loaded from Google Fonts in each page's <head>. */
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; /* components page only, for class names */
+
+  --measure: 34rem;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --wide: 76rem;
+  --radius: 4px;
+  --frame: clamp(6px, 1vw, 12px);   /* white frame around the viewport */
+  /* Depth for clickable things, mixed from Chocolate 100 */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 20%, transparent), 0 3px 8px -3px color-mix(in srgb, var(--chocolate-100) 22%, transparent);
+  --shadow-img: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 10%, transparent), 0 10px 28px -14px color-mix(in srgb, var(--chocolate-100) 32%, transparent);
+  --shadow-md: 0 2px 4px color-mix(in srgb, var(--chocolate-100) 18%, transparent), 0 10px 22px -10px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
+  --nav-space: 5rem;                /* clearance under the sticky glass bar for #section jumps */
+  --header-flow: 3.56rem;           /* height the glass nav takes up at the top of the page */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+
+/* White frame around the whole viewport, drawn over the page */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 40; pointer-events: none;
+  border: var(--frame) solid #ffffff;
+}
+
+a { color: inherit; text-underline-offset: 0.18em; }
+
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+.skip {
+  position: absolute; left: -999px; top: 0.5rem; z-index: 50;
+  background: var(--fg); color: var(--bg); padding: 0.5rem 0.9rem;
+}
+.skip:focus { left: 0.5rem; }
+
+.wrap { max-width: var(--wide); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ---------- Type scale ---------- */
+
+h1, h2, h3 { font-family: var(--sans); font-weight: 700; line-height: 1.1; margin: 0; }
+.display { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; line-height: 1; font-size: clamp(2.8rem, 1.6rem + 5.4vw, 6rem); }
+/* h2, h3 and .pull use the display serif (single regular weight, sized up a touch as it runs narrow) */
+h2, .h2, h3, .h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; }
+h2, .h2  { font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); }
+h3, .h3  { font-size: clamp(1.45rem, 1.25rem + 0.8vw, 1.9rem); line-height: 1.1; }
+
+p { margin: 0 0 1em; max-width: var(--measure); }
+.lede { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem); line-height: 1.45; max-width: 36rem; }
+
+.typed { font-family: var(--sans); font-size: 0.8rem; line-height: 1.55; }
+
+/* ---------- Glass nav bar: site nav on the left, in-page (chapter) nav on the right ---------- */
+
+.site-header {
+  position: sticky; top: calc(var(--frame) + 0.6rem); z-index: 20;
+  padding: 0.6rem var(--gutter) 0;
+  pointer-events: none; /* only the bar itself is clickable */
+}
+/* The bar only lays out two separate glass pills: site nav (left) and chapters (right) */
+.bar {
+  max-width: var(--wide); margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.5rem 1rem;
+}
+.bar > .nav, .bar > .chapters {
+  pointer-events: auto;
+  padding: 0.3rem;
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--vanilla-20) 62%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid color-mix(in srgb, var(--chocolate-40) 85%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 10px 30px -14px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .bar > .nav, .bar > .chapters { background: color-mix(in srgb, var(--vanilla-20) 94%, transparent); }
+}
+
+.nav, .chapters ol { display: flex; align-items: center; gap: 0.4rem; }
+.nav a, .nav summary, .chapters a {
+  display: block; white-space: nowrap; cursor: pointer;
+  font-size: 0.975rem; line-height: 1.4; color: var(--chocolate-100); text-decoration: none;
+  padding: 0.45rem 0.8rem; border-radius: 0.6rem;
+  transition: background-color 0.15s, color 0.15s;
+}
+.nav a:hover, .nav summary:hover, .chapters a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); }
+.nav a[aria-current="page"], .work-menu.current summary { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); font-weight: 600; }
+
+.chapters { min-width: 0; }
+.chapters ol { list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
+.chapters ol::-webkit-scrollbar { display: none; }
+.chapters a { color: var(--chocolate-80); }
+.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; }
+
+@media (max-width: 52rem) {
+  :root { --nav-space: 8.5rem; --header-flow: 7.06rem; } /* two pills stacked here */
+  /* the chapters pill drops below the site nav, full width, and scrolls sideways */
+  .bar > .chapters { flex: 1 1 100%; }
+}
+
+.work-menu { position: relative; }
+.work-menu summary { list-style: none; display: flex; align-items: center; gap: 0.35rem; }
+.work-menu summary::-webkit-details-marker { display: none; }
+.work-menu summary::after { content: "▾"; font-size: 1.05em; line-height: 1; }
+.work-menu[open] summary::after { content: "▴"; }
+.work-menu ul {
+  position: absolute; left: 0; top: calc(100% + 0.6rem); z-index: 2;
+  list-style: none; margin: 0; padding: 0.3rem;
+  width: max-content; max-width: calc(100vw - 2rem);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--vanilla-20) 95%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid color-mix(in srgb, var(--chocolate-40) 85%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 10px 30px -14px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
+}
+.work-menu li a {
+  display: grid; grid-template-columns: 0.75rem 1fr; gap: 0.6rem; align-items: center;
+  font-size: 0.9rem; padding: 0.55rem 0.75rem;
+}
+.work-menu li a[aria-current="page"] { font-weight: 600; }
+.work-menu li a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); }
+.dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; border: 1px solid var(--fg); background: var(--fill); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font: inherit; font-size: 16px; font-weight: 700; line-height: 1.2;
+  background: var(--chocolate-80); color: var(--bg);
+  border: 1px solid var(--chocolate-80); border-radius: var(--radius);
+  padding: 0.7rem 1.2rem; text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--shadow-md); }
+.btn:active { transform: translateY(1px); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); }
+.btn.small { padding: 0.45rem 0.85rem; }
+.btn.ghost { background: var(--bg); color: var(--fg); }
+
+
+/* ---------- Info card (key/value panel) ---------- */
+
+.card {
+  --margin: 4.2rem;
+  position: relative;
+  background: var(--fill);
+  border: 1px solid var(--fg);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 1.4rem;
+}
+.card .card-top {
+  display: flex; justify-content: space-between; gap: 1rem;
+  font-family: var(--sans); font-size: 0.75rem; color: var(--muted);
+  padding-bottom: 0.6rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--line);
+}
+.card dl { margin: 0; font-size: 0.9rem; line-height: 1.7; }
+.card dl div { display: grid; grid-template-columns: calc(var(--margin) - 0.5rem) 1fr; gap: 0.75rem; }
+.card dt { color: var(--muted); }
+.card dd { margin: 0; }
+
+/* Label badge (was a rubber stamp) */
+.stamp {
+  position: absolute;
+  font-family: var(--sans); font-size: 0.72rem; line-height: 1.25; text-align: center;
+  color: var(--muted); border: 1px dashed var(--muted); border-radius: var(--radius);
+  padding: 0.3rem 0.55rem; background: var(--bg);
+}
+
+/* ---------- Hero ---------- */
+
+.hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(3rem, 7vw, 5rem); }
+.hero .wrap {
+  display: grid; gap: clamp(2.5rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: center;
+}
+.hero h1 { margin-bottom: 1.5rem; }
+.hero .lede { margin-bottom: 2rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
+.hero-actions .textlink { font-size: 0.9rem; }
+.textlink { color: var(--chocolate-80); }
+.hero .card { max-width: 26rem; justify-self: end; width: 100%; padding-bottom: 3.75rem; --margin: 4.9rem; }
+.hero .stamp { right: 1.2rem; bottom: 1rem; }
+.hero.solo .wrap { grid-template-columns: 1fr; }
+.hero.solo h1 { max-width: 16ch; }
+
+/* ---------- Home: intro (type-led hero with a signature stamp) ---------- */
+
+.intro { padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 4.5rem); }
+.intro-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem clamp(2rem, 5vw, 5rem); align-items: center;
+}
+.intro-kicker { font-size: 16px; font-weight: 700; letter-spacing: 1px; color: var(--chocolate-80); margin: 0 0 1.25rem; }
+.intro h1 { font-size: clamp(3.2rem, 1.6rem + 6.6vw, 8rem); line-height: 0.95; max-width: 13ch; margin-bottom: 1.75rem; }
+.intro h1 em { font-style: italic; color: var(--chocolate-80); }
+.intro .lede { margin-bottom: 2rem; }
+.intro .intro-stamp { width: clamp(12rem, 24vw, 21rem); transform: rotate(-8deg); align-self: start; margin-top: clamp(2rem, 6vw, 5rem); }
+/* Standalone holding page: the intro alone, filling the screen, footer at the bottom */
+body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+.home-solo { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.intro-facts {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem;
+  margin: clamp(2.5rem, 6vw, 4rem) 0 0; padding-block: 1.25rem; border-block: 1px solid var(--chocolate-40);
+}
+.intro-facts dt { font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--strawberry-80); }
+.intro-facts dd { margin: 0.25rem 0 0; color: var(--chocolate-100); }
+@media (max-width: 48rem) {
+  .intro-grid { grid-template-columns: 1fr; }
+  .intro .intro-stamp { grid-row: 1; justify-self: end; width: 7.5rem; margin: 0 0 -1.5rem; }
+  .intro-kicker { margin-bottom: 1rem; }
+  .intro-facts { grid-template-columns: 1fr; gap: 0.75rem; }
+  .intro-facts div { display: grid; grid-template-columns: 5rem 1fr; align-items: baseline; }
+  .intro-facts dd { margin: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .intro-stamp { animation: stamp-in 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) 0.2s backwards; }
+  @keyframes stamp-in { from { opacity: 0; transform: scale(1.25) rotate(-8deg); } }
+}
+
+
+@media (max-width: 56rem) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero .card { justify-self: start; }
+}
+
+/* ---------- Section heads ---------- */
+
+.section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.section-head p { margin: 0; color: var(--muted); max-width: 26rem; }
+/* Section labels (e.g. "Selected work") use the chapter-label style */
+.section-head h2 { font-family: var(--sans); font-size: 0.8rem; font-weight: 400; line-height: 1.6; color: var(--chocolate-80); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ---------- Home: case study cards ---------- */
+
+.shelf { display: grid; gap: clamp(1.5rem, 3vw, 2rem); }
+
+.book {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  border: 1px solid var(--fg); border-radius: var(--radius); overflow: hidden;
+  text-decoration: none; color: var(--fg);
+  background: var(--tone, var(--fill));
+}
+.book { position: relative; box-shadow: var(--shadow-sm); }
+
+/* Hover: the card lifts, the arrow nudges, any cover image zooms */
+.book-arrow { display: inline-block; }
+.book .shot > img { transition: transform 0.5s ease; }
+@media (hover: hover) {
+  .book { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .book-arrow { transition: transform 0.25s ease; }
+  .book:is(:hover, :focus-visible) { transform: translateY(-4px); box-shadow: 0 18px 32px -16px color-mix(in srgb, var(--project, var(--fg)) 55%, transparent); }
+  .book:is(:hover, :focus-visible) .book-arrow { transform: translateX(0.35rem); }
+  .book:is(:hover, :focus-visible) .shot > img { transform: scale(1.04); }
+}
+
+.book-text { padding: clamp(1.5rem, 3vw, 2.25rem); display: flex; flex-direction: column; gap: 0.9rem; }
+.book-meta { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+.book h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; font-size: clamp(2rem, 1.6rem + 1.8vw, 3.2rem); }
+.book p { margin: 0; line-height: 1.45; }
+.book-cta { margin-top: auto; padding-top: 1rem; font-size: 0.9rem; font-weight: 600; }
+.book .shot { border: 0; box-shadow: none; border-radius: 0; min-height: 18rem; aspect-ratio: auto; height: 100%; }
+
+@media (max-width: 52rem) {
+  .book { grid-template-columns: 1fr; }
+  .book .shot { min-height: 14rem; aspect-ratio: 16 / 10; }
+}
+
+/* ---------- Image frames with built-in placeholder ---------- */
+/* Drop a file at the src path and it covers the placeholder. */
+
+.shot {
+  position: relative; overflow: hidden;
+  background: var(--fill);
+  border: 0; border-radius: var(--radius);
+  box-shadow: var(--shadow-img);
+  aspect-ratio: 16 / 10;
+  margin: 0;
+}
+.shot.tall { aspect-ratio: 4 / 5; }
+.shot.wide { aspect-ratio: 21 / 9; }
+.shot.square { aspect-ratio: 1; }
+.shot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.shot.contain > img { object-fit: contain; }
+.shot .todo {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--sans); font-size: 0.75rem; line-height: 1.5; color: var(--muted);
+  /* the classic wireframe cross */
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    var(--fill);
+}
+.shot .todo > * { background: var(--fill); align-self: flex-start; padding: 0 0.25rem; }
+.shot .todo strong { color: var(--fg); font-weight: 600; }
+.shot .todo code { font-family: var(--sans); font-size: 0.7rem; word-break: break-all; }
+
+figure { margin: 0; }
+figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max-width: 40rem; }
+
+/* ---------- Home: other work grid ---------- */
+
+/* Dividers above and below, in the same colour and width as the line above the homepage facts
+   (confined to the content column rather than running edge to edge) */
+.drawer { background: transparent; position: relative; }
+.drawer::before, .drawer::after {
+  content: ""; position: absolute; height: 1px; background: var(--chocolate-40);
+  left: calc(max(0px, (100% - var(--wide)) / 2) + var(--gutter));
+  right: calc(max(0px, (100% - var(--wide)) / 2) + var(--gutter));
+}
+.drawer::before { top: 0; }
+.drawer::after { bottom: 0; }
+/* Section title at h2 size, in Strawberry 80 */
+.drawer .section-head { justify-content: center; text-align: center; }
+.drawer .section-head h2 { font-family: var(--serif); font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.05; font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); color: var(--strawberry-80); }
+.drawer .section-head p { color: var(--muted); }
+.drawer-grid {
+  display: grid; gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+}
+.drawer .card, .interests .card { background: var(--bg); padding: 1rem 1.25rem 1.25rem; }
+
+/* ---------- Home: areas of expertise roundels ---------- */
+
+.roundel-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.roundels {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+.roundel { display: block; width: clamp(9.5rem, 14vw, 11.5rem); height: auto; color: var(--strawberry-80); }
+.roundel text { fill: currentColor; font-family: var(--sans); font-weight: 700; text-anchor: middle; text-transform: uppercase; }
+.roundel-arc { font-size: 14px; letter-spacing: 0.1em; }
+.roundel-main { font-size: 19px; letter-spacing: 0.04em; }
+.roundel-main.long { font-size: 15px; letter-spacing: 0.02em; } /* keeps longer words inside the side brackets */
+.roundel-sub { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; }
+.drawer .card h3, .interests .card h3 { font-size: 1.45rem; line-height: 1.1; margin: 0 0 0.5rem; }
+.drawer .card p, .interests .card p { font-size: 0.9rem; line-height: 1.55; margin: 0; }
+
+/* ---------- About: interest cards ---------- */
+
+.interests {
+  display: grid; gap: 1.5rem; margin-top: clamp(2rem, 5vw, 3rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+}
+
+/* ---------- Contact block ---------- */
+
+.contact { background: var(--vanilla-20); }
+.contact .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: center; }
+.contact h2 { font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem); }
+@media (max-width: 48rem) { .contact .wrap { grid-template-columns: 1fr; } }
+
+.site-footer { padding: 1.5rem 0 2rem; font-size: 0.85rem; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; justify-content: space-between; }
+
+/* ==========================================================================
+   Case study pages
+   ========================================================================== */
+
+/* Pulled up behind the glass bar so the project colour shows through it */
+.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-flow)); padding: calc(var(--header-flow) + clamp(2.5rem, 6vw, 4.5rem)) 0 0; }
+.cs-hero .crumb { font-size: 0.85rem; margin-bottom: 1.5rem; display: inline-block; }
+.cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
+.cs-hero h1 { margin-bottom: 1.2rem; }
+.cs-hero .lede { margin: 0; }
+.cs-hero .card { background: var(--bg); max-width: 22rem; justify-self: end; width: 100%; }
+.cs-hero .hero-shot { margin-top: clamp(2rem, 5vw, 3rem); margin-bottom: -1px; }
+.cs-hero .hero-shot .shot { border-radius: var(--radius) var(--radius) 0 0; aspect-ratio: 16 / 8; }
+@media (max-width: 52rem) {
+  .cs-hero-grid { grid-template-columns: 1fr; }
+  .cs-hero .card { justify-self: start; }
+  .cs-hero .hero-shot .shot { aspect-ratio: 4 / 3; }
+}
+
+
+/* Chapters */
+.chapter { padding: clamp(3.5rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--frame) + var(--nav-space)); }
+.chapter:last-of-type { border-bottom: 0; }
+.chapter-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 2rem clamp(2rem, 5vw, 5rem); }
+.chapter-label { font-family: var(--sans); font-size: 0.8rem; color: var(--chocolate-80); margin-bottom: 0.9rem; display: block; text-transform: uppercase; letter-spacing: 0.05em; }
+.chapter h2 { margin-bottom: 1rem; }
+/* A chapter whose image sits in the narrow left column, under the heading; the text runs alongside */
+.chapter-grid.with-fig { grid-template-rows: auto 1fr; }
+.chapter-grid.with-fig > .body { grid-column: 2; grid-row: 1 / span 2; }
+.chapter-grid.with-fig > .chapter-fig { grid-column: 1; grid-row: 2; align-self: start; }
+.chapter .body p:last-child { margin-bottom: 0; }
+.chapter .body ul { margin: 0 0 1em; padding-left: 1.1em; max-width: var(--measure); }
+.chapter .body li { margin-bottom: 0.45em; padding-left: 0.2em; }
+.figs-wrap { margin-top: clamp(2rem, 5vw, 3rem); display: grid; gap: 1.5rem; }
+.figs { display: grid; gap: 1.5rem; }
+.figs.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 52rem) {
+  .chapter-grid, .figs.two { grid-template-columns: 1fr; }
+  .chapter-grid.with-fig > .body, .chapter-grid.with-fig > .chapter-fig { grid-column: auto; grid-row: auto; }
+}
+
+/* Pull statement */
+.pull { font-family: var(--serif); font-size: clamp(2rem, 1.4rem + 2.8vw, 3.6rem); line-height: 1.05; font-weight: 400; max-width: 22ch; margin: 0; }
+.pull-wrap { padding: clamp(3rem, 7vw, 5rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--frame) + var(--nav-space)); }
+
+/* Key decision callout */
+.decision { border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill); padding: 1.1rem 1.25rem; margin: 1.5rem 0; max-width: var(--measure); }
+.decision .typed { display: block; color: var(--muted); margin-bottom: 0.35rem; }
+.decision p { margin: 0; font-size: 1.1rem; line-height: 1.45; }
+
+/* Big numbers */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1.5rem; margin: 0 0 2rem; }
+.fact { border-top: 1px solid var(--fg); padding-top: 0.8rem; }
+.fact b { display: block; font-size: clamp(2.4rem, 2rem + 2vw, 3.5rem); font-weight: 700; line-height: 1; }
+.fact span { font-size: 0.85rem; color: var(--muted); }
+
+/* Next / previous */
+/* Previous / next case study: two compact links, each with a circle that carries an arrow on hover */
+.pager {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem 2rem;
+  max-width: var(--wide); margin: 0 auto; padding: clamp(2rem, 5vw, 3.5rem) var(--gutter);
+}
+.pager a {
+  display: grid; align-items: center; column-gap: 0.9rem;
+  grid-template-columns: auto auto; grid-template-areas: "dot label" "dot title";
+  padding: 0.4rem 0.6rem; border-radius: 0.9rem;
+  text-decoration: none; color: var(--chocolate-100);
+}
+.pager a + a { grid-template-areas: "label dot" "title dot"; text-align: right; }
+.pager .typed { grid-area: label; display: block; margin-bottom: 0.15rem; color: var(--muted); }
+.pager .h3 { grid-area: title; }
+/* the circle: the current case study's colour, switching to the destination's on hover */
+.pager a::before {
+  content: ""; grid-area: dot; width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  background: var(--page-tone, var(--project, var(--fg)));
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--chocolate-100) 25%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+/* the arrow, always shown; it nudges toward its destination on hover */
+.pager a::after {
+  content: "←"; grid-area: dot; place-self: center; position: relative; z-index: 1; /* above the scaled circle */
+  font-family: var(--sans); font-size: 1.25rem; font-weight: 700; line-height: 1; color: var(--on-project, var(--bg));
+  transition: transform 0.25s ease;
+}
+.pager a + a::after { content: "→"; }
+.pager a:is(:hover, :focus-visible)::before { background: var(--project, var(--fg)); transform: scale(1.06); }
+.pager a:is(:hover, :focus-visible)::after { transform: translateX(-0.2rem); }
+.pager a + a:is(:hover, :focus-visible)::after { transform: translateX(0.2rem); }
+@media (max-width: 40rem) {
+  .pager { flex-direction: column; align-items: stretch; }
+  .pager a { justify-self: start; align-self: flex-start; }
+  .pager a + a { align-self: flex-end; }
+}
+
+/* ---------- Diagrams (built in HTML, no images needed) ---------- */
+
+.diagram { border: 1px solid var(--fg); border-radius: var(--radius); background: var(--bg); padding: clamp(1.25rem, 3vw, 2rem); }
+.diagram-title { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); margin: 0 0 1.25rem; }
+/* A diagram without its container: no border, padding or background */
+.diagram.bare, [class*="project-"] .diagram.bare { border: 0; padding: 0; background: none; }
+
+.flow { --flow-gap: 2.25rem; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--flow-gap); }
+.flow li {
+  flex: 1 1 8rem; position: relative;
+  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  padding: 0.75rem 0.85rem; font-size: 0.95rem; line-height: 1.3;
+}
+.flow li small { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+.flow li.me { background: var(--fill-strong); font-weight: 600; }
+/* chevron centred in the gap between steps */
+.flow li:not(:last-child)::after {
+  content: ""; position: absolute; top: 50%; z-index: 1;
+  right: calc(var(--flow-gap) / -2 - 0.3rem);
+  width: 0.6rem; height: 0.6rem; border-top: 1.5px solid var(--fg); border-right: 1.5px solid var(--fg);
+  transform: translate(-0.15rem, -50%) rotate(45deg);
+}
+@media (max-width: 40rem) {
+  .flow { flex-direction: column; }
+  .flow li { flex-basis: auto; } /* stacked steps size to their content */
+  .flow { --flow-gap: 1.75rem; }
+  .flow li:not(:last-child)::after { right: auto; left: 1.2rem; top: auto; bottom: calc(var(--flow-gap) / -2 - 0.3rem); transform: translateY(-0.15rem) rotate(135deg); }
+}
+
+/* Venn */
+.venn { display: grid; grid-template-columns: 1fr 1fr; align-items: center; justify-items: center; max-width: 34rem; margin: 0 auto; }
+.venn .set {
+  width: 100%; aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--fg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  font-size: clamp(0.85rem, 0.75rem + 0.4vw, 1rem); line-height: 1.25;
+}
+.venn .set small { font-size: 0.72rem; color: var(--muted); margin-top: 0.4rem; max-width: 10rem; }
+.venn .a { background: rgba(0, 0, 0, 0.04); transform: translateX(12%); padding: 1rem 30% 1rem 8%; }
+.venn .b { background: rgba(0, 0, 0, 0.08); transform: translateX(-12%); padding: 1rem 8% 1rem 30%; }
+.venn-note { text-align: center; font-size: 0.8rem; color: var(--muted); margin: 1rem auto 0; max-width: 28rem; }
+
+/* Fork */
+.fork { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; position: relative; padding-top: 4.5rem; }
+.fork .root {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  padding: 0.5rem 1rem; font-size: 0.85rem; white-space: nowrap;
+}
+.fork::before {
+  content: ""; position: absolute; top: 2.3rem; left: 25%; right: 25%; height: 2.2rem;
+  border: 1px solid var(--fg); border-bottom: 0;
+}
+.fork .branch { border: 1px solid var(--fg); border-radius: var(--radius); padding: 1rem 1.1rem; background: var(--bg); }
+.fork .branch .typed { display: block; color: var(--muted); margin-bottom: 0.3rem; }
+.fork .branch p { margin: 0; line-height: 1.35; }
+.fork .branch.rec { background: var(--fill); }
+.fork .branch.shipped { background: var(--fill-strong); }
+.fork .branch.rec .later { display: inline-block; margin-top: 0.7rem; font-size: 0.72rem; border: 1px dashed var(--muted); border-radius: var(--radius); padding: 0.15rem 0.5rem; }
+
+/* Funnel */
+.funnel { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; justify-items: center; }
+.funnel li {
+  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  padding: 0.6rem 1rem; text-align: center; font-size: 0.95rem; line-height: 1.25;
+}
+.funnel li:nth-child(1) { width: 100%; }
+.funnel li:nth-child(2) { width: 88%; }
+.funnel li:nth-child(3) { width: 74%; }
+.funnel li:nth-child(4) { width: 30%; min-width: 11rem; background: var(--fill-strong); }
+.funnel li small { display: block; font-size: 0.72rem; color: var(--muted); }
+
+/* Hub and spoke */
+.hub { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.75rem; align-items: center; }
+.hub .side { display: grid; gap: 0.6rem; }
+.hub .node { border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill); padding: 0.6rem 0.8rem; font-size: 0.95rem; line-height: 1.25; }
+.hub .gate { width: 9rem; aspect-ratio: 1; border-radius: 50%; background: var(--fill-strong); border: 1px solid var(--fg); display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem; font-size: 0.95rem; line-height: 1.2; }
+.hub .gate small { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem; }
+.hub .out { background: var(--fill-strong); font-weight: 600; }
+@media (max-width: 40rem) { .hub { grid-template-columns: 1fr; justify-items: stretch; } .hub .gate { margin: 0 auto; } }
+
+/* ==========================================================================
+   Project themes
+   .project-1/2/3 sets --project to that case study's tone. It sits on each
+   case study's <body> (theming the whole page) and on the homepage cards,
+   Work-menu dots and pager links.
+   ========================================================================== */
+
+/* Case study pages keep neutral text; the chocolate defaults apply everywhere else */
+body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666; }
+/* the current case study's colour, kept even inside links that set --project to another study */
+body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var(--tone-2); } body.project-3 { --page-tone: var(--tone-3); }
+
+.project-1 { --project: var(--tone-1); }
+.project-2 { --project: var(--tone-2); }
+.project-3 { --project: var(--tone-3); }
+.project-1, .project-2, .project-3 {
+  --project-tint: color-mix(in srgb, var(--project) 8%, var(--bg));   /* soft surfaces */
+  --project-soft: color-mix(in srgb, var(--project) 20%, var(--bg));  /* stronger fills */
+  --on-project: var(--bg);                                            /* text on --project */
+}
+/* Mint has its own light shades, so the design system case study uses them instead of mixed tints */
+.project-1 { --project-tint: var(--mint-20); --project-soft: var(--mint-40); }
+
+/* Dots, homepage cards, pager */
+.dot[class*="project-"] { background: var(--project); border-color: var(--project); }
+.book[class*="project-"] { background: var(--project); border-color: var(--project); color: var(--on-project); }
+
+/* Case study hero */
+.cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
+.cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
+/* An image shown at its own proportions (no cropping at any width); set --ar inline, e.g. style="--ar: 2000 / 932" */
+.shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
+
+/* Everything inside a themed case study page */
+[class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project); }
+[class*="project-"] .chapter .body li::marker { color: var(--project); }
+[class*="project-"] .pull { color: var(--project); }
+[class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
+/* "Want the full story?" matches the case study hero; its button flips to Vanilla */
+[class*="project-"] .contact { background: var(--project); color: var(--on-project); }
+[class*="project-"] .contact .btn { background: var(--on-project); border-color: var(--on-project); color: var(--project); }
+[class*="project-"] .decision { background: var(--project-tint); border-color: var(--project); }
+[class*="project-"] .decision .typed { color: var(--project); }
+[class*="project-"] .fact { border-top-color: var(--project); }
+[class*="project-"] .fact b { color: var(--project); }
+
+/* Diagrams: tinted nodes, the key step in full project colour */
+[class*="project-"] .diagram { border-color: var(--project-soft); }
+[class*="project-"] .diagram-title { color: var(--project); }
+[class*="project-"] :is(.flow li, .hub .node, .funnel li, .fork .branch, .fork .root) { background: var(--project-tint); border-color: var(--project); }
+[class*="project-"] :is(.flow li.me, .hub .gate, .hub .out, .funnel li:nth-child(4), .fork .branch.shipped) { background: var(--project); color: var(--on-project); }
+[class*="project-"] :is(.flow li.me, .hub .gate, .funnel li:nth-child(4), .fork .branch.shipped) :is(small, .typed) { color: inherit; opacity: 0.85; }
+[class*="project-"] .flow li:not(:last-child)::after { border-color: var(--project); }
+[class*="project-"] .fork::before { border-color: var(--project); }
+[class*="project-"] .fork .branch.rec .later { border-color: var(--project); color: var(--project); }
+[class*="project-"] .venn .set { border-color: var(--project); }
+[class*="project-"] .venn .a { background: var(--project-tint); }
+[class*="project-"] .venn .b { background: var(--project-soft); }
