@@ -31,3 +31,11 @@ if (links.length && 'IntersectionObserver' in window) {
   }, { rootMargin: '-35% 0px -60% 0px' });
   byId.forEach((_, id) => { const s = document.getElementById(id); if (s) obs.observe(s); });
 }
+
+// Start every fresh page visit at the top (e.g. after "Next case study"),
+// even in viewers that carry scroll position across pages. Back/forward and
+// links to a #section keep the browser's normal behaviour.
+const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+if (nav && nav.type === 'navigate' && !location.hash) {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+}
