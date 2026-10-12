@@ -252,7 +252,28 @@ body { padding-bottom: var(--nav-space); } /* so the footer is never hidden behi
   text-decoration: none; color: var(--fg);
   background: var(--tone, var(--fill));
 }
-.book:hover .book-cta { text-decoration: underline; }
+.book { position: relative; }
+
+/* Hover: the card lifts and a project-colour stamp thumps onto its corner */
+.book-arrow { display: inline-block; }
+.book-stamp {
+  position: absolute; top: 1.25rem; right: 1.25rem; z-index: 2;
+  width: clamp(6rem, 9vw, 7.5rem); color: var(--project, var(--fg));
+  opacity: 0; transform: scale(1.6) rotate(-28deg); pointer-events: none;
+}
+.book-stamp-fill { fill: var(--bg); }
+.book-stamp .roundel-arc { font-size: 15px; }
+.book-stamp-arrow { font-family: var(--sans); font-size: 46px; font-weight: 700; fill: currentColor; text-anchor: middle; }
+.book .shot > img { transition: transform 0.5s ease; }
+@media (hover: hover) {
+  .book { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .book-stamp { transition: opacity 0.15s ease, transform 0.35s cubic-bezier(0.34, 1.7, 0.5, 1); }
+  .book-arrow { transition: transform 0.25s ease; }
+  .book:is(:hover, :focus-visible) { transform: translateY(-4px); box-shadow: 0 18px 32px -16px color-mix(in srgb, var(--project, var(--fg)) 55%, transparent); }
+  .book:is(:hover, :focus-visible) .book-stamp { opacity: 1; transform: scale(1) rotate(-12deg); }
+  .book:is(:hover, :focus-visible) .book-arrow { transform: translateX(0.35rem); }
+  .book:is(:hover, :focus-visible) .shot > img { transform: scale(1.04); }
+}
 
 .book-text { padding: clamp(1.5rem, 3vw, 2.25rem); display: flex; flex-direction: column; gap: 0.9rem; }
 .book-meta { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
