@@ -83,8 +83,10 @@ a { color: inherit; text-underline-offset: 0.18em; }
 
 h1, h2, h3 { font-family: var(--sans); font-weight: 700; line-height: 1.1; margin: 0; }
 .display { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; line-height: 1; font-size: clamp(2.8rem, 1.6rem + 5.4vw, 6rem); }
-h2, .h2  { font-size: clamp(1.8rem, 1.4rem + 2vw, 3rem); }
-h3, .h3  { font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem); line-height: 1.2; }
+/* h2, h3 and .pull use the display serif (single regular weight, sized up a touch as it runs narrow) */
+h2, .h2, h3, .h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; }
+h2, .h2  { font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); }
+h3, .h3  { font-size: clamp(1.45rem, 1.25rem + 0.8vw, 1.9rem); line-height: 1.1; }
 
 p { margin: 0 0 1em; max-width: var(--measure); }
 .lede { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem); line-height: 1.45; max-width: 36rem; }
@@ -236,7 +238,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
 .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
 .section-head p { margin: 0; color: var(--muted); max-width: 26rem; }
-.section-head h2 { font-size: 16px; font-weight: 700; letter-spacing: 1px; line-height: 1.4; }
+.section-head h2 { font-family: var(--sans); font-size: 16px; font-weight: 700; letter-spacing: 1px; line-height: 1.4; }
 
 /* ---------- Home: case study cards ---------- */
 
@@ -318,7 +320,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .roundel-main { font-size: 19px; letter-spacing: 0.04em; }
 .roundel-main.long { font-size: 15px; letter-spacing: 0.02em; } /* keeps longer words inside the side brackets */
 .roundel-sub { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; }
-.drawer .card h3, .interests .card h3 { font-size: 1.15rem; line-height: 1.25; margin: 0 0 0.5rem; }
+.drawer .card h3, .interests .card h3 { font-size: 1.45rem; line-height: 1.1; margin: 0 0 0.5rem; }
 .drawer .card p, .interests .card p { font-size: 0.9rem; line-height: 1.55; margin: 0; }
 
 /* ---------- About: interest cards ---------- */
@@ -384,7 +386,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 }
 
 /* Pull statement */
-.pull { font-size: clamp(1.6rem, 1.2rem + 2vw, 2.8rem); line-height: 1.15; font-weight: 700; max-width: 22ch; margin: 0; }
+.pull { font-family: var(--serif); font-size: clamp(2rem, 1.4rem + 2.8vw, 3.6rem); line-height: 1.05; font-weight: 400; max-width: 22ch; margin: 0; }
 .pull-wrap { padding: clamp(3rem, 7vw, 5rem) 0; border-bottom: 1px solid var(--line); }
 
 /* Key decision callout */
