@@ -23,7 +23,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/modals.jpg` | The 11 modal variants in a grid (very wide) |
 | `assets/img/showcar/variables.webp` | Added: tokens across brand modes, with the mode switcher |
 | `assets/img/showcar/two-brands.jpg` | One component in two brands |
-| `assets/img/showcar/docs.jpg` | A component documentation page |
+| `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
 | `assets/img/showcar/search.jpg` | Search |
 | `assets/img/showcar/private-seller.jpg` | Private seller flow |
 | `assets/img/showcar/dealer-1.jpg` | Dealer interface |
