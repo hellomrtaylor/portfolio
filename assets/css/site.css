@@ -20,8 +20,8 @@
 
   /* Role tokens. Every colour on the site comes from these. Currently greys (wireframe). */
   --bg: var(--vanilla-20); /* page */
-  --fg: #111111;        /* text, borders */
-  --muted: #666666;     /* secondary text */
+  --fg: var(--chocolate-100);   /* text, borders */
+  --muted: var(--chocolate-80); /* secondary text */
   --line: #d4d4d4;      /* dividers, light borders */
   --fill: #f2f2f2;      /* boxes, cards, panels */
   --fill-strong: #dcdcdc; /* emphasised boxes (current step, CTA areas) */
@@ -174,8 +174,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
   font: inherit; font-size: 16px; font-weight: 700; line-height: 1.2;
-  background: var(--fg); color: var(--bg);
-  border: 1px solid var(--fg); border-radius: var(--radius);
+  background: var(--chocolate-80); color: var(--bg);
+  border: 1px solid var(--chocolate-80); border-radius: var(--radius);
   padding: 0.7rem 1.2rem; text-decoration: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--shadow-sm);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -226,6 +226,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .hero .lede { margin-bottom: 2rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
 .hero-actions .textlink { font-size: 0.9rem; }
+.textlink { color: var(--chocolate-80); }
 .hero .card { max-width: 26rem; justify-self: end; width: 100%; padding-bottom: 3.75rem; --margin: 4.9rem; }
 .hero .stamp { right: 1.2rem; bottom: 1rem; }
 .hero.solo .wrap { grid-template-columns: 1fr; }
@@ -262,10 +263,6 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   @keyframes stamp-in { from { opacity: 0; transform: scale(1.25) rotate(-8deg); } }
 }
 
-/* Homepage hero colours */
-.home-hero h1, .home-hero .lede { color: var(--chocolate-100); }
-.home-hero .btn { background: var(--chocolate-80); border-color: var(--chocolate-80); border-bottom: 2px solid var(--strawberry-40); color: var(--bg); }
-.home-hero .textlink { color: var(--chocolate-80); }
 
 @media (max-width: 56rem) {
   .hero .wrap { grid-template-columns: 1fr; }
@@ -545,6 +542,9 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
    case study's <body> (theming the whole page) and on the homepage cards,
    Work-menu dots and pager links.
    ========================================================================== */
+
+/* Case study pages keep neutral text; the chocolate defaults apply everywhere else */
+body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666; }
 
 .project-1 { --project: var(--tone-1); }
 .project-2 { --project: var(--tone-2); }
