@@ -42,7 +42,7 @@
   --wide: 76rem;
   --radius: 4px;
   --frame: clamp(6px, 1vw, 12px);   /* white frame around the viewport */
-  --header-h: 4.75rem;              /* floating nav + its top gap */
+  --nav-space: 5.5rem;              /* room kept clear at the bottom for the floating nav */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -93,14 +93,15 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 .typed { font-family: var(--sans); font-size: 0.8rem; line-height: 1.55; }
 
-/* ---------- Header: floating nav ---------- */
+/* ---------- Floating nav, fixed to the bottom of the screen ---------- */
 
 .site-header {
-  position: sticky; top: 0; z-index: 20;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
   display: flex; justify-content: center;
-  padding: 1.25rem var(--gutter) 0;
+  padding: 0 var(--gutter) calc(var(--frame) + 0.9rem + env(safe-area-inset-bottom, 0px));
   pointer-events: none; /* only the nav pill is clickable */
 }
+body { padding-bottom: var(--nav-space); } /* so the footer is never hidden behind the nav */
 .nav {
   pointer-events: auto;
   display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
@@ -108,7 +109,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   background: #ffffff;
   border-radius: 1.5rem;
   padding: 0.35rem;
-  box-shadow: 0 2px 0 var(--strawberry-20), 0 6px 18px rgba(226, 18, 18, 0.06);
+  box-shadow: 0 2px 0 var(--strawberry-20), 0 6px 18px rgba(226, 18, 18, 0.08);
 }
 .nav a, .nav summary {
   font-size: 1.0625rem; color: var(--chocolate-100); text-decoration: none;
@@ -120,10 +121,11 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .work-menu { position: relative; }
 .work-menu summary { list-style: none; display: inline-flex; align-items: center; gap: 0.4rem; }
 .work-menu summary::-webkit-details-marker { display: none; }
-.work-menu summary::after { content: "▾"; font-size: 0.6em; }
-.work-menu[open] summary::after { content: "▴"; }
+/* the menu opens upwards, so the arrows are flipped */
+.work-menu summary::after { content: "▴"; font-size: 0.6em; }
+.work-menu[open] summary::after { content: "▾"; }
 .work-menu ul {
-  position: absolute; left: 50%; transform: translateX(-50%); top: calc(100% + 0.75rem);
+  position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(100% + 0.75rem);
   list-style: none; margin: 0; padding: 0.35rem;
   background: #ffffff; border-radius: 1.25rem;
   box-shadow: 0 2px 0 var(--strawberry-20), 0 6px 18px rgba(226, 18, 18, 0.06);
@@ -346,8 +348,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
    Case study pages
    ========================================================================== */
 
-/* Pulled up under the floating nav so its colour runs to the top of the page */
-.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-h)); padding: calc(var(--header-h) + clamp(2.5rem, 6vw, 4.5rem)) 0 0; }
+.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); padding: clamp(3rem, 7vw, 5.5rem) 0 0; }
 .cs-hero .crumb { font-size: 0.85rem; margin-bottom: 1.5rem; display: inline-block; }
 .cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .cs-hero h1 { margin-bottom: 1.2rem; }
@@ -362,7 +363,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 }
 
 /* Chapter index */
-.chapters { border-bottom: 1px solid var(--fg); background: var(--bg); position: sticky; top: var(--header-h); z-index: 10; }
+.chapters { border-bottom: 1px solid var(--fg); background: var(--bg); position: sticky; top: var(--frame); z-index: 10; }
 .chapters ol { list-style: none; margin: 0 auto; padding: 0 var(--gutter); max-width: var(--wide); display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
 .chapters ol::-webkit-scrollbar { display: none; }
 .chapters a { display: block; white-space: nowrap; font-size: 0.85rem; text-decoration: none; padding: 0.85rem 0.8rem; border-bottom: 3px solid transparent; }
@@ -370,7 +371,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .chapters a.active { border-bottom-color: var(--fg); font-weight: 600; }
 
 /* Chapters */
-.chapter { padding: clamp(3.5rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 3.75rem); }
+.chapter { padding: clamp(3.5rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--frame) + 3.5rem); }
 .chapter:last-of-type { border-bottom: 0; }
 .chapter-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 2rem clamp(2rem, 5vw, 5rem); }
 .chapter-label { font-family: var(--sans); font-size: 0.8rem; color: var(--chocolate-80); margin-bottom: 0.9rem; display: block; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -439,6 +440,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 }
 @media (max-width: 40rem) {
   .flow { flex-direction: column; }
+  .flow li { flex-basis: auto; } /* stacked steps size to their content */
   .flow li:not(:last-child)::after { right: auto; left: 1.2rem; top: auto; bottom: -0.55rem; transform: rotate(135deg); }
 }
 
