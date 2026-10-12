@@ -483,17 +483,16 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
   box-shadow: 0 2px 6px color-mix(in srgb, var(--chocolate-100) 25%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   transition: background-color 0.25s ease, transform 0.25s ease;
 }
-/* the arrow, hidden until hover */
+/* the arrow, always shown; it nudges toward its destination on hover */
 .pager a::after {
   content: "←"; grid-area: dot; place-self: center; position: relative; z-index: 1; /* above the scaled circle */
   font-family: var(--sans); font-size: 1.25rem; font-weight: 700; line-height: 1; color: var(--on-project, var(--bg));
-  opacity: 0; transform: translateX(0.4rem);
-  transition: opacity 0.2s ease, transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
-.pager a + a::after { content: "→"; transform: translateX(-0.4rem); }
+.pager a + a::after { content: "→"; }
 .pager a:is(:hover, :focus-visible)::before { background: var(--project, var(--fg)); transform: scale(1.06); }
-.pager a:is(:hover, :focus-visible)::after { opacity: 1; transform: none; }
-.pager a:hover .h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+.pager a:is(:hover, :focus-visible)::after { transform: translateX(-0.2rem); }
+.pager a + a:is(:hover, :focus-visible)::after { transform: translateX(0.2rem); }
 @media (max-width: 40rem) {
   .pager { flex-direction: column; align-items: stretch; }
   .pager a { justify-self: start; align-self: flex-start; }
