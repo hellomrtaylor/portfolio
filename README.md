@@ -12,6 +12,15 @@ The full site lives in `draft/` at **alitaylor.nl/draft/**. Nothing on the publi
 
 To launch the full site, move the contents of `draft/` back to the root and remove the extra `../` from the asset paths. Or ask Claude to do it.
 
+## Cache busting
+
+Every page links `site.css` and `site.js` with a `?v=` version, because GitHub Pages lets browsers cache them for 10 minutes. After changing either file, update the version on every page so visitors get the new file:
+
+```sh
+V=$(cat assets/css/site.css assets/js/site.js | sha256sum | cut -c1-8)
+grep -rl 'site\.\(css\|js\)?v=' --include=*.html . | xargs sed -i -E "s#(site\.(css|js))\?v=[^\"]*#\1?v=$V#g"
+```
+
 ## Publish on GitHub Pages
 
 1. Copy everything in this folder into the root of the repo your domain already points at. Replace what's there. Keep the `CNAME` file (it contains `alitaylor.nl`).
