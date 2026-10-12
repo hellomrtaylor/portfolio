@@ -38,10 +38,9 @@
       <ol>
         <li><a href="#context">Context</a></li>
         <li><a href="#problem">Problem</a></li>
-        <li><a href="#foundations">Foundations</a></li>
-        <li><a href="#governance">Governance</a></li>
-        <li><a href="#impact">Impact</a></li>
-        <li><a href="#next">Next</a></li>
+        <li><a href="#approach">What I did</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#next">Next steps</a></li>
       </ol>
     </nav>
   </div>
@@ -60,9 +59,9 @@
         <div class="card-top"><span>Case study 1 of 3</span><span>AutoScout24</span></div>
         <dl>
 <div><dt>Product</dt><dd>Showcar</dd></div>
-<div><dt>Role</dt><dd>Design system owner</dd></div>
-<div><dt>When</dt><dd>2022–2025</dd></div>
-<div><dt>Team</dt><dd>No dedicated DS team</dd></div>
+<div><dt>Role</dt><dd>Design system lead</dd></div>
+<div><dt>When</dt><dd>2022 to now</dd></div>
+<div><dt>Team</dt><dd>Led alongside product work</dd></div>
 <div><dt>Scope</dt><dd>Figma to code, multi-brand</dd></div>
         </dl>
       </aside>
@@ -79,125 +78,92 @@
   <div class="wrap">
     <div class="chapter-grid">
       <div>
-        <span class="chapter-label">Chapter 1. Context and role</span>
-        <h2 id="context-h">One owner, no dedicated team</h2>
+        <span class="chapter-label">Chapter 1. Context</span>
+        <h2 id="context-h">A system nobody owned</h2>
       </div>
       <div class="body">
-
-<p>I owned AutoScout24's design system for three years, alongside full-time product work. There was no dedicated design systems team, in design or in engineering.</p>
-<p>I designed and contributed many of the components myself. To scale beyond one person, I set up and ran a UI Guild that opened contribution to the wider design team. I stayed the final quality gate on every addition.</p>
+<p>When I took on leading Showcar, AutoScout24's design system, it had no owner. It was a collection of components, and how they were implemented in the product was patchy.</p>
+<p>I led the project alongside my product work. That made priorities the real job: deciding what the system needed most, and not trying to do everything myself.</p>
       </div>
     </div>
-<div class="figs-wrap"><div class="figs two">
-<figure><div class="diagram"><p class="diagram-title">How contributions reached the system</p>
-<div class="hub">
-  <div class="side"><div class="node">Product designers</div><div class="node">UI Guild proposals</div><div class="node">Engineering requests</div></div>
-  <div class="gate"><div>Quality gate<small>that was me</small></div></div>
-  <div class="side"><div class="node out">Showcar</div></div>
-</div></div></figure>
-<figure><div class="shot">
-  <div class="todo" aria-hidden="true"><strong>Image to add</strong>A photo or screenshot of a real UI Guild session.<code>assets/img/showcar/ui-guild.jpg</code></div>
-  <img src="../../assets/img/showcar/ui-guild.jpg" alt="A UI Guild session" loading="lazy" onerror="this.remove()">
-</div><figcaption class="cap">The UI Guild, where the wider team proposed and discussed additions.</figcaption></figure>
-</div></div>
   </div>
 </section>
 <section class="chapter" id="problem" aria-labelledby="problem-h">
   <div class="wrap">
     <div class="chapter-grid">
       <div>
-        <span class="chapter-label">Chapter 2. The problem</span>
-        <h2 id="problem-h">Eleven modals</h2>
+        <span class="chapter-label">Chapter 2. Problem</span>
+        <h2 id="problem-h">Eleven modals, and a second brand</h2>
       </div>
       <div class="body">
-
-<p>There were a handful of components, text styles and colours, with no system behind them. What Figma showed and what the codebase did were drifting further apart.</p>
+<p>Without an owner or a shared source of truth, every team solved the same problems in its own way.</p>
 <div class="decision"><span class="typed">What the audit found</span><p>11 different modal styles live in production.</p></div>
-<p>Then an acquisition in 2025 meant the system suddenly had to carry more than one brand.</p>
-      </div>
-    </div>
-<div class="figs-wrap"><div class="figs"><figure><div class="shot wide contain">
-  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Screenshot all 11 modal variants and lay them out in a grid. Keep the inconsistencies visible.<code>assets/img/showcar/modals.jpg</code></div>
-  <img src="../../assets/img/showcar/modals.jpg" alt="Eleven different modal styles found in production" loading="lazy" onerror="this.remove()">
-</div><figcaption class="cap">The eleven modal variants, side by side.</figcaption></figure></div></div>
-  </div>
-</section>
-<section class="chapter" id="foundations" aria-labelledby="foundations-h">
-  <div class="wrap">
-    <div class="chapter-grid">
-      <div>
-        <span class="chapter-label">Chapter 3. Foundations</span>
-        <h2 id="foundations-h">Tokens that carry the brand</h2>
-      </div>
-      <div class="body">
-
-<p>I audited the system and the product, finding components that were missing and components nobody used.</p>
-<p>With engineering, I built a token naming convention. Engineering then wrote a script that imports tokens from Figma straight into the codebase. Because the tokens carry brand theming, designers and engineers can switch brand in one click.</p>
-<p>I documented every component, and recruited the UX team to help.</p>
+<p>Then the business acquired AutoTrader.ca in Canada, a company with a different brand. The acquisition only made sense if both businesses ran on one platform. To support that, the design system had to become far more complete, and it had to carry more than one brand.</p>
       </div>
     </div>
 <div class="figs-wrap"><div class="figs">
-<figure><div class="diagram"><p class="diagram-title">The token pipeline</p><ol class="flow">
+<figure><div class="shot wide contain">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Screenshot all 11 modal variants and lay them out in a grid. Keep the inconsistencies visible.<code>assets/img/showcar/modals.jpg</code></div>
+  <img src="../../assets/img/showcar/modals.jpg" alt="Eleven different modal styles found in production" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">The eleven modal variants, side by side.</figcaption></figure>
+</div></div>
+  </div>
+</section>
+<section class="chapter" id="approach" aria-labelledby="approach-h">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div>
+        <span class="chapter-label">Chapter 3. What I did</span>
+        <h2 id="approach-h">Building it with people, not for them</h2>
+      </div>
+      <div class="body">
+<ul>
+<li><strong>A way to contribute.</strong> I set up a contribution process: a dedicated Slack channel and a bi-monthly call where designers could propose new components or changes to existing ones.</li>
+<li><strong>Tokens that match one to one.</strong> I created a token system that syncs Figma variables with the development tokens, so design and code always hold the same values. Switching brand became a change of token set rather than a redesign.</li>
+<li><strong>Engineers who cared.</strong> I looked for the engineers who were passionate about the system and wanted to build it together, and made them part of the core group.</li>
+<li><strong>Components with the UX team.</strong> I worked with the UX team to design the components and write their documentation, so every addition shipped with guidance on how to use it.</li>
+</ul>
+      </div>
+    </div>
+<div class="figs-wrap"><div class="figs">
+<figure><div class="diagram"><p class="diagram-title">How a change gets into the system</p><ol class="flow">
+<li>Propose<small>In the Slack channel</small></li>
+<li class="me">Contribution call<small>Bi-monthly</small></li>
+<li>Build with engineering<small>With the core contributors</small></li>
+<li>Document<small>With the UX team</small></li>
+</ol></div></figure>
+<figure><div class="diagram"><p class="diagram-title">One set of values, from Figma to code</p><ol class="flow">
 <li>Figma variables<small>One mode per brand</small></li>
-<li>Import script<small>Written by engineering</small></li>
-<li>Codebase<small>Shared CSS variables</small></li>
+<li class="me">Token sync<small>One to one</small></li>
+<li>Development tokens<small>Shared in code</small></li>
 <li>Product<small>Every brand, one system</small></li>
 </ol></div></figure>
 <div class="figs two">
 <figure><div class="shot contain">
-  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Figma variables panel showing the brand switch.<code>assets/img/showcar/variables.jpg</code></div>
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Figma variables panel showing the brand modes.<code>assets/img/showcar/variables.jpg</code></div>
   <img src="../../assets/img/showcar/variables.jpg" alt="Figma variables panel with brand modes" loading="lazy" onerror="this.remove()">
 </div><figcaption class="cap">Brand themes as variable modes in Figma.</figcaption></figure>
 <figure><div class="shot contain">
-  <div class="todo" aria-hidden="true"><strong>Image to add</strong>The same component rendered in two brands.<code>assets/img/showcar/two-brands.jpg</code></div>
-  <img src="../../assets/img/showcar/two-brands.jpg" alt="One component rendered in two brands" loading="lazy" onerror="this.remove()">
-</div><figcaption class="cap">One component, two brands.</figcaption></figure>
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>A real component documentation page.<code>assets/img/showcar/docs.jpg</code></div>
+  <img src="../../assets/img/showcar/docs.jpg" alt="A Showcar component documentation page" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">Every component ships with documentation.</figcaption></figure>
 </div></div></div>
   </div>
 </section>
-<section class="chapter" id="governance" aria-labelledby="governance-h">
+<section class="chapter" id="results" aria-labelledby="results-h">
   <div class="wrap">
     <div class="chapter-grid">
       <div>
-        <span class="chapter-label">Chapter 4. Governance</span>
-        <h2 id="governance-h">A bar everyone can see</h2>
+        <span class="chapter-label">Chapter 4. Results</span>
+        <h2 id="results-h">One system, many brands</h2>
       </div>
       <div class="body">
-
-<p>The UI Guild gave the wider team a place to propose and discuss additions. Before anything was built, it went through a recurring review with engineering. I held the quality bar on every contribution.</p>
-<p>Most recently, I integrated Figma Code Connect with MCP to automate AI-assisted design-to-code handoff.</p>
-      </div>
-    </div>
-<div class="figs-wrap"><div class="figs">
-<figure><div class="diagram"><p class="diagram-title">From idea to documented component</p><ol class="flow">
-<li>Propose<small>Anyone on the team</small></li>
-<li>Guild discussion</li>
-<li class="me">Review with engineering<small>Where I held the bar</small></li>
-<li>Build</li>
-<li>Documented</li>
-</ol></div></figure>
-<figure><div class="shot wide contain">
-  <div class="todo" aria-hidden="true"><strong>Image to add</strong>Screenshot of a real component&#x27;s documentation page.<code>assets/img/showcar/docs.jpg</code></div>
-  <img src="../../assets/img/showcar/docs.jpg" alt="A Showcar component documentation page" loading="lazy" onerror="this.remove()">
-</div><figcaption class="cap">The documentation standard every component meets.</figcaption></figure>
-</div></div>
-  </div>
-</section>
-<section class="chapter" id="impact" aria-labelledby="impact-h">
-  <div class="wrap">
-    <div class="chapter-grid">
-      <div>
-        <span class="chapter-label">Chapter 5. Impact</span>
-        <h2 id="impact-h">One system, every surface</h2>
-      </div>
-      <div class="body">
-
 <div class="facts">
-  <div class="fact"><b>60+</b><span>components</span></div>
-  <div class="fact"><b>30+</b><span>repositories using it</span></div>
+  <div class="fact"><b>38</b><span>components fully implemented</span></div>
+  <div class="fact"><b>10+</b><span>products built on it</span></div>
 </div>
-<p>Showcar is foundational to search, the private seller web flow and every key dealer interface. Designers and engineers work from the same CSS variables, so implementation is faster and more accurate.</p>
-<p>Multi-brand support had to land before any product work on the acquired brands could start.</p>
+<p>Showcar is now complete enough to build on. It underpins search, the private seller flow and the key dealer interfaces, and it supports multiple brands through its tokens: the foundation that running AutoTrader.ca on the same platform depended on.</p>
+<p>Because design and code share the same tokens, what designers specify is what engineers build.</p>
       </div>
     </div>
 <div class="figs-wrap"><div class="figs two">
@@ -213,10 +179,10 @@
   <div class="todo" aria-hidden="true"><strong>Image to add</strong>A key dealer interface.<code>assets/img/showcar/dealer-1.jpg</code></div>
   <img src="../../assets/img/showcar/dealer-1.jpg" alt="Dealer interface" loading="lazy" onerror="this.remove()">
 </div><figcaption class="cap">Dealer tools</figcaption></figure>
-<figure><div class="shot">
-  <div class="todo" aria-hidden="true"><strong>Image to add</strong>A second dealer interface, same scale and treatment.<code>assets/img/showcar/dealer-2.jpg</code></div>
-  <img src="../../assets/img/showcar/dealer-2.jpg" alt="Dealer interface" loading="lazy" onerror="this.remove()">
-</div><figcaption class="cap">Dealer tools</figcaption></figure>
+<figure><div class="shot contain">
+  <div class="todo" aria-hidden="true"><strong>Image to add</strong>The same screen or component in two brands.<code>assets/img/showcar/two-brands.jpg</code></div>
+  <img src="../../assets/img/showcar/two-brands.jpg" alt="One component rendered in two brands" loading="lazy" onerror="this.remove()">
+</div><figcaption class="cap">One component, two brands.</figcaption></figure>
 </div>
 <div class="restricted">
   <div class="card" aria-label="Results withheld">
@@ -230,7 +196,7 @@
   </div>
   <div>
     <h3>The rest is in the full case study</h3>
-    <p>How the system became part of the company's wider story, and what multi-brand unlocked, is something I'll walk you through in person.</p>
+    <p>What multi-brand support unlocked for the business is something I'll walk you through in person.</p>
     <a class="btn" href="#contact">Ask for the full case study</a>
   </div>
 </div></div>
@@ -238,10 +204,10 @@
 </section>
 <section class="pull-wrap" id="next" aria-label="Next steps">
   <div class="wrap">
-    <span class="chapter-label">Chapter 6. Next</span>
+    <span class="chapter-label">Chapter 5. Next steps</span>
     <p class="pull">AI agents are becoming a customer for the design system.</p>
     <div class="chapter-grid" style="margin-top:2.5rem"><div></div><div class="body">
-      <p>Next is unlocking the system in Figma Make and Codex, and building workflows for designers to contribute directly to the codebase. Documentation is being adapted so agents can read it and implement to the same standard as the design team.</p>
+      <p>The system keeps evolving to support new AI workflows. I'm integrating it with Figma Make and Codex, and making the documentation machine-readable, so agents can build to the same standard as the team.</p>
     </div></div>
   </div>
 </section>

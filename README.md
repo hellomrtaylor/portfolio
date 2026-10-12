@@ -20,7 +20,6 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 |---|---|
 | `assets/img/showcar/cover.jpg` | Homepage card. Tight crop of components, or one screen in two brands |
 | `assets/img/showcar/hero.webp` | Added: spread of real components across brands |
-| `assets/img/showcar/ui-guild.jpg` | A UI Guild session |
 | `assets/img/showcar/modals.jpg` | The 11 modal variants in a grid (very wide) |
 | `assets/img/showcar/variables.jpg` | Figma variables panel with brand modes |
 | `assets/img/showcar/two-brands.jpg` | One component in two brands |
@@ -28,7 +27,6 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/search.jpg` | Search |
 | `assets/img/showcar/private-seller.jpg` | Private seller flow |
 | `assets/img/showcar/dealer-1.jpg` | Dealer interface |
-| `assets/img/showcar/dealer-2.jpg` | Dealer interface |
 | `assets/img/competitive-insights/cover.jpg` | Homepage card. Shipped feature |
 | `assets/img/competitive-insights/hero.jpg` | Product shot of the feature in the inventory list |
 | `assets/img/competitive-insights/old-workflow.jpg` | The manual workflow, messy |
