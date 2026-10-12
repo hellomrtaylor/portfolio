@@ -154,7 +154,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .work-menu { position: relative; }
 .work-menu summary { list-style: none; display: flex; align-items: center; gap: 0.35rem; }
 .work-menu summary::-webkit-details-marker { display: none; }
-.work-menu summary::after { content: "▾"; font-size: 0.7em; }
+.work-menu summary::after { content: "▾"; font-size: 1.05em; line-height: 1; }
 .work-menu[open] summary::after { content: "▴"; }
 .work-menu ul {
   position: absolute; left: 0; top: calc(100% + 0.6rem); z-index: 2;
@@ -250,7 +250,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .intro .intro-stamp { width: clamp(12rem, 24vw, 21rem); transform: rotate(-8deg); align-self: start; margin-top: clamp(2rem, 6vw, 5rem); }
 .intro-facts {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem;
-  margin: clamp(2.5rem, 6vw, 4rem) 0 0; padding-top: 1.25rem; border-top: 1px solid var(--chocolate-40);
+  margin: clamp(2.5rem, 6vw, 4rem) 0 0; padding-block: 1.25rem; border-block: 1px solid var(--chocolate-40);
 }
 .intro-facts dt { font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--strawberry-80); }
 .intro-facts dd { margin: 0.25rem 0 0; color: var(--chocolate-100); }
