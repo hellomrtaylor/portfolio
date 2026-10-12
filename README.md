@@ -21,7 +21,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/cover.jpg` | Homepage card. Tight crop of components, or one screen in two brands |
 | `assets/img/showcar/hero.webp` | Added: spread of real components across brands |
 | `assets/img/showcar/modals.jpg` | The 11 modal variants in a grid (very wide) |
-| `assets/img/showcar/variables.jpg` | Figma variables panel with brand modes |
+| `assets/img/showcar/variables.webp` | Added: semantic tokens across brand modes |
 | `assets/img/showcar/two-brands.jpg` | One component in two brands |
 | `assets/img/showcar/docs.jpg` | A component documentation page |
 | `assets/img/showcar/search.jpg` | Search |
