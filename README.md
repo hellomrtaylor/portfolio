@@ -56,4 +56,4 @@ Each page is one HTML file:
 
 The header, footer and contact block repeat on every page, so change them in all four.
 
-Colours, fonts and the three project tones (`--tone-1` to `--tone-3`) live at the top of `assets/css/site.css`. `components/` shows every component in one place for checking your styles.
+Colours, fonts and the three project tones (`--tone-1` to `--tone-3`) live at the top of `assets/css/site.css`. `components/` shows every component in one place for checking your styles. It is linked from the footer for now and is noindexed.
