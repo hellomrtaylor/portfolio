@@ -373,7 +373,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .chapter { padding: clamp(3.5rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 3.75rem); }
 .chapter:last-of-type { border-bottom: 0; }
 .chapter-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 2rem clamp(2rem, 5vw, 5rem); }
-.chapter-label { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin-bottom: 0.9rem; display: block; text-transform: uppercase; letter-spacing: 0.05em; }
+.chapter-label { font-family: var(--sans); font-size: 0.8rem; color: var(--chocolate-80); margin-bottom: 0.9rem; display: block; text-transform: uppercase; letter-spacing: 0.05em; }
 .chapter h2 { margin-bottom: 1rem; }
 .chapter .body p:last-child { margin-bottom: 0; }
 .chapter .body ul { margin: 0 0 1em; padding-left: 1.1em; max-width: var(--measure); }
@@ -525,7 +525,6 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 [class*="project-"] .work-menu.current summary { background: var(--project-tint); }
 [class*="project-"] .chapters { border-bottom-color: var(--project-soft); }
 [class*="project-"] .chapters a.active { border-bottom-color: var(--project); color: var(--project); }
-[class*="project-"] .chapter-label { color: var(--project); }
 [class*="project-"] .chapter .body li::marker { color: var(--project); }
 [class*="project-"] .pull { color: var(--project); }
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
