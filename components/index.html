@@ -38,7 +38,7 @@
   .grid-3 { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
 
   /* Neutralise sticky/animated behaviour inside the stage */
-  .stage .site-header, .stage .chapters { position: static; }
+  .stage .site-header { position: static; }
 
   .swatch { border: 1.5px solid var(--fg); border-radius: 0.4rem; overflow: hidden; background: var(--bg); }
   .swatch i { display: block; height: 4.5rem; border-bottom: 1.5px solid var(--fg); }
@@ -57,18 +57,20 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <nav class="nav" aria-label="Main">
-    <a href="../">Home</a>
-    <details class="work-menu">
-      <summary>Work</summary>
-        <ul>
-<li><a href="../work/showcar/"><span class="dot project-1"></span>Multi-Brand Design System</a></li>
-<li><a href="../work/competitive-insights/"><span class="dot project-2"></span>Dealer Pricing Insights</a></li>
-<li><a href="../work/cross-border/"><span class="dot project-3"></span>Selling Cars Across Europe</a></li>
-        </ul>
-    </details>
-    <a href="../about/">About</a>
-  </nav>
+  <div class="bar">
+    <nav class="nav" aria-label="Main">
+      <a href="../">Home</a>
+      <details class="work-menu">
+        <summary>Work</summary>
+          <ul>
+  <li><a href="../work/showcar/"><span class="dot project-1"></span>Multi-Brand Design System</a></li>
+  <li><a href="../work/competitive-insights/"><span class="dot project-2"></span>Dealer Pricing Insights</a></li>
+  <li><a href="../work/cross-border/"><span class="dot project-3"></span>Selling Cars Across Europe</a></li>
+          </ul>
+      </details>
+      <a href="../about/">About</a>
+    </nav>
+  </div>
 </header>
 
 <main id="main">
@@ -154,21 +156,31 @@
     <p>Header, Work menu, chapter index and pager.</p>
 
     <div class="spec">
-      <div class="spec-head"><h3>Floating nav</h3><code>.site-header .nav .work-menu</code><span class="where">Every page</span></div>
+      <div class="spec-head"><h3>Glass nav bar</h3><code>.site-header .bar .nav .chapters</code><span class="where">Every page; chapters on case studies</span></div>
       <div class="stage flush menu-stage">
         <header class="site-header">
-  <nav class="nav" aria-label="Example">
-    <a href="#navigation" aria-current="page">Home</a>
-    <details class="work-menu" open>
-      <summary>Work</summary>
-        <ul>
-<li><a href="#navigation"><span class="dot project-1"></span>Multi-Brand Design System</a></li>
-<li><a href="#navigation"><span class="dot project-2"></span>Dealer Pricing Insights</a></li>
-<li><a href="#navigation"><span class="dot project-3"></span>Selling Cars Across Europe</a></li>
-        </ul>
-    </details>
-    <a href="#navigation">About</a>
-  </nav>
+  <div class="bar">
+    <nav class="nav" aria-label="Example">
+      <a href="#navigation" aria-current="page">Home</a>
+      <details class="work-menu" open>
+        <summary>Work</summary>
+          <ul>
+  <li><a href="#navigation"><span class="dot project-1"></span>Multi-Brand Design System</a></li>
+  <li><a href="#navigation"><span class="dot project-2"></span>Dealer Pricing Insights</a></li>
+  <li><a href="#navigation"><span class="dot project-3"></span>Selling Cars Across Europe</a></li>
+          </ul>
+      </details>
+      <a href="#navigation">About</a>
+    </nav>
+    <nav class="chapters" aria-label="Example chapters">
+      <ol>
+        <li><a href="#navigation">Context</a></li>
+        <li><a href="#navigation" class="active">Problem</a></li>
+        <li><a href="#navigation">Foundations</a></li>
+        <li><a href="#navigation">Impact</a></li>
+      </ol>
+    </nav>
+  </div>
 </header>
       </div>
     </div>
@@ -176,20 +188,6 @@
     <div class="spec">
       <div class="spec-head"><h3>Project dots</h3><code>.dot.project-1|2|3</code><span class="where">Work menu</span></div>
       <div class="stage row"><span class="dot project-1"></span><span class="dot project-2"></span><span class="dot project-3"></span></div>
-    </div>
-
-    <div class="spec">
-      <div class="spec-head"><h3>Chapter index</h3><code>.chapters a.active</code><span class="where">Case studies</span></div>
-      <div class="stage flush">
-        <nav class="chapters" aria-label="Example chapters" style="border-bottom:0"><ol>
-          <li><a href="#navigation">Context</a></li>
-          <li><a href="#navigation" class="active">Problem</a></li>
-          <li><a href="#navigation">Foundations</a></li>
-          <li><a href="#navigation">Governance</a></li>
-          <li><a href="#navigation">Impact</a></li>
-          <li><a href="#navigation">Next</a></li>
-        </ol></nav>
-      </div>
     </div>
 
     <div class="spec">
