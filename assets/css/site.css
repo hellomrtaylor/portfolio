@@ -411,7 +411,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* Next / previous */
 .pager { border-top: 1px solid var(--fg); display: grid; grid-template-columns: 1fr 1fr; }
-.pager a { display: block; padding: clamp(1.75rem, 4vw, 2.5rem) var(--gutter); text-decoration: none; background: var(--tone, var(--fill)); }
+.pager a { display: block; padding: clamp(1.75rem, 4vw, 2.5rem) var(--gutter); text-decoration: none; background: transparent; color: var(--chocolate-100); }
 .pager a + a { border-left: 1px solid var(--fg); text-align: right; }
 .pager .typed { display: block; margin-bottom: 0.4rem; color: var(--muted); }
 .pager a:hover .h3 { text-decoration: underline; }
@@ -515,8 +515,11 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .dot[class*="project-"] { background: var(--project); border-color: var(--project); }
 .book[class*="project-"] { background: var(--project); border-color: var(--project); color: var(--on-project); }
 .book[class*="project-"] .shot { border-color: var(--project); }
-.pager a[class*="project-"] { background: var(--project); color: var(--on-project); }
-.pager a[class*="project-"] .typed { color: inherit; opacity: 0.8; }
+/* Pager: transparent, with a circle in the case study's colour before its title */
+.pager .h3 { display: inline-flex; align-items: center; gap: 0.6rem; }
+.pager a[class*="project-"] .h3::before {
+  content: ""; flex: none; width: 0.75em; height: 0.75em; border-radius: 50%; background: var(--project);
+}
 
 /* Case study hero */
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
