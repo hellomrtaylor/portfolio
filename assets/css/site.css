@@ -278,7 +278,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
 .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
 .section-head p { margin: 0; color: var(--muted); max-width: 26rem; }
-.section-head h2 { font-family: var(--sans); font-size: 16px; font-weight: 700; letter-spacing: 1px; line-height: 1.4; }
+/* Section labels (e.g. "Selected work") use the chapter-label style */
+.section-head h2 { font-family: var(--sans); font-size: 0.8rem; font-weight: 400; line-height: 1.6; color: var(--chocolate-80); text-transform: uppercase; letter-spacing: 0.05em; }
 
 /* ---------- Home: case study cards ---------- */
 
@@ -362,7 +363,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .drawer::after { bottom: 0; }
 /* Section title at h2 size, in Strawberry 80 */
 .drawer .section-head { justify-content: center; text-align: center; }
-.drawer .section-head h2 { font-family: var(--serif); font-weight: 400; letter-spacing: 0; line-height: 1.05; font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); color: var(--strawberry-80); }
+.drawer .section-head h2 { font-family: var(--serif); font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.05; font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); color: var(--strawberry-80); }
 .drawer .section-head p { color: var(--muted); }
 .drawer-grid {
   display: grid; gap: 1.5rem;
