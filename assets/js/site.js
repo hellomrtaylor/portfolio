@@ -68,3 +68,27 @@ if (startAtTop && !location.hash) {
   if (document.readyState === 'complete') settle();
   else window.addEventListener('load', settle, { once: true });
 }
+
+// Brand switcher: tabs pick which brand's image shows (arrow keys move between tabs)
+document.querySelectorAll('.brand-switch').forEach((fig) => {
+  const tabs = [...fig.querySelectorAll('[role="tab"]')];
+  const select = (tab) => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).classList.toggle('is-active', on);
+    });
+    tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(t));
+    t.addEventListener('keydown', (e) => {
+      const n = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (n === undefined) return;
+      e.preventDefault();
+      const next = tabs[(n + tabs.length) % tabs.length];
+      select(next); next.focus();
+    });
+  });
+});

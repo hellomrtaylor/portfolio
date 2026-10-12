@@ -640,3 +640,30 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 [class*="project-"] .venn .set { border-color: var(--project); }
 [class*="project-"] .venn .a { background: var(--project-tint); }
 [class*="project-"] .venn .b { background: var(--project-soft); }
+
+/* ---------- Brand switcher: one image per brand, picked with a segmented control ---------- */
+.brand-switch { margin: 0; min-width: 0; }
+.brand-switch + .brand-switch { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
+.brand-switch-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.5rem; margin-bottom: 1rem; }
+.brand-switch-title { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: 1px; color: var(--chocolate-80); }
+.brand-tabs {
+  display: flex; gap: 0.25rem; max-width: 100%; overflow-x: auto; scrollbar-width: none;
+  padding: 0.3rem; border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--vanilla-20) 62%, transparent);
+  border: 1px solid color-mix(in srgb, var(--chocolate-40) 85%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+.brand-tabs::-webkit-scrollbar { display: none; }
+.brand-tabs button {
+  flex: none; font: inherit; font-size: 0.9rem; line-height: 1.4; white-space: nowrap; cursor: pointer;
+  color: var(--chocolate-80); background: none; border: 0; padding: 0.4rem 0.75rem; border-radius: 0.6rem;
+  transition: background-color 0.15s, color 0.15s;
+}
+.brand-tabs button:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); color: var(--chocolate-100); }
+.brand-tabs button[aria-selected="true"] { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; }
+.brand-tabs button:focus-visible { outline: 2px solid var(--project, var(--fg)); outline-offset: 1px; }
+/* panels stack in one cell so switching never changes the height */
+.brand-panels { display: grid; }
+.brand-panel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
+.brand-panel.is-active { opacity: 1; visibility: visible; transition: opacity 0.25s ease; }
+@media (prefers-reduced-motion: reduce) { .brand-panel, .brand-panel.is-active { transition: none; } }
