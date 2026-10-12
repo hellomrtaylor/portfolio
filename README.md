@@ -22,11 +22,9 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/hero.webp` | Added: spread of real components across brands |
 | `assets/img/showcar/modals.webp` | Added: the 6 modal variants found in production |
 | `assets/img/showcar/variables.webp` | Added: tokens across brand modes, with the mode switcher |
-| `assets/img/showcar/two-brands.jpg` | One component in two brands |
+| `assets/img/showcar/brand-components.webp` | Results: a sample of components across the brands |
+| `assets/img/showcar/brand-homepages.webp` | Results: the homepage on different brands |
 | `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
-| `assets/img/showcar/search.jpg` | Search |
-| `assets/img/showcar/private-seller.jpg` | Private seller flow |
-| `assets/img/showcar/dealer-1.jpg` | Dealer interface |
 | `assets/img/competitive-insights/cover.jpg` | Homepage card. Shipped feature |
 | `assets/img/competitive-insights/hero.jpg` | Product shot of the feature in the inventory list |
 | `assets/img/competitive-insights/old-workflow.jpg` | The manual workflow, messy |
