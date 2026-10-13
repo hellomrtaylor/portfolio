@@ -39,7 +39,8 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/hero.webp` (+ `hero-1120.webp` 1x) | Added: foundations and components, two brands |
 | `assets/img/showcar/modals.webp` | Added: the 6 modal variants found in production |
 | `assets/img/showcar/variables.webp` | Added: tokens across brand modes, with the mode switcher |
-| `assets/img/showcar/brand-components.webp` | Added: the same components in six brands |
+| `assets/img/showcar/components/<brand>.webp` (+ `-550` 1x) | Added: component sheet per brand (autoscout24, autotrader-ca, autotrader-nl, gebrauchtwagen), 1100 x 940 |
+| `assets/img/showcar/homepages/<brand>.webp` | Homepage per brand, same four brands, 1100 x 940 |
 | `assets/img/showcar/brand-homepages.webp` | Added: the homepage on four brands |
 | `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
 | `assets/img/competitive-insights/cover.webp` (+ `cover-620.webp` 1x) | Added: homepage card, competitor table with price development |
