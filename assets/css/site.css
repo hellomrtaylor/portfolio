@@ -454,6 +454,10 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* Pull statement */
 .pull { font-family: var(--serif); font-size: clamp(2rem, 1.4rem + 2.8vw, 3.6rem); line-height: 1.05; font-weight: 400; max-width: 22ch; margin: 0; }
+/* Pull quote with its text alongside: quote left, copy right, tops aligned */
+.pull-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem clamp(2rem, 5vw, 5rem); align-items: start; }
+.pull-split .body p:last-child { margin-bottom: 0; }
+@media (max-width: 52rem) { .pull-split { grid-template-columns: 1fr; } }
 .pull-wrap { padding: clamp(3rem, 7vw, 5rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--frame) + var(--nav-space)); }
 
 /* Key decision callout */
