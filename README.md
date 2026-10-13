@@ -31,22 +31,22 @@ grep -rl 'site\.\(css\|js\)?v=' --include=*.html . | xargs sed -i -E "s#(site\.(
 
 ## Adding your images
 
-Every image frame on the site shows a hatched placeholder with a brief and a file path until a file exists at that path. Send PNGs at 2x the shown size; `python3 tools/add_image.py SRC.png assets/img/<project>/<name>.webp` saves a lossless WebP plus a sharpened half-size copy for `srcset`.
+Every image frame on the site shows a hatched placeholder with a brief and a file path until a file exists at that path. Send PNGs at 2x the shown size; `python3 tools/add_image.py SRC.png assets/img/<project>/<name>.webp` saves a lossless WebP plus a sharpened half-size copy for `srcset`. Add `--photo` for photographic images (high-quality lossy, much smaller).
 
 | Path | What goes there |
 |---|---|
 | `assets/img/showcar/cover.webp` (+ `cover-620.webp` 1x) | Added: homepage card, design system spread |
 | `assets/img/showcar/hero.webp` (+ `hero-1120.webp` 1x) | Added: foundations and components, two brands |
-| `assets/img/showcar/modals.webp` | Added: the 6 modal variants found in production |
-| `assets/img/showcar/variables.webp` | Added: tokens across brand modes, with the mode switcher |
-| `assets/img/showcar/brand-components.webp` | Added: the same components in six brands |
-| `assets/img/showcar/brand-homepages.webp` | Added: the homepage on four brands |
-| `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
+| `assets/img/showcar/modals.webp` (+ `modals-410.webp` 1x) | Added: the 6 modal variants found in production, 820 x 480 |
+| `assets/img/showcar/variables.webp` (+ `-550` 1x) | Added: tokens across brand modes, with the mode switcher |
+| `assets/img/showcar/components/<brand>.webp` (+ `-550` 1x) | Added: component sheet per brand (autoscout24, autotrader-ca, autotrader-nl, gebrauchtwagen), 1100 x 940 |
+| `assets/img/showcar/homepages/<brand>.webp` (+ `-550` 1x) | Added: homepage per brand, same four brands, 1100 x 940 |
+| `assets/img/showcar/docs.webp` (+ `-550` 1x) | Added: button documentation (do's, don'ts, hug vs fill) |
 | `assets/img/competitive-insights/cover.webp` (+ `cover-620.webp` 1x) | Added: homepage card, competitor table with price development |
-| `assets/img/competitive-insights/hero.jpg` | Product shot of the feature in the inventory list |
-| `assets/img/competitive-insights/workshop.jpg` | Workshop photos or artefacts |
-| `assets/img/competitive-insights/iterations.jpg` | Prototype before and after testing |
-| `assets/img/competitive-insights/feature.jpg` | Close-up of the feature in use |
+| `assets/img/competitive-insights/hero.webp` (+ `hero-1120.webp` 1x) | Added: the feature in the inventory list |
+| `assets/img/competitive-insights/workshop.webp` (+ `-550` 1x) | Added: workshop artefacts, insights and sketches |
+| `assets/img/competitive-insights/iterations.webp` (+ `-550` 1x) | Added: prototype before and after testing |
+| `assets/img/competitive-insights/prototype-{1120,2240}.{mp4,webm}` + `prototype-poster*.webp` | Added: looping prototype walkthrough (muted, plays while on screen) |
 | `assets/img/cross-border/cover.jpg` | Homepage card. Europe price map |
 | `assets/img/cross-border/hero.jpg` | Europe price map, Italy and Denmark called out |
 | `assets/img/cross-border/flow-1.jpg` to `flow-3.jpg` | Publishing flow screens |
