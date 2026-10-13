@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="../../../assets/css/site.css?v=15c12981">
+<link rel="stylesheet" href="../../../assets/css/site.css?v=b1adeda5">
 </head>
 <body class="project-3">
 <a class="skip" href="#main">Skip to content</a>
@@ -37,11 +37,11 @@
     </nav>
     <nav class="chapters" aria-label="Chapters">
       <ol>
-        <li><a href="#opportunity">Opportunity</a></li>
-        <li><a href="#flow">The flow</a></li>
-        <li><a href="#decision">Decision</a></li>
+        <li><a href="#context">Context</a></li>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#approach">What I did</a></li>
         <li><a href="#results">Results</a></li>
-        <li><a href="#after">Afterwards</a></li>
+        <li><a href="#next">Next steps</a></li>
       </ol>
     </nav>
   </div>
@@ -75,34 +75,49 @@
 </section>
 
 
-<section class="chapter" id="opportunity" aria-labelledby="opportunity-h">
+<section class="chapter" id="context" aria-labelledby="context-h">
   <div class="wrap">
     <div class="chapter-grid">
       <div>
-        <span class="chapter-label">Chapter 1. The opportunity</span>
-        <h2 id="opportunity-h">Same car, different price</h2>
+        <span class="chapter-label">Chapter 1. Context</span>
+        <h2 id="context-h">Same car, different price</h2>
       </div>
       <div class="body">
-
-<p>Vehicle prices vary significantly across European markets. Italy had a surplus of EVs while Denmark had high demand. Dealers could profit by selling stock across the border to other dealers, not just to consumers.</p>
-<p>Working with autoproff, alongside a PM, engineers, a researcher and content design, we researched how dealers sold B2B today and where the friction sat.</p>
+<p>Car prices vary a lot across Europe. Italy had a surplus of EVs while Denmark couldn't get enough, so dealers could profit by selling stock across the border to other dealers.</p>
+<p>I led design with autoproff, a B2B auction platform, alongside a PM, engineers, a researcher and a content designer, to make that as easy as listing a car.</p>
       </div>
     </div>
   </div>
 </section>
-<section class="chapter" id="flow" aria-labelledby="flow-h">
+<section class="chapter" id="problem" aria-labelledby="problem-h">
   <div class="wrap">
     <div class="chapter-grid">
       <div>
-        <span class="chapter-label">Chapter 2. What I designed</span>
-        <h2 id="flow-h">Publish once, sell across borders</h2>
+        <span class="chapter-label">Chapter 2. Problem</span>
+        <h2 id="problem-h">One more marketplace to manage</h2>
       </div>
       <div class="body">
-
-<p>I designed a flow that lets dealers publish their existing AutoScout24 listings straight to the B2B marketplace.</p>
+<p>Dealers' stock already lived on AutoScout24. Selling it to other dealers meant listing it again on another platform, and every extra marketplace adds work to manage.</p>
+<p>Research also showed something that would matter later: dealers wanted to choose to take part, not be signed up by default.</p>
       </div>
     </div>
-<div class="figs-wrap"><div class="figs two">
+  </div>
+</section>
+<section class="chapter" id="approach" aria-labelledby="approach-h">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div>
+        <span class="chapter-label">Chapter 3. What I did</span>
+        <h2 id="approach-h">Publish once, sell across borders</h2>
+      </div>
+      <div class="body">
+<p>I designed a flow that publishes a dealer's existing AutoScout24 listings straight to autoproff, so there's no second marketplace to manage.</p>
+<div class="decision"><span class="typed">The call</span><p>Launch opt-out, against the research.</p></div>
+<p>The business wanted to test whether dealers would sell their consumer stock to other dealers if the demand was there. But without that demand, it would be hard to convince dealers to change how they sell. Opt-out broke the chicken-and-egg problem: fill the marketplace first, and let demand follow.</p>
+      </div>
+    </div>
+<div class="figs-wrap"><div class="figs">
+<div class="figs two">
 <figure><div class="shot contain">
   <div class="todo" aria-hidden="true"><strong>Image to add</strong>Publishing flow, key screen 1.<code>assets/img/cross-border/flow-1.jpg</code></div>
   <img src="../../../assets/img/cross-border/flow-1.jpg" alt="Publishing flow step one" loading="lazy" onerror="this.remove()">
@@ -119,28 +134,14 @@
   <div class="todo" aria-hidden="true"><strong>Image to add</strong>The B2B marketplace listing view.<code>assets/img/cross-border/marketplace.jpg</code></div>
   <img src="../../../assets/img/cross-border/marketplace.jpg" alt="B2B marketplace listing view" loading="lazy" onerror="this.remove()">
 </div></figure>
-</div></div>
-  </div>
-</section>
-<section class="chapter" id="decision" aria-labelledby="decision-h">
-  <div class="wrap">
-    <div class="chapter-grid">
-      <div>
-        <span class="chapter-label">Chapter 3. The decision</span>
-        <h2 id="decision-h">Opt in or opt out</h2>
-      </div>
-      <div class="body">
-
-<div class="decision"><span class="typed">What research said</span><p>Dealers wanted to opt in, not be defaulted in.</p></div>
-<p>The decision went the other way. It launched opt-out.</p>
-      </div>
-    </div>
-<div class="figs-wrap"><div class="figs"><div class="diagram">
+</div>
+<figure><div class="diagram">
 <div class="fork">
   <span class="root">How do dealers join?</span>
   <div class="branch rec"><span class="typed">Research recommendation</span><p>Opt in. Dealers choose to take part.</p><span class="later">Adopted later</span></div>
   <div class="branch shipped"><span class="typed">What launched</span><p>Opt out. Dealers are added by default.</p></div>
-</div></div></div></div>
+</div></div></figure>
+</div></div>
   </div>
 </section>
 <section class="chapter" id="results" aria-labelledby="results-h">
@@ -151,8 +152,7 @@
         <h2 id="results-h">Supply worked. Demand didn't.</h2>
       </div>
       <div class="body">
-
-<p>Listings and dealers arrived fast. But dealers had been defaulted in rather than choosing to take part. Offers arrived and went unanswered.</p>
+<p>Thousands of listings arrived quickly, from dealers across Italy and Germany. But many of those dealers had been signed up by default rather than choosing to sell, and offers went unanswered.</p>
 <p>A marketplace full of listings, with dealers who don't reply, isn't a marketplace. It's a catalogue.</p>
       </div>
     </div>
@@ -170,21 +170,17 @@
 </div></div>
   </div>
 </section>
-<section class="chapter" id="after" aria-labelledby="after-h">
+<section class="pull-wrap" id="next" aria-label="Next steps">
   <div class="wrap">
-    <div class="chapter-grid">
-      <div><span class="chapter-label">Chapter 5. What happened next</span><h2 id="after-h">Research, vindicated. Mostly.</h2></div>
+    <span class="chapter-label">Chapter 5. Next steps</span>
+    <div class="pull-split">
+      <p class="pull">Research, vindicated. Mostly.</p>
       <div class="body">
-        <p>The approach has since moved to opt-in. Inactive dealers were cleared out at the same time, and seller response jumped in the week that followed. I'd moved into a new role by then.</p>
-        <h3 style="margin:2rem 0 0.8rem">Being honest about it</h3>
-        <ul>
-          <li>The cleanup and the default change landed together, so neither can be isolated.</li>
-          <li>Offer volume fell sharply as the dealer base shrank.</li>
-          <li>Response improved. Sales did not follow.</li>
-        </ul>
+      <p>The platform has since moved to opt-in. Inactive dealers were cleared out at the same time, and seller response jumped the following week. I'd moved to a new role by then.</p>
+      <p>Because both changes landed together, neither can be isolated. Offer volume fell as the dealer base shrank, and while response improved, sales didn't follow.</p>
+      <p>Opt-in fixed the problem the research predicted, and revealed another underneath: a responsive dealer isn't automatically a buying one.</p>
       </div>
     </div>
-    <p class="pull" style="margin-top:clamp(2.5rem,6vw,4rem);max-width:26ch">Opt-in fixed the problem the research predicted, and revealed another underneath. A responsive dealer isn't automatically a buying one.</p>
   </div>
 </section>
 </main>
@@ -210,6 +206,6 @@
     <a href="../../components/">Components</a>
   </div>
 </footer>
-<script src="../../../assets/js/site.js?v=15c12981" defer></script>
+<script src="../../../assets/js/site.js?v=b1adeda5" defer></script>
 </body>
 </html>

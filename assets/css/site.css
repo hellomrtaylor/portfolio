@@ -445,7 +445,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .chapter .body li { margin-bottom: 0.45em; padding-left: 0.2em; }
 .figs-wrap { margin-top: clamp(2rem, 5vw, 3rem); display: grid; gap: 1.5rem; }
 .figs { display: grid; gap: 1.5rem; }
-.figs > figure:has(.diagram) + * { margin-top: clamp(1rem, 3vw, 2rem); } /* breathing room between a diagram and the images after it */
+.figs > figure:has(.diagram) + *, .figs > * + figure:has(.diagram) { margin-top: clamp(1rem, 3vw, 2rem); } /* breathing room between a diagram and neighbouring images */
 .figs.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 52rem) {
   .chapter-grid, .figs.two { grid-template-columns: 1fr; }
