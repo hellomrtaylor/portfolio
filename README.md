@@ -46,7 +46,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/competitive-insights/hero.webp` (+ `hero-1120.webp` 1x) | Added: the feature in the inventory list |
 | `assets/img/competitive-insights/workshop.webp` (+ `-550` 1x) | Added: workshop artefacts, insights and sketches |
 | `assets/img/competitive-insights/iterations.webp` (+ `-550` 1x) | Added: prototype before and after testing |
-| `assets/img/competitive-insights/feature.jpg` | Close-up of the feature in use |
+| `assets/img/competitive-insights/prototype-{1120,2240}.{mp4,webm}` + `prototype-poster*.webp` | Added: looping prototype walkthrough (muted, plays while on screen) |
 | `assets/img/cross-border/cover.jpg` | Homepage card. Europe price map |
 | `assets/img/cross-border/hero.jpg` | Europe price map, Italy and Denmark called out |
 | `assets/img/cross-border/flow-1.jpg` to `flow-3.jpg` | Publishing flow screens |

@@ -92,3 +92,29 @@ document.querySelectorAll('.brand-switch').forEach((fig) => {
     });
   });
 });
+
+// Looping prototype videos: pick the sharper file on dense screens, play only while
+// on screen, and leave playback to the viewer when they prefer reduced motion
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('video.loop-video').forEach((v) => {
+  if (window.devicePixelRatio * v.getBoundingClientRect().width > 1200) {
+    v.querySelectorAll('source[data-hires]').forEach((s) => { s.src = s.dataset.hires; });
+    if (v.dataset.hiresPoster) v.poster = v.dataset.hiresPoster;
+  }
+  if (reduceMotion) {
+    v.controls = true;
+    v.preload = 'metadata';
+    v.load();
+    return;
+  }
+  if (!('IntersectionObserver' in window)) { v.load(); v.play().catch(() => {}); return; }
+  let loaded = false;
+  new IntersectionObserver(([en]) => {
+    if (en.isIntersecting) {
+      if (!loaded) { v.load(); loaded = true; }
+      v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, { threshold: 0.25 }).observe(v);
+});
