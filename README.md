@@ -44,14 +44,11 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
 | `assets/img/competitive-insights/cover.jpg` | Homepage card. Shipped feature |
 | `assets/img/competitive-insights/hero.jpg` | Product shot of the feature in the inventory list |
-| `assets/img/competitive-insights/old-workflow.jpg` | The manual workflow, messy |
 | `assets/img/competitive-insights/workshop.jpg` | Workshop photos or artefacts |
 | `assets/img/competitive-insights/iterations.jpg` | Prototype before and after testing |
 | `assets/img/competitive-insights/feature.jpg` | Close-up of the feature in use |
-| `assets/img/competitive-insights/bad-match.jpg` | A bad default match, annotated |
 | `assets/img/cross-border/cover.jpg` | Homepage card. Europe price map |
 | `assets/img/cross-border/hero.jpg` | Europe price map, Italy and Denmark called out |
-| `assets/img/cross-border/same-car.jpg` | Same car, two markets, two prices |
 | `assets/img/cross-border/flow-1.jpg` to `flow-3.jpg` | Publishing flow screens |
 | `assets/img/cross-border/marketplace.jpg` | B2B marketplace listing view |
 | `assets/img/cross-border/offers.jpg` | Offer or response screens |
