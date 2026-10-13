@@ -31,7 +31,7 @@ grep -rl 'site\.\(css\|js\)?v=' --include=*.html . | xargs sed -i -E "s#(site\.(
 
 ## Adding your images
 
-Every image frame on the site shows a hatched placeholder with a brief and a file path until a file exists at that path. Save each image with exactly that name and it appears. JPG, around 2400px wide, under 400KB each.
+Every image frame on the site shows a hatched placeholder with a brief and a file path until a file exists at that path. Send PNGs at 2x the shown size; `python3 tools/add_image.py SRC.png assets/img/<project>/<name>.webp` saves a lossless WebP plus a sharpened half-size copy for `srcset`.
 
 | Path | What goes there |
 |---|---|
@@ -42,7 +42,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/brand-components.webp` | Added: the same components in six brands |
 | `assets/img/showcar/brand-homepages.webp` | Added: the homepage on four brands |
 | `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
-| `assets/img/competitive-insights/cover.jpg` | Homepage card. Shipped feature |
+| `assets/img/competitive-insights/cover.webp` (+ `cover-620.webp` 1x) | Added: homepage card, competitor table with price development |
 | `assets/img/competitive-insights/hero.jpg` | Product shot of the feature in the inventory list |
 | `assets/img/competitive-insights/workshop.jpg` | Workshop photos or artefacts |
 | `assets/img/competitive-insights/iterations.jpg` | Prototype before and after testing |
