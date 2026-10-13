@@ -44,6 +44,7 @@
   --gutter: clamp(1rem, 4vw, 3rem);
   --wide: 76rem;
   --radius: 4px;
+  --radius-lg: 16px;                /* images and large surfaces: cards, callouts, diagrams */
   --frame: clamp(6px, 1vw, 12px);   /* white frame around the viewport */
   /* Depth for clickable things, mixed from Chocolate 100 */
   --shadow-sm: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 20%, transparent), 0 3px 8px -3px color-mix(in srgb, var(--chocolate-100) 22%, transparent);
@@ -197,7 +198,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   position: relative;
   background: var(--fill);
   border: 1px solid var(--fg);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 1.25rem 1.4rem 1.4rem;
 }
 .card .card-top {
@@ -290,7 +291,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 
 .book {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-  border-radius: var(--radius); overflow: hidden;
+  border-radius: var(--radius-lg); overflow: hidden;
   text-decoration: none; color: var(--fg);
   background: var(--tone, var(--fill));
 }
@@ -326,7 +327,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .shot {
   position: relative; overflow: hidden;
   background: var(--fill);
-  border: 0; border-radius: var(--radius);
+  border: 0; border-radius: var(--radius-lg);
   box-shadow: var(--shadow-img);
   aspect-ratio: 16 / 10;
   margin: 0;
@@ -421,7 +422,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .cs-hero .lede { margin: 0; }
 .cs-hero .card { background: var(--bg); max-width: 22rem; justify-self: end; width: 100%; }
 .cs-hero .hero-shot { margin-top: clamp(2rem, 5vw, 3rem); margin-bottom: -1px; }
-.cs-hero .hero-shot .shot { border-radius: var(--radius) var(--radius) 0 0; aspect-ratio: 16 / 8; }
+.cs-hero .hero-shot .shot { border-radius: var(--radius-lg) var(--radius-lg) 0 0; aspect-ratio: 16 / 8; }
 @media (max-width: 52rem) {
   .cs-hero-grid { grid-template-columns: 1fr; }
   .cs-hero .card { justify-self: start; }
@@ -455,7 +456,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .pull-wrap { padding: clamp(3rem, 7vw, 5rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--frame) + var(--nav-space)); }
 
 /* Key decision callout */
-.decision { border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill); padding: 1.1rem 1.25rem; margin: 1.5rem 0; max-width: var(--measure); }
+.decision { border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill); padding: 1.1rem 1.25rem; margin: 1.5rem 0; max-width: var(--measure); }
 .decision .typed { display: block; color: var(--muted); margin-bottom: 0.35rem; }
 .decision p { margin: 0; font-size: 1.1rem; line-height: 1.45; }
 
@@ -505,7 +506,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* ---------- Diagrams (built in HTML, no images needed) ---------- */
 
-.diagram { border: 1px solid var(--fg); border-radius: var(--radius); background: var(--bg); padding: clamp(1.25rem, 3vw, 2rem); }
+.diagram { border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--bg); padding: clamp(1.25rem, 3vw, 2rem); }
 .diagram-title { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); margin: 0 0 1.25rem; }
 /* A diagram without its container: no border, padding or background */
 .diagram.bare, [class*="project-"] .diagram.bare { border: 0; padding: 0; background: none; }
@@ -555,7 +556,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
   content: ""; position: absolute; top: 2.3rem; left: 25%; right: 25%; height: 2.2rem;
   border: 1px solid var(--fg); border-bottom: 0;
 }
-.fork .branch { border: 1px solid var(--fg); border-radius: var(--radius); padding: 1rem 1.1rem; background: var(--bg); }
+.fork .branch { border: 1px solid var(--fg); border-radius: var(--radius-lg); padding: 1rem 1.1rem; background: var(--bg); }
 .fork .branch .typed { display: block; color: var(--muted); margin-bottom: 0.3rem; }
 .fork .branch p { margin: 0; line-height: 1.35; }
 .fork .branch.rec { background: var(--fill); }
