@@ -44,7 +44,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/docs.webp` (+ `-550` 1x) | Added: button documentation (do's, don'ts, hug vs fill) |
 | `assets/img/competitive-insights/cover.webp` (+ `cover-620.webp` 1x) | Added: homepage card, competitor table with price development |
 | `assets/img/competitive-insights/hero.webp` (+ `hero-1120.webp` 1x) | Added: the feature in the inventory list |
-| `assets/img/competitive-insights/workshop.jpg` | Workshop photos or artefacts |
+| `assets/img/competitive-insights/workshop.webp` (+ `-550` 1x) | Added: workshop artefacts, insights and sketches |
 | `assets/img/competitive-insights/iterations.jpg` | Prototype before and after testing |
 | `assets/img/competitive-insights/feature.jpg` | Close-up of the feature in use |
 | `assets/img/cross-border/cover.jpg` | Homepage card. Europe price map |
