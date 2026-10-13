@@ -313,6 +313,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .book p { margin: 0; line-height: 1.45; }
 .book-cta { margin-top: auto; padding-top: 1rem; font-size: 0.9rem; font-weight: 600; }
 .book .shot { border: 0; box-shadow: none; border-radius: 0; min-height: 18rem; aspect-ratio: auto; height: 100%; }
+.book .shot:has(> img) { background: transparent; } /* cover images with transparent gaps show the card colour */
 
 @media (max-width: 52rem) {
   .book { grid-template-columns: 1fr; }
