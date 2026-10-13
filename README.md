@@ -41,7 +41,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/showcar/variables.webp` (+ `-550` 1x) | Added: tokens across brand modes, with the mode switcher |
 | `assets/img/showcar/components/<brand>.webp` (+ `-550` 1x) | Added: component sheet per brand (autoscout24, autotrader-ca, autotrader-nl, gebrauchtwagen), 1100 x 940 |
 | `assets/img/showcar/homepages/<brand>.webp` (+ `-550` 1x) | Added: homepage per brand, same four brands, 1100 x 940 |
-| `assets/img/showcar/docs.webp` | Added: button documentation (do's, don'ts, hug vs fill) |
+| `assets/img/showcar/docs.webp` (+ `-550` 1x) | Added: button documentation (do's, don'ts, hug vs fill) |
 | `assets/img/competitive-insights/cover.webp` (+ `cover-620.webp` 1x) | Added: homepage card, competitor table with price development |
 | `assets/img/competitive-insights/hero.jpg` | Product shot of the feature in the inventory list |
 | `assets/img/competitive-insights/workshop.jpg` | Workshop photos or artefacts |
