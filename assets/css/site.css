@@ -665,6 +665,7 @@ body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
 /* "Want the full story?" matches the case study hero; its button flips to Vanilla */
 [class*="project-"] .contact { background: var(--project); color: var(--on-project); }
+[class*="project-"] .contact .copyright { color: inherit; }
 [class*="project-"] .contact .btn { background: var(--on-project); border-color: var(--on-project); color: var(--project); }
 [class*="project-"] .decision { background: var(--project-tint); border-color: var(--project); }
 [class*="project-"] .decision .typed { color: var(--project); }
