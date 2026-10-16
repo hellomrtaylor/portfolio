@@ -555,7 +555,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .flow { --flow-gap: 2.25rem; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--flow-gap); }
 .flow li {
   flex: 1 1 8rem; position: relative;
-  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill);
   padding: 0.85rem 1rem; font-size: 1.0625rem; font-weight: 600; line-height: 1.35; /* step name: body strong */
 }
 .flow li small { display: block; font-size: 1.0625rem; font-weight: 400; line-height: 1.5; color: var(--muted); margin-top: 0.35rem; } /* step detail: body */
@@ -590,7 +590,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .fork { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; position: relative; padding-top: 4.5rem; }
 .fork .root {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill);
   padding: 0.5rem 1rem; font-size: 0.85rem; white-space: nowrap;
 }
 .fork::before {
@@ -607,7 +607,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 /* Funnel */
 .funnel { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; justify-items: center; }
 .funnel li {
-  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill);
   padding: 0.6rem 1rem; text-align: center; font-size: 0.95rem; line-height: 1.25;
 }
 .funnel li:nth-child(1) { width: 100%; }
@@ -681,6 +681,7 @@ body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-
 [class*="project-"] :is(.flow li.me, .hub .gate, .hub .out, .funnel li:nth-child(4), .fork .branch.shipped) { background: var(--project); color: var(--on-project); }
 [class*="project-"] :is(.flow li.me, .hub .gate, .funnel li:nth-child(4), .fork .branch.shipped) :is(small, .typed) { color: inherit; opacity: 0.85; }
 [class*="project-"] .flow li:not(:last-child)::after { border-color: var(--project); }
+[class*="project-"] .flow li small { color: #333333; } /* 10.6:1 on the step tint (was 4.8:1) */
 [class*="project-"] .fork::before { border-color: var(--project); }
 [class*="project-"] .fork .branch.rec .later { border-color: var(--project); color: var(--project); }
 [class*="project-"] .venn .set { border-color: var(--project); }
