@@ -234,11 +234,22 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .textlink { color: var(--chocolate-80); }
 .hero .card { max-width: 26rem; justify-self: end; width: 100%; padding-bottom: 3.75rem; --margin: 4.9rem; }
 .hero .stamp { right: 1.2rem; bottom: 1rem; }
+.portrait-wrap { position: relative; justify-self: end; width: 100%; max-width: 28rem; }
 .portrait {
-  justify-self: end; width: 100%; max-width: 28rem; height: auto; aspect-ratio: 1;
+  display: block; width: 100%; height: auto; aspect-ratio: 1;
   object-fit: cover; border-radius: 50%; transform: rotate(3deg);
 }
-@media (max-width: 56rem) { .portrait { justify-self: center; max-width: min(80vw, 22rem); } }
+.portrait-stamp {
+  position: absolute; left: -2.5rem; bottom: -1rem; width: clamp(7.5rem, 11vw, 10rem);
+  background: var(--bg); border-radius: 50%; transform: rotate(-8deg);
+}
+@media (max-width: 56rem) {
+  .portrait-wrap { justify-self: center; max-width: min(80vw, 22rem); }
+  .portrait-stamp { left: -1rem; bottom: -0.75rem; width: 7rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .portrait-stamp { animation: stamp-in 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) 0.3s backwards; }
+}
 .hero.solo .wrap { grid-template-columns: 1fr; }
 .hero.solo h1 { max-width: 16ch; }
 
@@ -373,7 +384,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .drawer::after { bottom: 0; }
 /* Section title at h2 size, in Strawberry 80 */
 .drawer .section-head { justify-content: center; text-align: center; }
-.drawer .section-head h2 { font-family: var(--serif); font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.05; font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); color: var(--strawberry-80); }
+.drawer .section-head h2 { font-family: var(--serif); font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.05; font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); color: var(--fg); }
 .drawer .section-head p { color: var(--muted); }
 .drawer-grid {
   display: grid; gap: 1.5rem;
@@ -402,18 +413,22 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 .interests { max-width: 70rem; margin: clamp(2rem, 5vw, 3.5rem) auto 0; }
 .interest {
-  display: grid; grid-template-columns: auto minmax(0, 0.8fr) minmax(0, 1.3fr); align-items: center;
-  gap: 1rem clamp(1.5rem, 4vw, 3.5rem); padding-block: clamp(1.5rem, 3.5vw, 2.5rem);
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr); align-items: start;
+  gap: 1rem clamp(1.5rem, 4vw, 3.5rem); padding-block: clamp(1.75rem, 4vw, 2.75rem) clamp(4rem, 8vw, 5.5rem);
   border-top: 1px solid var(--chocolate-40);
 }
-.interest .roundel { width: clamp(7rem, 10vw, 8.5rem); transform: rotate(-6deg); }
-.interest:nth-child(2) .roundel { transform: rotate(5deg); }
+/* The stamp floats off the bottom-right of the paragraph, over the row's rule */
+.interest .roundel {
+  position: absolute; right: -1rem; bottom: -2.5rem; z-index: 1; width: clamp(6.5rem, 9vw, 8rem);
+  background: var(--bg); border-radius: 50%; transform: rotate(-8deg);
+}
+.interest:nth-child(2) .roundel { transform: rotate(6deg); }
 .interest h3 { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); line-height: 1.02; margin: 0; }
 .interest p { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem); line-height: 1.45; margin: 0; }
 @media (max-width: 48rem) {
-  .interest { grid-template-columns: auto minmax(0, 1fr); }
-  .interest .roundel { width: 5.5rem; }
-  .interest p { grid-column: 1 / -1; }
+  .interest { grid-template-columns: 1fr; }
+  .interest .roundel { width: 5.75rem; right: 0; bottom: -2rem; }
 }
 
 /* ---------- Contact block ---------- */
