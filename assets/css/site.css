@@ -173,6 +173,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
     background: var(--project-tint, var(--fill)); color: var(--project-ink, var(--project, var(--fg)));
   }
   .chapters .chapter-next[hidden] { display: none; }
+  .chapters .chapter-next .icon-arrow { transform: rotate(90deg); } /* points down the page */
 }
 
 .work-menu { position: relative; }
@@ -266,12 +267,12 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   object-fit: cover; border-radius: 50%; transform: rotate(3deg);
 }
 .roundel.portrait-stamp {
-  position: absolute; left: -2.5rem; bottom: -1rem; width: clamp(9.5rem, 14vw, 11.5rem);
+  position: absolute; left: -3.75rem; bottom: -2rem; width: clamp(9.5rem, 14vw, 11.5rem);
   background: var(--bg); border-radius: 50%; transform: rotate(-8deg);
 }
 @media (max-width: 56rem) {
   .portrait-wrap { justify-self: center; max-width: min(80vw, 22rem); }
-  .roundel.portrait-stamp { left: -1rem; bottom: -0.75rem; }
+  .roundel.portrait-stamp { left: -2.75rem; bottom: -1.75rem; }
 }
 @media (max-width: 40rem) {
   /* phones: a small portrait beside the headline. The text column dissolves
@@ -285,8 +286,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   .hero .wrap:has(> .portrait-wrap) h1 { grid-area: title; }
   .hero .wrap:has(> .portrait-wrap) .lede { grid-area: lede; }
   .hero .wrap:has(> .portrait-wrap) .hero-actions { grid-area: actions; }
-  .portrait-wrap { grid-area: pic; width: 7.5rem; max-width: none; justify-self: end; margin-bottom: 1.5rem; }
-  .roundel.portrait-stamp { left: -0.75rem; bottom: -1.25rem; width: 5rem; }
+  .portrait-wrap { grid-area: pic; width: 7.5rem; max-width: none; justify-self: end; margin-bottom: 2.75rem; }
+  .roundel.portrait-stamp { left: -1.25rem; bottom: -2.6rem; width: 5rem; } /* below-left of the photo, clear of the dog */
 }
 /* 404: the dog cut-out takes the portrait's place, with the same stamp */
 .lost-dog { position: relative; justify-self: end; width: 100%; max-width: 22rem; }
