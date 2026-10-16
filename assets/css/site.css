@@ -249,6 +249,15 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   .portrait-wrap { justify-self: center; max-width: min(80vw, 22rem); }
   .portrait-stamp { left: -1rem; bottom: -0.75rem; width: 7rem; }
 }
+/* 404: the dog cut-out takes the portrait's place, with the same stamp */
+.lost-dog { position: relative; justify-self: end; width: 100%; max-width: 22rem; }
+.lost-dog img { display: block; width: 100%; height: auto; }
+.lost .roundel-main.big { font-size: 46px; letter-spacing: 0.02em; }
+.lost-dog .portrait-stamp { left: -5.5rem; bottom: -1.5rem; }
+@media (max-width: 56rem) {
+  .lost-dog { justify-self: center; max-width: min(70vw, 18rem); }
+  .lost-dog .portrait-stamp { left: -2.5rem; bottom: -2rem; }
+}
 @media (prefers-reduced-motion: no-preference) {
   .portrait-stamp { animation: stamp-in 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) 0.3s backwards; }
 }
