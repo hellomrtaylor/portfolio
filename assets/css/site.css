@@ -155,7 +155,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .work-menu { position: relative; }
 .work-menu summary { list-style: none; display: flex; align-items: center; gap: 0.35rem; }
 .work-menu summary::-webkit-details-marker { display: none; }
-.work-menu summary::after { content: "▾"; font-size: 1.05em; line-height: 1; }
+.work-menu summary::after { content: "▾"; font-size: 1.4em; line-height: 0.7; }
 .work-menu[open] summary::after { content: "▴"; }
 .work-menu ul {
   position: absolute; left: 0; top: calc(100% + 0.6rem); z-index: 2;
@@ -659,6 +659,9 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 
 /* Everything inside a themed case study page */
 [class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project); }
+body[class*="project-"] :is(.nav a, .nav summary, .chapters a) { color: var(--project); }
+/* a near-opaque bar so page-colour text stays readable over the coloured hero */
+body[class*="project-"] .bar > :is(.nav, .chapters) { background: color-mix(in srgb, var(--vanilla-20) 90%, transparent); }
 body[class*="project-"] :is(.nav a, .nav summary, .chapters a, .work-menu li a):hover { background: var(--project-tint); color: var(--project); }
 body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-tint); color: var(--project); }
 [class*="project-"] .chapter .body li::marker { color: var(--project); }
