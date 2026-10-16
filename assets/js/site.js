@@ -118,3 +118,28 @@ document.querySelectorAll('video.loop-video').forEach((v) => {
     }
   }, { threshold: 0.25 }).observe(v);
 });
+
+// Sections fade and rise in one by one: those on screen at load are staggered,
+// later ones come in as they're scrolled to. The head script adds .rv (and skips
+// it for reduced motion); __rv tells its fallback timer this script ran.
+window.__rv = true;
+// Keep this selector in step with the .rv rule in site.css
+const RV = 'main > section:not(.hero, .cs-hero), .hero > .wrap > *, .cs-hero > .wrap > *, .pager, .contact';
+if (document.documentElement.classList.contains('rv')) {
+  const queue = [];
+  let timer = null;
+  const step = () => {
+    const el = queue.shift();
+    if (!el) { timer = null; return; }
+    el.classList.add('in');
+    timer = setTimeout(step, 90);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.filter((e) => e.isIntersecting)
+      .sort((a, b) => (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
+      .forEach((e) => { io.unobserve(e.target); queue.push(e.target); });
+    // wait a frame so the hidden state paints first and the fade actually runs
+    if (!timer) timer = requestAnimationFrame(() => requestAnimationFrame(step));
+  }, { threshold: 0.01 });
+  document.querySelectorAll(RV).forEach((el) => io.observe(el));
+}

@@ -10,15 +10,59 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v=15c12981">
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("rv");setTimeout(function(){if(!window.__rv)document.documentElement.classList.add("rv-done")},2500)}</script>
+<link rel="stylesheet" href="/assets/css/site.css?v=859b323e">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <nav class="nav" aria-label="Main">
+      <a href="/">Home</a>
+      <details class="work-menu">
+        <summary>Work</summary>
+          <ul>
+  <li><a href="/work/showcar/"><span class="dot project-1"></span>Multi-Brand Design System</a></li>
+  <li><a href="/work/competitive-insights/"><span class="dot project-2"></span>Dealer Pricing Insights</a></li>
+  <li><a href="/work/cross-border/"><span class="dot project-3"></span>Selling Cars Across Europe</a></li>
+          </ul>
+      </details>
+    </nav>
+  </div>
+</header>
+
 <main id="main" class="home-solo">
-<section class="intro">
+<section class="hero lost" aria-labelledby="lost-h">
+  <svg class="roundel-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="roundel-top" d="M 30,100 A 70,70 0 0 1 170,100" />
+      <path id="roundel-bottom" d="M 19,100 A 81,81 0 0 0 181,100" />
+      <g id="roundel-frame" fill="none" stroke="currentColor">
+        <circle cx="100" cy="100" r="94" stroke-width="3" />
+        <path d="M 40.9,82 A 62,62 0 0 0 40.9,118" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 159.1,82 A 62,62 0 0 1 159.1,118" stroke-width="2.5" stroke-linecap="round" />
+      </g>
+    </defs>
+  </svg>
   <div class="wrap">
-    <h1 class="display">Page not found.</h1>
-    <p class="lede">That page doesn't exist.</p>
-    <p><a class="btn" href="/">Go to the homepage</a></p>
+    <div>
+      <span class="chapter-label">404 · Page not found</span>
+      <h1 class="display" id="lost-h">This page is <em>missing</em>. So is his&nbsp;toy.</h1>
+      <p class="lede">We've looked under every cushion and neither has turned up. The case studies are all where they should be, though.</p>
+      <div class="hero-actions">
+        <a class="btn" href="/">Go to the homepage</a>
+        <a class="textlink" href="/#work">Read the case studies</a>
+      </div>
+    </div>
+    <div class="lost-dog">
+      <img src="/assets/img/404/dog.webp" srcset="/assets/img/404/dog-349.webp 349w, /assets/img/404/dog.webp 698w" sizes="(max-width: 56rem) 70vw, 22rem" width="698" height="836" alt="A speckled dachshund looking up with big, sad eyes.">
+      <svg class="roundel portrait-stamp" viewBox="0 0 200 200" role="img" aria-label="Lost: one chew toy. Reward: belly rubs">
+        <use href="#roundel-frame" />
+        <text class="roundel-arc"><textPath href="#roundel-top" startOffset="50%">LOST · ONE TOY</textPath></text>
+        <text class="roundel-main big" x="100" y="116">404</text>
+        <text class="roundel-arc"><textPath href="#roundel-bottom" startOffset="50%">REWARD: BELLY RUBS</textPath></text>
+      </svg>
+    </div>
   </div>
 </section>
 </main>
@@ -27,5 +71,6 @@
     <span>&copy; 2026 Ali Taylor</span>
   </div>
 </footer>
+<script src="/assets/js/site.js?v=859b323e" defer></script>
 </body>
 </html>

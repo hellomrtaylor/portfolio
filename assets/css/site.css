@@ -79,6 +79,8 @@ body::after {
 a { color: inherit; text-underline-offset: 0.18em; }
 
 :focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+/* on dark or coloured surfaces the ring turns cream so it stays visible (3:1 or more) */
+:is(.cs-hero, .contact) :focus-visible { outline-color: var(--on-project, var(--bg)); }
 
 .skip {
   position: absolute; left: -999px; top: 0.5rem; z-index: 50;
@@ -144,7 +146,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .chapters ol { list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
 .chapters ol::-webkit-scrollbar { display: none; }
 .chapters a { color: var(--chocolate-80); }
-.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; }
+.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project-ink, var(--project, var(--fg))); font-weight: 600; }
 
 @media (max-width: 52rem) {
   :root { --nav-space: 8.5rem; --header-flow: 7.06rem; } /* two pills stacked here */
@@ -155,7 +157,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .work-menu { position: relative; }
 .work-menu summary { list-style: none; display: flex; align-items: center; gap: 0.35rem; }
 .work-menu summary::-webkit-details-marker { display: none; }
-.work-menu summary::after { content: "▾"; font-size: 1.05em; line-height: 1; }
+.work-menu summary::after { content: "▾"; font-size: 1.4em; line-height: 0.7; }
 .work-menu[open] summary::after { content: "▴"; }
 .work-menu ul {
   position: absolute; left: 0; top: calc(100% + 0.6rem); z-index: 2;
@@ -230,10 +232,35 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .hero h1 { margin-bottom: 1.5rem; }
 .hero .lede { margin-bottom: 2rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
-.hero-actions .textlink { font-size: 0.9rem; }
+.hero-actions .textlink { font-size: 16px; }
 .textlink { color: var(--chocolate-80); }
 .hero .card { max-width: 26rem; justify-self: end; width: 100%; padding-bottom: 3.75rem; --margin: 4.9rem; }
 .hero .stamp { right: 1.2rem; bottom: 1rem; }
+.portrait-wrap { position: relative; justify-self: end; width: 100%; max-width: 28rem; }
+.portrait {
+  display: block; width: 100%; height: auto; aspect-ratio: 1;
+  object-fit: cover; border-radius: 50%; transform: rotate(3deg);
+}
+.portrait-stamp {
+  position: absolute; left: -2.5rem; bottom: -1rem; width: clamp(7.5rem, 11vw, 10rem);
+  background: var(--bg); border-radius: 50%; transform: rotate(-8deg);
+}
+@media (max-width: 56rem) {
+  .portrait-wrap { justify-self: center; max-width: min(80vw, 22rem); }
+  .portrait-stamp { left: -1rem; bottom: -0.75rem; width: 7rem; }
+}
+/* 404: the dog cut-out takes the portrait's place, with the same stamp */
+.lost-dog { position: relative; justify-self: end; width: 100%; max-width: 22rem; }
+.lost-dog img { display: block; width: 100%; height: auto; }
+.lost .roundel-main.big { font-size: 46px; letter-spacing: 0.02em; }
+.lost-dog .portrait-stamp { left: -5.5rem; bottom: -1.5rem; }
+@media (max-width: 56rem) {
+  .lost-dog { justify-self: center; max-width: min(70vw, 18rem); }
+  .lost-dog .portrait-stamp { left: -2.5rem; bottom: -2rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .portrait-stamp { animation: stamp-in 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) 0.3s backwards; }
+}
 .hero.solo .wrap { grid-template-columns: 1fr; }
 .hero.solo h1 { max-width: 16ch; }
 
@@ -246,7 +273,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 .intro-kicker { font-size: 16px; font-weight: 700; letter-spacing: 1px; color: var(--chocolate-80); margin: 0 0 1.25rem; }
 .intro h1 { font-size: clamp(3.2rem, 1.6rem + 6.6vw, 8rem); line-height: 0.95; max-width: 13ch; margin-bottom: 1.75rem; }
-.intro h1 em { font-style: italic; color: var(--chocolate-80); }
+.intro h1 em, .hero h1 em { font-style: italic; color: var(--chocolate-80); }
 .intro .lede { margin-bottom: 2rem; }
 .intro .intro-stamp { width: clamp(12rem, 24vw, 21rem); transform: rotate(-8deg); align-self: start; margin-top: clamp(2rem, 6vw, 5rem); }
 /* Standalone holding page: the intro alone, filling the screen, footer at the bottom */
@@ -284,6 +311,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .section-head p { margin: 0; color: var(--muted); max-width: 26rem; }
 /* Section labels (e.g. "Selected work") use the chapter-label style */
 .section-head h2 { font-family: var(--sans); font-size: 0.8rem; font-weight: 400; line-height: 1.6; color: var(--chocolate-80); text-transform: uppercase; letter-spacing: 0.05em; }
+#work .section-head { margin-bottom: 1rem; } /* the small label sits close to the cards it introduces */
 
 /* ---------- Home: case study cards ---------- */
 
@@ -368,7 +396,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .drawer::after { bottom: 0; }
 /* Section title at h2 size, in Strawberry 80 */
 .drawer .section-head { justify-content: center; text-align: center; }
-.drawer .section-head h2 { font-family: var(--serif); font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.05; font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); color: var(--strawberry-80); }
+.drawer .section-head h2 { font-family: var(--serif); font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.05; font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); color: var(--fg); }
 .drawer .section-head p { color: var(--muted); }
 .drawer-grid {
   display: grid; gap: 1.5rem;
@@ -389,22 +417,42 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .roundel-arc { font-size: 14px; letter-spacing: 0.1em; }
 .roundel-main { font-size: 19px; letter-spacing: 0.04em; }
 .roundel-main.long { font-size: 15px; letter-spacing: 0.02em; } /* keeps longer words inside the side brackets */
+.roundel-main.big { font-size: 24px; letter-spacing: 0.03em; }
 .roundel-sub { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; }
 .drawer .card h3, .interests .card h3 { font-size: 1.45rem; line-height: 1.1; margin: 0 0 0.5rem; }
 .drawer .card p, .interests .card p { font-size: 0.9rem; line-height: 1.55; margin: 0; }
 
-/* ---------- About: interest cards ---------- */
+/* ---------- Home: interests (roundel + title + text rows) ---------- */
 
-.interests {
-  display: grid; gap: 1.5rem; margin-top: clamp(2rem, 5vw, 3rem);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+.interests { max-width: 70rem; margin: clamp(2rem, 5vw, 3.5rem) auto 0; }
+.interest {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr); align-items: start;
+  gap: 1rem clamp(1.5rem, 4vw, 3.5rem); padding-block: clamp(1.75rem, 4vw, 2.75rem) clamp(4rem, 8vw, 5.5rem);
+  border-top: 1px solid var(--chocolate-40);
+}
+/* The stamp hangs off the bottom-right corner of its paragraph */
+.interest-body { position: relative; }
+.interest .roundel {
+  position: absolute; right: 2.5rem; top: 100%; margin-top: -4.75rem; z-index: -1; width: clamp(6.5rem, 9vw, 8rem);
+  background: var(--bg); border-radius: 50%; transform: rotate(-8deg);
+}
+.interest:nth-child(2) .roundel { transform: rotate(6deg); }
+.interest h3 { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); line-height: 1.02; margin: 0; }
+.interest p { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem); line-height: 1.45; margin: 0; }
+@media (max-width: 48rem) {
+  .interest { grid-template-columns: 1fr; }
+  .interest .roundel { width: 5.75rem; right: 0.5rem; margin-top: -1.25rem; }
 }
 
 /* ---------- Contact block ---------- */
 
-.contact { background: var(--vanilla-20); }
+.contact { background: var(--chocolate-100); color: var(--bg); }
+.contact .btn { background: var(--bg); border-color: var(--bg); color: var(--chocolate-100); }
 .contact .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: center; }
 .contact h2 { font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem); }
+.contact p:not(.copyright) { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem); line-height: 1.45; }
+.contact .copyright { grid-column: 1 / -1; margin: clamp(1.5rem, 4vw, 3rem) 0 0; font-size: 0.85rem; }
 @media (max-width: 48rem) { .contact .wrap { grid-template-columns: 1fr; } }
 
 .site-footer { padding: 1.5rem 0 2rem; font-size: 0.85rem; }
@@ -445,7 +493,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .chapter .body li { margin-bottom: 0.45em; padding-left: 0.2em; }
 .figs-wrap { margin-top: clamp(2rem, 5vw, 3rem); display: grid; gap: 1.5rem; }
 .figs { display: grid; gap: 1.5rem; }
-.figs > figure:has(.diagram) + * { margin-top: clamp(1rem, 3vw, 2rem); } /* breathing room between a diagram and the images after it */
+.figs > figure:has(.diagram) + *, .figs > * + figure:has(.diagram) { margin-top: clamp(1rem, 3vw, 2rem); } /* breathing room between a diagram and neighbouring images */
 .figs.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 52rem) {
   .chapter-grid, .figs.two { grid-template-columns: 1fr; }
@@ -486,23 +534,30 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .pager a + a { grid-template-areas: "label dot" "title dot"; text-align: right; }
 .pager .typed { grid-area: label; display: block; margin-bottom: 0.15rem; color: var(--muted); }
 .pager .h3 { grid-area: title; }
-/* the circle: the current case study's colour, switching to the destination's on hover */
+/* the circle: the current case study's colour, lightening a shade on hover */
 .pager a::before {
   content: ""; grid-area: dot; width: 2.75rem; height: 2.75rem; border-radius: 50%;
   background: var(--page-tone, var(--project, var(--fg)));
   box-shadow: 0 2px 6px color-mix(in srgb, var(--chocolate-100) 25%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: background-color 0.25s ease, transform 0.25s ease;
+  transition: background-color 0.25s ease;
 }
-/* the arrow, always shown; it nudges toward its destination on hover */
+/* the arrow fills the circle and is clipped to it, so on hover it can run out one
+   side and back in from the other, ending centred again */
 .pager a::after {
-  content: "←"; grid-area: dot; place-self: center; position: relative; z-index: 1; /* above the scaled circle */
-  font-family: var(--sans); font-size: 1.25rem; font-weight: 700; line-height: 1; color: var(--on-project, var(--bg));
-  transition: transform 0.25s ease;
+  content: "←"; grid-area: dot; place-self: center; position: relative; z-index: 1;
+  width: 2.75rem; height: 2.75rem; border-radius: 50%; overflow: hidden;
+  text-align: center; line-height: 2.75rem; white-space: nowrap;
+  font-family: var(--sans); font-size: 1.25rem; font-weight: 700; color: var(--on-project, var(--bg));
 }
 .pager a + a::after { content: "→"; }
-.pager a:is(:hover, :focus-visible)::before { background: var(--project, var(--fg)); transform: scale(1.06); }
-.pager a:is(:hover, :focus-visible)::after { transform: translateX(-0.2rem); }
-.pager a + a:is(:hover, :focus-visible)::after { transform: translateX(0.2rem); }
+.pager a:is(:hover, :focus-visible)::before { background: color-mix(in srgb, var(--page-tone, var(--project, var(--fg))) 72%, #ffffff); }
+@media (prefers-reduced-motion: no-preference) {
+  .pager a:is(:hover, :focus-visible)::after { animation: pager-back 0.55s ease-in-out; }
+  .pager a + a:is(:hover, :focus-visible)::after { animation-name: pager-on; }
+}
+/* centred text moves half the indent, so 4rem carries the arrow just out of the circle */
+@keyframes pager-on { 0% { text-indent: 0; } 45% { text-indent: 4rem; } 45.01% { text-indent: -4rem; } 100% { text-indent: 0; } }
+@keyframes pager-back { 0% { text-indent: 0; } 45% { text-indent: -4rem; } 45.01% { text-indent: 4rem; } 100% { text-indent: 0; } }
 @media (max-width: 40rem) {
   .pager { flex-direction: column; align-items: stretch; }
   .pager a { justify-self: start; align-self: flex-start; }
@@ -519,7 +574,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .flow { --flow-gap: 2.25rem; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--flow-gap); }
 .flow li {
   flex: 1 1 8rem; position: relative;
-  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  border: 0; border-radius: var(--radius-lg); background: var(--fill);
   padding: 0.85rem 1rem; font-size: 1.0625rem; font-weight: 600; line-height: 1.35; /* step name: body strong */
 }
 .flow li small { display: block; font-size: 1.0625rem; font-weight: 400; line-height: 1.5; color: var(--muted); margin-top: 0.35rem; } /* step detail: body */
@@ -554,7 +609,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .fork { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; position: relative; padding-top: 4.5rem; }
 .fork .root {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  border: 0; border-radius: var(--radius-lg); background: var(--fill);
   padding: 0.5rem 1rem; font-size: 0.85rem; white-space: nowrap;
 }
 .fork::before {
@@ -571,7 +626,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 /* Funnel */
 .funnel { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; justify-items: center; }
 .funnel li {
-  border: 1px solid var(--fg); border-radius: var(--radius); background: var(--fill);
+  border: 0; border-radius: var(--radius-lg); background: var(--fill);
   padding: 0.6rem 1rem; text-align: center; font-size: 0.95rem; line-height: 1.25;
 }
 .funnel li:nth-child(1) { width: 100%; }
@@ -611,6 +666,9 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 }
 /* Mint has its own light shades, so the design system case study uses them instead of mixed tints */
 .project-1 { --project-tint: var(--mint-20); --project-soft: var(--mint-40); }
+/* text that sits on a --project-tint surface; Dealer Pricing's red needs a touch deeper to reach 4.5:1 (5.3:1) */
+[class*="project-"] { --project-ink: var(--project); }
+.project-2 { --project-ink: color-mix(in srgb, var(--project) 85%, #000000); }
 
 /* Dots, homepage cards, pager */
 .dot[class*="project-"] { background: var(--project); border-color: var(--project); }
@@ -623,7 +681,10 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
 /* Everything inside a themed case study page */
-[class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project); }
+[class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project-ink); }
+body[class*="project-"] :is(.nav a, .nav summary, .chapters a) { color: #333333; }
+body[class*="project-"] :is(.nav a, .nav summary, .chapters a, .work-menu li a):hover { background: var(--project-tint); color: var(--project-ink); }
+body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-tint); color: var(--project-ink); }
 [class*="project-"] .chapter .body li::marker { color: var(--project); }
 [class*="project-"] .pull { color: var(--project); }
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
@@ -642,6 +703,7 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 [class*="project-"] :is(.flow li.me, .hub .gate, .hub .out, .funnel li:nth-child(4), .fork .branch.shipped) { background: var(--project); color: var(--on-project); }
 [class*="project-"] :is(.flow li.me, .hub .gate, .funnel li:nth-child(4), .fork .branch.shipped) :is(small, .typed) { color: inherit; opacity: 0.85; }
 [class*="project-"] .flow li:not(:last-child)::after { border-color: var(--project); }
+[class*="project-"] .flow li small { color: #333333; } /* 10.6:1 on the step tint (was 4.8:1) */
 [class*="project-"] .fork::before { border-color: var(--project); }
 [class*="project-"] .fork .branch.rec .later { border-color: var(--project); color: var(--project); }
 [class*="project-"] .venn .set { border-color: var(--project); }
@@ -669,8 +731,21 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 .brand-tabs button:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); color: var(--chocolate-100); }
 .brand-tabs button[aria-selected="true"] { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; }
 .brand-tabs button:focus-visible { outline: 2px solid var(--project, var(--fg)); outline-offset: 1px; }
+/* on case study pages, match the nav: neutral grey at rest, page colour on hover */
+body[class*="project-"] :is(.brand-tabs button, .brand-switch-title) { color: #333333; }
+body[class*="project-"] .brand-tabs button:hover { background: var(--project-tint); color: var(--project-ink); }
+body[class*="project-"] .brand-tabs button[aria-selected="true"] { color: var(--project-ink); }
 /* panels stack in one cell so switching never changes the height */
 .brand-panels { display: grid; }
 .brand-panel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
 .brand-panel.is-active { opacity: 1; visibility: visible; transition: opacity 0.25s ease; }
 @media (prefers-reduced-motion: reduce) { .brand-panel, .brand-panel.is-active { transition: none; } }
+
+/* ---------- Load-in: sections rise in one by one (see site.js) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .rv:not(.rv-done) :is(main > section:not(.hero, .cs-hero), .hero > .wrap > *, .cs-hero > .wrap > *, .pager, .contact) {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 0.45s ease-out, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .rv:not(.rv-done) :is(main > section:not(.hero, .cs-hero), .hero > .wrap > *, .cs-hero > .wrap > *, .pager, .contact).in { opacity: 1; transform: none; }
+}

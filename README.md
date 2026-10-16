@@ -2,15 +2,13 @@
 
 Plain HTML and CSS. No build step, no dependencies.
 
-The site is currently a **wireframe**: greyscale, system fonts, no brand styling. Layout, spacing and responsive behaviour are all in place, so styling it means editing `assets/css/site.css`, starting with the tokens at the top.
+## Site structure
 
-## Holding page and hidden draft
-
-The public homepage (`index.html`) is a holding page: just the intro, with no links to anything else.
-
-The full site lives in `draft/` at **alitaylor.nl/draft/**. Nothing on the public page or the 404 page links there, and every page in it carries `noindex, nofollow`. It is unlisted, not private: anyone with the URL, or anyone reading the repo, can find it.
-
-To launch the full site, move the contents of `draft/` back to the root and remove the extra `../` from the asset paths. Or ask Claude to do it.
+- `index.html`: the homepage (intro, selected work, interests, contact).
+- `work/<case-study>/`: the three case studies.
+- `404.html`: page not found.
+- `draft/`: redirect stubs only. The site was built under `/draft/` before launch; these send old links to the new addresses.
+- `robots.txt` and `sitemap.xml` list the public pages for search engines. Add a line to the sitemap if you add a page.
 
 ## Cache busting
 
@@ -47,11 +45,12 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/competitive-insights/workshop.webp` (+ `-550` 1x) | Added: workshop artefacts, insights and sketches |
 | `assets/img/competitive-insights/iterations.webp` (+ `-550` 1x) | Added: prototype before and after testing |
 | `assets/img/competitive-insights/prototype-{1120,2240}.{mp4,webm}` + `prototype-poster*.webp` | Added: looping prototype walkthrough (muted, plays while on screen) |
-| `assets/img/cross-border/cover.jpg` | Homepage card. Europe price map |
-| `assets/img/cross-border/hero.jpg` | Europe price map, Italy and Denmark called out |
-| `assets/img/cross-border/flow-1.jpg` to `flow-3.jpg` | Publishing flow screens |
-| `assets/img/cross-border/marketplace.jpg` | B2B marketplace listing view |
-| `assets/img/cross-border/offers.jpg` | Offer or response screens |
+| `assets/img/cross-border/cover.webp` (+ `-620` 1x) | Homepage card, 1240 x 620. Added |
+| `assets/img/cross-border/hero.webp` (+ `-1120` 1x) | Hero, 2000 x 1000. Added |
+| `assets/img/cross-border/research.webp` (+ `-1120` 1x) | Added: research workshop boards, full width in The problem |
+| `assets/img/cross-border/key-1.webp` to `key-4.webp` (+ `-550` 1x) | Key product screens, 1100 x 690. key-1 coming-soon banner, key-2 inventory with marketplaces menu, key-3 listing stats (B2C + B2B), key-4 exclusion rule builder. All added |
+| `assets/img/cross-border/prototype-{1120,2240}.{mp4,webm}` + `prototype-poster*.webp` | Added: looping prototype walkthrough (muted, plays while on screen) |
+| `assets/img/about/ali.webp` (+ `-520` 1x) | Homepage hero portrait, 1040 x 1040, shown as a circle. Added |
 
 Frames marked `contain` in the HTML show the whole image (good for UI screenshots). The rest crop to fill.
 
@@ -66,4 +65,4 @@ Each page is one HTML file:
 
 The header, footer and contact block repeat on every page, so change them in all four.
 
-Colours, fonts and the three project tones (`--tone-1` to `--tone-3`) live at the top of `assets/css/site.css`. `components/` shows every component in one place for checking your styles. It is linked from the footer for now and is noindexed.
+Colours, fonts and the three project tones (`--tone-1` to `--tone-3`) live at the top of `assets/css/site.css`.
