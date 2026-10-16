@@ -435,11 +435,12 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* ---------- Contact block ---------- */
 
-.contact { background: var(--vanilla-20); }
+.contact { background: var(--chocolate-100); color: var(--bg); }
+.contact .btn { background: var(--bg); border-color: var(--bg); color: var(--chocolate-100); }
 .contact .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: center; }
 .contact h2 { font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem); }
 .contact p:not(.copyright) { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem); line-height: 1.45; }
-.contact .copyright { grid-column: 1 / -1; margin: clamp(1.5rem, 4vw, 3rem) 0 0; font-size: 0.85rem; color: var(--muted); }
+.contact .copyright { grid-column: 1 / -1; margin: clamp(1.5rem, 4vw, 3rem) 0 0; font-size: 0.85rem; }
 @media (max-width: 48rem) { .contact .wrap { grid-template-columns: 1fr; } }
 
 .site-footer { padding: 1.5rem 0 2rem; font-size: 0.85rem; }
@@ -667,7 +668,6 @@ body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
 /* "Want the full story?" matches the case study hero; its button flips to Vanilla */
 [class*="project-"] .contact { background: var(--project); color: var(--on-project); }
-[class*="project-"] .contact .copyright { color: inherit; }
 [class*="project-"] .contact .btn { background: var(--on-project); border-color: var(--on-project); color: var(--project); }
 [class*="project-"] .decision { background: var(--project-tint); border-color: var(--project); }
 [class*="project-"] .decision .typed { color: var(--project); }
