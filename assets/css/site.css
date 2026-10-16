@@ -300,6 +300,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .section-head p { margin: 0; color: var(--muted); max-width: 26rem; }
 /* Section labels (e.g. "Selected work") use the chapter-label style */
 .section-head h2 { font-family: var(--sans); font-size: 0.8rem; font-weight: 400; line-height: 1.6; color: var(--chocolate-80); text-transform: uppercase; letter-spacing: 0.05em; }
+#work .section-head { margin-bottom: 1rem; } /* the small label sits close to the cards it introduces */
 
 /* ---------- Home: case study cards ---------- */
 
