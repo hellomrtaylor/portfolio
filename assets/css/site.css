@@ -405,6 +405,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .roundel-arc { font-size: 14px; letter-spacing: 0.1em; }
 .roundel-main { font-size: 19px; letter-spacing: 0.04em; }
 .roundel-main.long { font-size: 15px; letter-spacing: 0.02em; } /* keeps longer words inside the side brackets */
+.roundel-main.big { font-size: 24px; letter-spacing: 0.03em; }
 .roundel-sub { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; }
 .drawer .card h3, .interests .card h3 { font-size: 1.45rem; line-height: 1.1; margin: 0 0 0.5rem; }
 .drawer .card p, .interests .card p { font-size: 0.9rem; line-height: 1.55; margin: 0; }
