@@ -400,6 +400,8 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 
 /* ---------- About: interest cards ---------- */
 
+.interests-head { text-align: center; }
+.interests-head h2 { margin-bottom: 0; }
 .interests {
   display: grid; gap: 1.5rem; margin-top: clamp(2rem, 5vw, 3rem);
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
