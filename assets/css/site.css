@@ -713,3 +713,12 @@ body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-
 .brand-panel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
 .brand-panel.is-active { opacity: 1; visibility: visible; transition: opacity 0.25s ease; }
 @media (prefers-reduced-motion: reduce) { .brand-panel, .brand-panel.is-active { transition: none; } }
+
+/* ---------- Load-in: sections rise in one by one (see site.js) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .rv:not(.rv-done) :is(main > section:not(.hero, .cs-hero), .hero > .wrap > *, .cs-hero > .wrap > *, .pager, .contact) {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 0.45s ease-out, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .rv:not(.rv-done) :is(main > section:not(.hero, .cs-hero), .hero > .wrap > *, .cs-hero > .wrap > *, .pager, .contact).in { opacity: 1; transform: none; }
+}
