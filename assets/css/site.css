@@ -398,14 +398,19 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .drawer .card h3, .interests .card h3 { font-size: 1.45rem; line-height: 1.1; margin: 0 0 0.5rem; }
 .drawer .card p, .interests .card p { font-size: 0.9rem; line-height: 1.55; margin: 0; }
 
-/* ---------- About: interest cards ---------- */
+/* ---------- About: interests ---------- */
 
 .interests-head { text-align: center; }
 .interests-head h2 { margin-bottom: 0; }
-.interests {
-  display: grid; gap: 1.5rem; margin-top: clamp(2rem, 5vw, 3rem);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+.interests { max-width: 64rem; margin: clamp(2.5rem, 6vw, 4.5rem) auto 0; }
+.interest {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 1rem clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(1.75rem, 4vw, 2.75rem); border-top: 1px solid var(--chocolate-40);
 }
+.interest:last-child { border-bottom: 1px solid var(--chocolate-40); }
+.interest h3 { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); line-height: 1.02; margin: 0; }
+.interest p { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem); line-height: 1.45; margin: 0; }
+@media (max-width: 48rem) { .interest { grid-template-columns: 1fr; } }
 
 /* ---------- Contact block ---------- */
 
