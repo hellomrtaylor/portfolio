@@ -18,7 +18,7 @@ const links = [...document.querySelectorAll('.chapters a')];
 if (links.length) {
   const nextLink = document.createElement('a');
   nextLink.className = 'chapter-next';
-  nextLink.innerHTML = '<span aria-hidden="true">→</span>';
+  nextLink.innerHTML = '<span class="icon-arrow" aria-hidden="true"></span>';
   links[0].closest('.chapters').append(nextLink);
   const setCurrent = (i) => {
     links.forEach((a, j) => a.parentElement.classList.toggle('is-current', j === i));

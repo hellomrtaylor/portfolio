@@ -46,6 +46,9 @@
   --radius: 4px;
   --radius-lg: 16px;                /* images and large surfaces: cards, callouts, diagrams */
   --frame: clamp(6px, 1vw, 12px);   /* white frame around the viewport */
+  /* line icons, drawn as masks so they take the text colour and look the same on every device */
+  --icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   /* Depth for clickable things, mixed from Chocolate 100 */
   --shadow-sm: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 20%, transparent), 0 3px 8px -3px color-mix(in srgb, var(--chocolate-100) 22%, transparent);
   --shadow-img: 0 1px 2px color-mix(in srgb, var(--chocolate-100) 10%, transparent);
@@ -166,7 +169,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   .chapters li.is-current a { overflow: hidden; text-overflow: ellipsis; }
   .chapters .chapter-next {
     display: grid; place-items: center; flex: none; width: 2.2rem; height: 2.2rem; padding: 0; border-radius: 0.6rem;
-    font-size: 1.1rem; font-weight: 700; color: inherit; text-decoration: none;
+    font-size: 1.15rem; text-decoration: none;
     background: var(--project-tint, var(--fill)); color: var(--project-ink, var(--project, var(--fg)));
   }
   .chapters .chapter-next[hidden] { display: none; }
@@ -175,8 +178,11 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .work-menu { position: relative; }
 .work-menu summary { list-style: none; display: flex; align-items: center; gap: 0.35rem; }
 .work-menu summary::-webkit-details-marker { display: none; }
-.work-menu summary::after { content: "▾"; font-size: 1.4em; line-height: 0.7; }
-.work-menu[open] summary::after { content: "▴"; }
+.work-menu summary::after {
+  content: ""; width: 0.9em; height: 0.9em; background: currentColor; transition: transform 0.2s ease;
+  -webkit-mask: var(--icon-chevron) center / contain no-repeat; mask: var(--icon-chevron) center / contain no-repeat;
+}
+.work-menu[open] summary::after { transform: rotate(180deg); }
 .work-menu ul {
   position: absolute; left: 0; top: calc(100% + 0.6rem); z-index: 2;
   list-style: none; margin: 0; padding: 0.3rem;
@@ -268,9 +274,19 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   .roundel.portrait-stamp { left: -1rem; bottom: -0.75rem; }
 }
 @media (max-width: 40rem) {
-  /* phones: a small portrait so the intro leads */
-  .portrait-wrap { max-width: 12rem; }
-  .roundel.portrait-stamp { left: -2rem; bottom: -0.5rem; width: 6.5rem; }
+  /* phones: a small portrait beside the headline. The text column dissolves
+     (display: contents) so the headline and portrait can share a row. */
+  .hero .wrap:has(> .portrait-wrap) {
+    grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.75rem; row-gap: 0; align-items: center;
+    grid-template-areas: "label label" "title pic" "lede lede" "actions actions";
+  }
+  .hero .wrap:has(> .portrait-wrap) > div:first-child { display: contents; }
+  .hero .wrap:has(> .portrait-wrap) .chapter-label { grid-area: label; }
+  .hero .wrap:has(> .portrait-wrap) h1 { grid-area: title; }
+  .hero .wrap:has(> .portrait-wrap) .lede { grid-area: lede; }
+  .hero .wrap:has(> .portrait-wrap) .hero-actions { grid-area: actions; }
+  .portrait-wrap { grid-area: pic; width: 7.5rem; max-width: none; justify-self: end; margin-bottom: 1.5rem; }
+  .roundel.portrait-stamp { left: -0.75rem; bottom: -1.25rem; width: 5rem; }
 }
 /* 404: the dog cut-out takes the portrait's place, with the same stamp */
 .lost-dog { position: relative; justify-self: end; width: 100%; max-width: 22rem; }
@@ -349,6 +365,10 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .book { position: relative; box-shadow: var(--shadow-sm); }
 
 /* Hover: the card lifts, the arrow nudges, any cover image zooms */
+.icon-arrow {
+  display: inline-block; width: 1em; height: 1em; vertical-align: -0.15em; background: currentColor;
+  -webkit-mask: var(--icon-arrow) center / contain no-repeat; mask: var(--icon-arrow) center / contain no-repeat;
+}
 .book-arrow { display: inline-block; }
 .book .shot > img { transition: transform 0.5s ease; }
 @media (hover: hover) {
@@ -564,23 +584,26 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
   box-shadow: 0 2px 6px color-mix(in srgb, var(--chocolate-100) 25%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   transition: background-color 0.25s ease;
 }
-/* the arrow fills the circle and is clipped to it, so on hover it can run out one
-   side and back in from the other, ending centred again */
+/* the arrow is a mask the size of the circle, so on hover it can run out one side
+   and back in from the other, ending centred again. "Previous" is the same arrow flipped. */
 .pager a::after {
-  content: "←"; grid-area: dot; place-self: center; position: relative; z-index: 1;
-  width: 2.75rem; height: 2.75rem; border-radius: 50%; overflow: hidden;
-  text-align: center; line-height: 2.75rem; white-space: nowrap;
-  font-family: var(--sans); font-size: 1.25rem; font-weight: 700; color: var(--on-project, var(--bg));
+  content: ""; grid-area: dot; place-self: center; position: relative; z-index: 1;
+  width: 2.75rem; height: 2.75rem; background: var(--on-project, var(--bg));
+  -webkit-mask: var(--icon-arrow) 50% 50% / 1.3rem no-repeat; mask: var(--icon-arrow) 50% 50% / 1.3rem no-repeat;
+  transform: scaleX(-1);
 }
-.pager a + a::after { content: "→"; }
+.pager a + a::after { transform: none; }
 .pager a:is(:hover, :focus-visible)::before { background: color-mix(in srgb, var(--page-tone, var(--project, var(--fg))) 72%, #ffffff); }
 @media (prefers-reduced-motion: no-preference) {
-  .pager a:is(:hover, :focus-visible)::after { animation: pager-back 0.55s ease-in-out; }
-  .pager a + a:is(:hover, :focus-visible)::after { animation-name: pager-on; }
+  .pager a:is(:hover, :focus-visible)::after { animation: pager-on 0.55s ease-in-out; }
 }
-/* centred text moves half the indent, so 4rem carries the arrow just out of the circle */
-@keyframes pager-on { 0% { text-indent: 0; } 45% { text-indent: 4rem; } 45.01% { text-indent: -4rem; } 100% { text-indent: 0; } }
-@keyframes pager-back { 0% { text-indent: 0; } 45% { text-indent: -4rem; } 45.01% { text-indent: 4rem; } 100% { text-indent: 0; } }
+/* 2.1rem carries the 1.3rem arrow just past the edge of the 2.75rem circle */
+@keyframes pager-on {
+  0% { -webkit-mask-position: 50% 50%; mask-position: 50% 50%; }
+  45% { -webkit-mask-position: calc(50% + 2.1rem) 50%; mask-position: calc(50% + 2.1rem) 50%; }
+  45.01% { -webkit-mask-position: calc(50% - 2.1rem) 50%; mask-position: calc(50% - 2.1rem) 50%; }
+  100% { -webkit-mask-position: 50% 50%; mask-position: 50% 50%; }
+}
 @media (max-width: 40rem) {
   .pager { flex-direction: column; align-items: stretch; }
   .pager a { justify-self: start; align-self: flex-start; }
