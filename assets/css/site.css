@@ -79,6 +79,8 @@ body::after {
 a { color: inherit; text-underline-offset: 0.18em; }
 
 :focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+/* on dark or coloured surfaces the ring turns cream so it stays visible (3:1 or more) */
+:is(.cs-hero, .contact) :focus-visible { outline-color: var(--on-project, var(--bg)); }
 
 .skip {
   position: absolute; left: -999px; top: 0.5rem; z-index: 50;
@@ -144,7 +146,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .chapters ol { list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
 .chapters ol::-webkit-scrollbar { display: none; }
 .chapters a { color: var(--chocolate-80); }
-.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; }
+.chapters a.active { background: var(--project-tint, var(--fill)); color: var(--project-ink, var(--project, var(--fg))); font-weight: 600; }
 
 @media (max-width: 52rem) {
   :root { --nav-space: 8.5rem; --header-flow: 7.06rem; } /* two pills stacked here */
@@ -655,6 +657,9 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 }
 /* Mint has its own light shades, so the design system case study uses them instead of mixed tints */
 .project-1 { --project-tint: var(--mint-20); --project-soft: var(--mint-40); }
+/* text that sits on a --project-tint surface; Dealer Pricing's red needs a touch deeper to reach 4.5:1 (5.3:1) */
+[class*="project-"] { --project-ink: var(--project); }
+.project-2 { --project-ink: color-mix(in srgb, var(--project) 85%, #000000); }
 
 /* Dots, homepage cards, pager */
 .dot[class*="project-"] { background: var(--project); border-color: var(--project); }
@@ -667,10 +672,10 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
 /* Everything inside a themed case study page */
-[class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project); }
+[class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project-ink); }
 body[class*="project-"] :is(.nav a, .nav summary, .chapters a) { color: #333333; }
-body[class*="project-"] :is(.nav a, .nav summary, .chapters a, .work-menu li a):hover { background: var(--project-tint); color: var(--project); }
-body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-tint); color: var(--project); }
+body[class*="project-"] :is(.nav a, .nav summary, .chapters a, .work-menu li a):hover { background: var(--project-tint); color: var(--project-ink); }
+body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-tint); color: var(--project-ink); }
 [class*="project-"] .chapter .body li::marker { color: var(--project); }
 [class*="project-"] .pull { color: var(--project); }
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
@@ -719,8 +724,8 @@ body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-
 .brand-tabs button:focus-visible { outline: 2px solid var(--project, var(--fg)); outline-offset: 1px; }
 /* on case study pages, match the nav: neutral grey at rest, page colour on hover */
 body[class*="project-"] :is(.brand-tabs button, .brand-switch-title) { color: #333333; }
-body[class*="project-"] .brand-tabs button:hover { background: var(--project-tint); color: var(--project); }
-body[class*="project-"] .brand-tabs button[aria-selected="true"] { color: var(--project); }
+body[class*="project-"] .brand-tabs button:hover { background: var(--project-tint); color: var(--project-ink); }
+body[class*="project-"] .brand-tabs button[aria-selected="true"] { color: var(--project-ink); }
 /* panels stack in one cell so switching never changes the height */
 .brand-panels { display: grid; }
 .brand-panel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
