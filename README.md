@@ -49,9 +49,9 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/competitive-insights/prototype-{1120,2240}.{mp4,webm}` + `prototype-poster*.webp` | Added: looping prototype walkthrough (muted, plays while on screen) |
 | `assets/img/cross-border/cover.jpg` | Homepage card. Europe price map |
 | `assets/img/cross-border/hero.jpg` | Europe price map, Italy and Denmark called out |
+| `assets/img/cross-border/research.jpg` | Research workshop images (under the Problem heading) |
 | `assets/img/cross-border/flow-1.jpg` to `flow-3.jpg` | Publishing flow screens |
 | `assets/img/cross-border/marketplace.jpg` | B2B marketplace listing view |
-| `assets/img/cross-border/offers.jpg` | Offer or response screens |
 
 Frames marked `contain` in the HTML show the whole image (good for UI screenshots). The rest crop to fill.
 
