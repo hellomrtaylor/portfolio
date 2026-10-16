@@ -708,6 +708,10 @@ body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-
 .brand-tabs button:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); color: var(--chocolate-100); }
 .brand-tabs button[aria-selected="true"] { background: var(--project-tint, var(--fill)); color: var(--project, var(--fg)); font-weight: 600; }
 .brand-tabs button:focus-visible { outline: 2px solid var(--project, var(--fg)); outline-offset: 1px; }
+/* on case study pages, match the nav: neutral grey at rest, page colour on hover */
+body[class*="project-"] :is(.brand-tabs button, .brand-switch-title) { color: #333333; }
+body[class*="project-"] .brand-tabs button:hover { background: var(--project-tint); color: var(--project); }
+body[class*="project-"] .brand-tabs button[aria-selected="true"] { color: var(--project); }
 /* panels stack in one cell so switching never changes the height */
 .brand-panels { display: grid; }
 .brand-panel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
