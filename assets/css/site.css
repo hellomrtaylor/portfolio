@@ -230,7 +230,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .hero h1 { margin-bottom: 1.5rem; }
 .hero .lede { margin-bottom: 2rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
-.hero-actions .textlink { font-size: 0.9rem; }
+.hero-actions .textlink { font-size: 16px; }
 .textlink { color: var(--chocolate-80); }
 .hero .card { max-width: 26rem; justify-self: end; width: 100%; padding-bottom: 3.75rem; --margin: 4.9rem; }
 .hero .stamp { right: 1.2rem; bottom: 1rem; }
