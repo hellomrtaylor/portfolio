@@ -658,6 +658,8 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 
 /* Everything inside a themed case study page */
 [class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project); }
+body[class*="project-"] :is(.nav a, .nav summary, .chapters a, .work-menu li a):hover { background: var(--project-tint); color: var(--project); }
+body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-tint); color: var(--project); }
 [class*="project-"] .chapter .body li::marker { color: var(--project); }
 [class*="project-"] .pull { color: var(--project); }
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
