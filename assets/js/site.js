@@ -12,24 +12,38 @@ document.addEventListener('keydown', (e) => {
   });
 });
 
-// Highlight the current chapter in the case study index
+// Highlight the current chapter in the case study index. On phones the pill shows
+// only the current chapter (li.is-current) plus an arrow to the next one.
 const links = [...document.querySelectorAll('.chapters a')];
-if (links.length && 'IntersectionObserver' in window) {
-  const byId = new Map(links.map((a) => [a.hash.slice(1), a]));
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((en) => {
-      if (!en.isIntersecting) return;
-      links.forEach((a) => a.classList.remove('active'));
-      const a = byId.get(en.target.id);
-      if (a) {
+if (links.length) {
+  const nextLink = document.createElement('a');
+  nextLink.className = 'chapter-next';
+  nextLink.innerHTML = '<span aria-hidden="true">→</span>';
+  links[0].closest('.chapters').append(nextLink);
+  const setCurrent = (i) => {
+    links.forEach((a, j) => a.parentElement.classList.toggle('is-current', j === i));
+    const next = links[i + 1];
+    nextLink.hidden = !next;
+    if (next) { nextLink.href = next.hash; nextLink.setAttribute('aria-label', `Next section: ${next.textContent}`); }
+  };
+  setCurrent(0);
+  if ('IntersectionObserver' in window) {
+    const byId = new Map(links.map((a) => [a.hash.slice(1), a]));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const a = byId.get(en.target.id);
+        if (!a) return;
+        links.forEach((l) => l.classList.remove('active'));
         a.classList.add('active');
+        setCurrent(links.indexOf(a));
         const bar = a.closest('ol');
         const l = a.offsetLeft, r = l + a.offsetWidth;
         if (l < bar.scrollLeft || r > bar.scrollLeft + bar.clientWidth) bar.scrollLeft = l - 16;
-      }
-    });
-  }, { rootMargin: '-35% 0px -60% 0px' });
-  byId.forEach((_, id) => { const s = document.getElementById(id); if (s) obs.observe(s); });
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    byId.forEach((_, id) => { const s = document.getElementById(id); if (s) obs.observe(s); });
+  }
 }
 
 // Start every fresh page visit at the top (e.g. after "Next case study"),

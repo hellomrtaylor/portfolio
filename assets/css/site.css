@@ -75,6 +75,7 @@ body::after {
   content: ""; position: fixed; inset: 0; z-index: 40; pointer-events: none;
   border: var(--frame) solid #ffffff;
 }
+@media (max-width: 40rem) { body::after { border-inline-width: 0; } } /* phones: frame top and bottom only */
 
 a { color: inherit; text-underline-offset: 0.18em; }
 
@@ -152,6 +153,23 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   :root { --nav-space: 8.5rem; --header-flow: 7.06rem; } /* two pills stacked here */
   /* the chapters pill drops below the site nav, full width, and scrolls sideways */
   .bar > .chapters { flex: 1 1 100%; }
+}
+/* the next-chapter arrow only exists on phones */
+.chapters .chapter-next { display: none; }
+@media (max-width: 40rem) {
+  /* phones: one pill on the same row as Home/Work, showing the current chapter and an arrow to the next */
+  :root { --nav-space: 5rem; --header-flow: 3.56rem; }
+  .bar { flex-wrap: nowrap; }
+  .bar > .chapters { flex: 1 1 auto; display: flex; align-items: center; justify-content: space-between; gap: 0.25rem; }
+  .chapters ol { overflow: visible; min-width: 0; }
+  .chapters li:not(.is-current) { display: none; }
+  .chapters li.is-current a { overflow: hidden; text-overflow: ellipsis; }
+  .chapters .chapter-next {
+    display: grid; place-items: center; flex: none; width: 2.2rem; height: 2.2rem; padding: 0; border-radius: 0.6rem;
+    font-size: 1.1rem; font-weight: 700; color: inherit; text-decoration: none;
+    background: var(--project-tint, var(--fill)); color: var(--project-ink, var(--project, var(--fg)));
+  }
+  .chapters .chapter-next[hidden] { display: none; }
 }
 
 .work-menu { position: relative; }
@@ -241,13 +259,18 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   display: block; width: 100%; height: auto; aspect-ratio: 1;
   object-fit: cover; border-radius: 50%; transform: rotate(3deg);
 }
-.portrait-stamp {
-  position: absolute; left: -2.5rem; bottom: -1rem; width: clamp(7.5rem, 11vw, 10rem);
+.roundel.portrait-stamp {
+  position: absolute; left: -2.5rem; bottom: -1rem; width: clamp(9.5rem, 14vw, 11.5rem);
   background: var(--bg); border-radius: 50%; transform: rotate(-8deg);
 }
 @media (max-width: 56rem) {
   .portrait-wrap { justify-self: center; max-width: min(80vw, 22rem); }
-  .portrait-stamp { left: -1rem; bottom: -0.75rem; width: 7rem; }
+  .roundel.portrait-stamp { left: -1rem; bottom: -0.75rem; }
+}
+@media (max-width: 40rem) {
+  /* phones: a small portrait so the intro leads */
+  .portrait-wrap { max-width: 12rem; }
+  .roundel.portrait-stamp { left: -2rem; bottom: -0.5rem; width: 6.5rem; }
 }
 /* 404: the dog cut-out takes the portrait's place, with the same stamp */
 .lost-dog { position: relative; justify-self: end; width: 100%; max-width: 22rem; }
@@ -571,7 +594,7 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 /* A diagram without its container: no border, padding or background */
 .diagram.bare, [class*="project-"] .diagram.bare { border: 0; padding: 0; background: none; }
 
-.flow { --flow-gap: 2.25rem; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--flow-gap); }
+.flow { --flow-gap: 1rem; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--flow-gap); }
 .flow li {
   flex: 1 1 8rem; position: relative;
   border: 0; border-radius: var(--radius-lg); background: var(--fill);
@@ -580,17 +603,10 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .flow li small { display: block; font-size: 1.0625rem; font-weight: 400; line-height: 1.5; color: var(--muted); margin-top: 0.35rem; } /* step detail: body */
 .flow li.me { background: var(--fill-strong); font-weight: 600; }
 /* chevron centred in the gap between steps */
-.flow li:not(:last-child)::after {
-  content: ""; position: absolute; top: 50%; z-index: 1;
-  right: calc(var(--flow-gap) / -2 - 0.3rem);
-  width: 0.6rem; height: 0.6rem; border-top: 1.5px solid var(--fg); border-right: 1.5px solid var(--fg);
-  transform: translate(-0.15rem, -50%) rotate(45deg);
-}
 @media (max-width: 40rem) {
   .flow { flex-direction: column; }
   .flow li { flex-basis: auto; } /* stacked steps size to their content */
-  .flow { --flow-gap: 1.75rem; }
-  .flow li:not(:last-child)::after { right: auto; left: 1.2rem; top: auto; bottom: calc(var(--flow-gap) / -2 - 0.3rem); transform: translateY(-0.15rem) rotate(135deg); }
+  .flow { --flow-gap: 0.75rem; }
 }
 
 /* Venn */
@@ -702,7 +718,6 @@ body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-
 [class*="project-"] :is(.flow li, .hub .node, .funnel li, .fork .branch, .fork .root) { background: var(--project-tint); border-color: var(--project); }
 [class*="project-"] :is(.flow li.me, .hub .gate, .hub .out, .funnel li:nth-child(4), .fork .branch.shipped) { background: var(--project); color: var(--on-project); }
 [class*="project-"] :is(.flow li.me, .hub .gate, .funnel li:nth-child(4), .fork .branch.shipped) :is(small, .typed) { color: inherit; opacity: 0.85; }
-[class*="project-"] .flow li:not(:last-child)::after { border-color: var(--project); }
 [class*="project-"] .flow li small { color: #333333; } /* 10.6:1 on the step tint (was 4.8:1) */
 [class*="project-"] .fork::before { border-color: var(--project); }
 [class*="project-"] .fork .branch.rec .later { border-color: var(--project); color: var(--project); }
