@@ -51,6 +51,7 @@ Every image frame on the site shows a hatched placeholder with a brief and a fil
 | `assets/img/cross-border/hero.jpg` | Europe price map, Italy and Denmark called out |
 | `assets/img/cross-border/research.webp` (+ `-1120` 1x) | Added: research workshop boards, full width in The problem |
 | `assets/img/cross-border/key-1.webp` to `key-4.webp` (+ `-550` 1x) | Key product screens, 1100 x 690. key-1 coming-soon banner, key-2 inventory with marketplaces menu, key-3 listing stats (B2C + B2B), key-4 exclusion rule builder. All added |
+| `assets/img/cross-border/prototype-{1120,2240}.{mp4,webm}` + `prototype-poster*.webp` | Added: looping prototype walkthrough (muted, plays while on screen) |
 
 Frames marked `contain` in the HTML show the whole image (good for UI screenshots). The rest crop to fill.
 
