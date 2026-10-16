@@ -2,15 +2,13 @@
 
 Plain HTML and CSS. No build step, no dependencies.
 
-The site is currently a **wireframe**: greyscale, system fonts, no brand styling. Layout, spacing and responsive behaviour are all in place, so styling it means editing `assets/css/site.css`, starting with the tokens at the top.
+## Site structure
 
-## Holding page and hidden draft
-
-The public homepage (`index.html`) is a holding page: just the intro, with no links to anything else.
-
-The full site lives in `draft/` at **alitaylor.nl/draft/**. Nothing on the public page or the 404 page links there, and every page in it carries `noindex, nofollow`. It is unlisted, not private: anyone with the URL, or anyone reading the repo, can find it.
-
-To launch the full site, move the contents of `draft/` back to the root and remove the extra `../` from the asset paths. Or ask Claude to do it.
+- `index.html`: the homepage (intro, selected work, interests, contact).
+- `work/<case-study>/`: the three case studies.
+- `404.html`: page not found.
+- `draft/`: redirect stubs only. The site was built under `/draft/` before launch; these send old links to the new addresses.
+- `robots.txt` and `sitemap.xml` list the public pages for search engines. Add a line to the sitemap if you add a page.
 
 ## Cache busting
 
