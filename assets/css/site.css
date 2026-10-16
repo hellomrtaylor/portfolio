@@ -523,23 +523,30 @@ figcaption.cap { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; max
 .pager a + a { grid-template-areas: "label dot" "title dot"; text-align: right; }
 .pager .typed { grid-area: label; display: block; margin-bottom: 0.15rem; color: var(--muted); }
 .pager .h3 { grid-area: title; }
-/* the circle: the current case study's colour, switching to the destination's on hover */
+/* the circle: the current case study's colour, lightening a shade on hover */
 .pager a::before {
   content: ""; grid-area: dot; width: 2.75rem; height: 2.75rem; border-radius: 50%;
   background: var(--page-tone, var(--project, var(--fg)));
   box-shadow: 0 2px 6px color-mix(in srgb, var(--chocolate-100) 25%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: background-color 0.25s ease, transform 0.25s ease;
+  transition: background-color 0.25s ease;
 }
-/* the arrow, always shown; it nudges toward its destination on hover */
+/* the arrow fills the circle and is clipped to it, so on hover it can run out one
+   side and back in from the other, ending centred again */
 .pager a::after {
-  content: "←"; grid-area: dot; place-self: center; position: relative; z-index: 1; /* above the scaled circle */
-  font-family: var(--sans); font-size: 1.25rem; font-weight: 700; line-height: 1; color: var(--on-project, var(--bg));
-  transition: transform 0.25s ease;
+  content: "←"; grid-area: dot; place-self: center; position: relative; z-index: 1;
+  width: 2.75rem; height: 2.75rem; border-radius: 50%; overflow: hidden;
+  text-align: center; line-height: 2.75rem; white-space: nowrap;
+  font-family: var(--sans); font-size: 1.25rem; font-weight: 700; color: var(--on-project, var(--bg));
 }
 .pager a + a::after { content: "→"; }
-.pager a:is(:hover, :focus-visible)::before { background: var(--project, var(--fg)); transform: scale(1.06); }
-.pager a:is(:hover, :focus-visible)::after { transform: translateX(-0.2rem); }
-.pager a + a:is(:hover, :focus-visible)::after { transform: translateX(0.2rem); }
+.pager a:is(:hover, :focus-visible)::before { background: color-mix(in srgb, var(--page-tone, var(--project, var(--fg))) 72%, #ffffff); }
+@media (prefers-reduced-motion: no-preference) {
+  .pager a:is(:hover, :focus-visible)::after { animation: pager-back 0.55s ease-in-out; }
+  .pager a + a:is(:hover, :focus-visible)::after { animation-name: pager-on; }
+}
+/* centred text moves half the indent, so 4rem carries the arrow just out of the circle */
+@keyframes pager-on { 0% { text-indent: 0; } 45% { text-indent: 4rem; } 45.01% { text-indent: -4rem; } 100% { text-indent: 0; } }
+@keyframes pager-back { 0% { text-indent: 0; } 45% { text-indent: -4rem; } 45.01% { text-indent: 4rem; } 100% { text-indent: 0; } }
 @media (max-width: 40rem) {
   .pager { flex-direction: column; align-items: stretch; }
   .pager a { justify-self: start; align-self: flex-start; }
