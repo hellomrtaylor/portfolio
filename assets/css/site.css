@@ -546,8 +546,6 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
   .chapter-grid.with-fig > .body, .chapter-grid.with-fig > .chapter-fig { grid-column: auto; grid-row: auto; }
 }
 
-/* Pull statement */
-/* Pull quote with its text alongside: quote left, copy right, tops aligned */
 
 /* Key decision callout */
 .decision { border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill); padding: 1rem 1.5rem; margin: 1.5rem 0; max-width: var(--measure); }
