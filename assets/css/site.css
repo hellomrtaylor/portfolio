@@ -143,7 +143,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   padding: 0.5rem 1rem; border-radius: 0.6rem;
   transition: background-color 0.15s, color 0.15s;
 }
-.nav a:hover, .nav summary:hover, .chapters a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); }
+.nav a:hover, .nav summary:hover, .chapters a:hover { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); } /* same tint as the selected state */
 .nav a[aria-current="page"], .work-menu.current summary { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); font-weight: 600; }
 
 .chapters { min-width: 0; }
@@ -201,8 +201,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   font-size: 1rem; padding: 0.5rem 1rem;
   line-height: 1.5rem;
 }
-.work-menu li a[aria-current="page"] { font-weight: 600; }
-.work-menu li a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); }
+.work-menu li a[aria-current="page"] { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); font-weight: 600; }
+.work-menu li a:hover { background: color-mix(in srgb, var(--chocolate-40) 90%, transparent); }
 
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -726,7 +726,11 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 [class*="project-"] .work-menu.current summary { background: var(--project-tint); color: var(--project-ink); }
 body[class*="project-"] :is(.nav a, .nav summary, .chapters a) { color: #333333; }
 body[class*="project-"] :is(.nav a, .nav summary, .chapters a, .work-menu li a):hover { background: var(--project-tint); color: var(--project-ink); }
-body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-tint); color: var(--project-ink); }
+/* One selected state everywhere on a case study: page-colour text on the page tint, semibold.
+   Covers the Work button, the current case study in the menu, the active chapter and the selected brand tab. */
+body[class*="project-"] :is(.nav a[aria-current="page"], .chapters a.active, .brand-tabs button[aria-selected="true"]) {
+  background: var(--project-tint); color: var(--project-ink); font-weight: 600;
+}
 [class*="project-"] .chapter .body li::marker { color: var(--project); }
 [class*="project-"] .pull { color: var(--project); }
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
@@ -775,7 +779,6 @@ body[class*="project-"] .nav a[aria-current="page"] { background: var(--project-
 /* on case study pages, match the nav: neutral grey at rest, page colour on hover */
 body[class*="project-"] :is(.brand-tabs button, .brand-switch-title) { color: #333333; }
 body[class*="project-"] .brand-tabs button:hover { background: var(--project-tint); color: var(--project-ink); }
-body[class*="project-"] .brand-tabs button[aria-selected="true"] { color: var(--project-ink); }
 /* panels stack in one cell so switching never changes the height */
 .brand-panels { display: grid; }
 .brand-panel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
