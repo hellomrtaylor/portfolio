@@ -78,7 +78,7 @@ body::after {
   content: ""; position: fixed; inset: 0; z-index: 40; pointer-events: none;
   border: var(--frame) solid #ffffff;
 }
-@media (max-width: 40rem) { body::after { border-inline-width: 0; } } /* phones: frame top and bottom only */
+@media (max-width: 40rem) { :root { --frame: 0px; } body::after { display: none; } } /* phones: no frame */
 
 a { color: inherit; text-underline-offset: 0.18em; }
 
