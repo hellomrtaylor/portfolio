@@ -10,6 +10,14 @@ Plain HTML and CSS. No build step, no dependencies.
 - `draft/`: redirect stubs only. The site was built under `/draft/` before launch; these send old links to the new addresses.
 - `robots.txt` and `sitemap.xml` list the public pages for search engines. Add a line to the sitemap if you add a page.
 
+## 8px grid
+
+Spacing, line heights and fixed-height elements (nav pills, buttons, tabs, circles) are multiples of 8px.
+
+- Type: 12px captions on a 16px line, 16px body on 24px, 24px reading text on 32px (16/24 on phones). Headings stay fluid, with `line-height: round(…em, 8px)` so they still sit on the grid.
+- Fluid spacing is wrapped in `round(clamp(…), 8px)` so it steps in 8px increments as the screen grows.
+- Elements with a 1px border use `calc(… - 1px)` padding so the outer size stays on the grid.
+
 ## Cache busting
 
 Every page links `site.css` and `site.js` with a `?v=` version, because GitHub Pages lets browsers cache them for 10 minutes. After changing either file, update the version on every page so visitors get the new file:
