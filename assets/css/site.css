@@ -515,7 +515,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .cs-hero h1 { margin-bottom: 1rem; }
 .cs-hero .lede { margin: 0; }
-.cs-hero .card { background: var(--bg); max-width: 22rem; justify-self: end; width: 100%; }
+.cs-hero .card { background: var(--bg); max-width: 24rem; justify-self: end; width: 100%; }
 .cs-hero .hero-shot { margin-top: round(clamp(2rem, 5vw, 3rem), 8px); margin-bottom: -1px; }
 .cs-hero .hero-shot .shot { border-radius: var(--radius-lg) var(--radius-lg) 0 0; aspect-ratio: 16 / 8; }
 @media (max-width: 52rem) {
