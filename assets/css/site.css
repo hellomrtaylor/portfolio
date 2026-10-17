@@ -45,7 +45,7 @@
   --wide: 76rem;
   --radius: 4px;
   --radius-lg: 16px;                /* images and large surfaces: cards, callouts, diagrams */
-  --frame: 8px;                     /* white frame around the viewport */
+  --frame: 24px;                    /* white frame around the viewport (desktop only, see below) */
   /* line icons, drawn as masks so they take the text colour and look the same on every device */
   --icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
   --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
@@ -98,7 +98,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
 
 h1, h2, h3 { font-family: var(--sans); font-weight: 700; line-height: 1.1; line-height: round(1.1em, 8px); margin: 0; }
 .display { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; line-height: 1; line-height: round(up, 1em, 8px); font-size: clamp(2.8rem, 1.6rem + 5.4vw, 6rem); }
-/* h2, h3 and .pull use the display serif (single regular weight, sized up a touch as it runs narrow) */
+/* h2 and h3 use the display serif (single regular weight, sized up a touch as it runs narrow) */
 h2, .h2, h3, .h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; line-height: round(1.05em, 8px); }
 h2, .h2  { font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.6rem); }
 h3, .h3  { font-size: clamp(1.45rem, 1.25rem + 0.8vw, 1.9rem); line-height: 1.1; line-height: round(1.1em, 8px); }
@@ -546,13 +546,6 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
   .chapter-grid.with-fig > .body, .chapter-grid.with-fig > .chapter-fig { grid-column: auto; grid-row: auto; }
 }
 
-/* Pull statement */
-.pull { font-family: var(--serif); font-size: clamp(2rem, 1.4rem + 2.8vw, 3.6rem); line-height: 1.05; line-height: round(1.05em, 8px); font-weight: 400; max-width: 22ch; margin: 0; }
-/* Pull quote with its text alongside: quote left, copy right, tops aligned */
-.pull-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem round(clamp(2rem, 5vw, 5rem), 8px); align-items: start; }
-.pull-split .body p:last-child { margin-bottom: 0; }
-@media (max-width: 52rem) { .pull-split { grid-template-columns: 1fr; } }
-.pull-wrap { padding: round(clamp(3rem, 7vw, 5rem), 8px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--frame) + var(--nav-space)); }
 
 /* Key decision callout */
 .decision { border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill); padding: 1rem 1.5rem; margin: 1.5rem 0; max-width: var(--measure); }
@@ -732,7 +725,6 @@ body[class*="project-"] :is(.nav a[aria-current="page"], .chapters a.active, .br
   background: var(--project-tint); color: var(--project-ink); font-weight: 600;
 }
 [class*="project-"] .chapter .body li::marker { color: var(--project); }
-[class*="project-"] .pull { color: var(--project); }
 [class*="project-"] .btn { background: var(--project); border-color: var(--project); color: var(--on-project); }
 /* "Want the full story?" matches the case study hero; its button flips to Vanilla */
 [class*="project-"] .contact { background: var(--project); color: var(--on-project); }
