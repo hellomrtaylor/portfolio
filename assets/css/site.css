@@ -78,7 +78,7 @@ body::after {
   content: ""; position: fixed; inset: 0; z-index: 40; pointer-events: none;
   border: var(--frame) solid #ffffff;
 }
-@media (max-width: 40rem) { :root { --frame: 0px; } body::after { display: none; } } /* phones: no frame */
+@media (max-width: 64rem) { :root { --frame: 0px; } body::after { display: none; } } /* below desktop (phones and tablets, up to 1024px): no frame */
 
 a { color: inherit; text-underline-offset: 0.18em; }
 
@@ -197,13 +197,12 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 10px 30px -14px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
 }
 .work-menu li a {
-  display: grid; grid-template-columns: 1rem 1fr; gap: 0.5rem; align-items: center;
+  display: block;
   font-size: 1rem; padding: 0.5rem 1rem;
   line-height: 1.5rem;
 }
 .work-menu li a[aria-current="page"] { font-weight: 600; }
 .work-menu li a:hover { background: color-mix(in srgb, var(--chocolate-40) 70%, transparent); }
-.dot { width: 1rem; height: 1rem; border-radius: 50%; border: 1px solid var(--fg); background: var(--fill); }
 
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -515,7 +514,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .cs-hero h1 { margin-bottom: 1rem; }
 .cs-hero .lede { margin: 0; }
-.cs-hero .card { background: var(--bg); max-width: 22rem; justify-self: end; width: 100%; }
+.cs-hero .card { background: var(--bg); max-width: 24rem; justify-self: end; width: 100%; }
 .cs-hero .hero-shot { margin-top: round(clamp(2rem, 5vw, 3rem), 8px); margin-bottom: -1px; }
 .cs-hero .hero-shot .shot { border-radius: var(--radius-lg) var(--radius-lg) 0 0; aspect-ratio: 16 / 8; }
 @media (max-width: 52rem) {
@@ -692,7 +691,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
    Project themes
    .project-1/2/3 sets --project to that case study's tone. It sits on each
    case study's <body> (theming the whole page) and on the homepage cards,
-   Work-menu dots and pager links.
+   Pager links.
    ========================================================================== */
 
 /* Case study pages keep neutral text; the chocolate defaults apply everywhere else */
@@ -714,8 +713,7 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 [class*="project-"] { --project-ink: var(--project); }
 .project-2 { --project-ink: color-mix(in srgb, var(--project) 85%, #000000); }
 
-/* Dots, homepage cards, pager */
-.dot[class*="project-"] { background: var(--project); border-color: var(--project); }
+/* Homepage cards, pager */
 .book[class*="project-"] { background: var(--project); color: var(--on-project); }
 
 /* Case study hero */
