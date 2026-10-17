@@ -45,7 +45,7 @@
   --wide: 76rem;
   --radius: 4px;
   --radius-lg: 16px;                /* images and large surfaces: cards, callouts, diagrams */
-  --frame: 8px;                     /* white frame around the viewport */
+  --frame: 24px;                    /* white frame around the viewport (desktop only, see below) */
   /* line icons, drawn as masks so they take the text colour and look the same on every device */
   --icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
   --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
