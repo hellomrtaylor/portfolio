@@ -179,6 +179,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 
 .work-menu { position: relative; }
+/* the blurred pills each form their own stack, so lift the site nav above the chapters pill, or its open menu slides under the chapters where they stack on smaller screens */
+.bar > .nav { position: relative; z-index: 1; }
 .work-menu summary { list-style: none; display: flex; align-items: center; gap: 0.5rem; }
 .work-menu summary::-webkit-details-marker { display: none; }
 .work-menu summary::after {
