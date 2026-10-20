@@ -146,6 +146,59 @@ document.querySelectorAll('[data-sync]').forEach((g) => {
   lead.addEventListener('timeupdate', sync);
 });
 
+// Sideways galleries: the arrows step one group of screens at a time, a mouse can
+// drag the row (trackpads and touch scroll it natively), and each arrow fades out
+// at its end of the row
+document.querySelectorAll('[data-gallery]').forEach((g) => {
+  const track = g.querySelector('.gallery-track');
+  const prev = g.querySelector('.gallery-nav .prev');
+  const next = g.querySelector('.gallery-nav .next');
+  const items = [...track.children];
+  const shots = [...track.querySelectorAll('.shot')];
+  const pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+  const update = () => {
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2
+      || !items.some((i) => i.offsetLeft > track.scrollLeft + pad + 2);
+  };
+  const go = (dir) => {
+    const x = track.scrollLeft + pad;
+    const target = dir > 0 ? items.find((i) => i.offsetLeft > x + 2) : items.slice().reverse().find((i) => i.offsetLeft < x - 2);
+    track.scrollTo({ left: target ? target.offsetLeft - pad : (dir > 0 ? track.scrollWidth : 0), behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+
+  let startX = 0, startLeft = 0, moved = false;
+  track.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    startX = e.clientX; startLeft = track.scrollLeft; moved = false;
+    track.setPointerCapture(e.pointerId);
+    track.classList.add('dragging');
+  });
+  track.addEventListener('pointermove', (e) => {
+    if (!track.classList.contains('dragging')) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 3) moved = true;
+    track.scrollLeft = startLeft - dx;
+  });
+  const end = (e) => {
+    if (!track.classList.contains('dragging')) return;
+    track.classList.remove('dragging');
+    if (track.hasPointerCapture(e.pointerId)) track.releasePointerCapture(e.pointerId);
+    // settle on the nearest screen after a drag
+    const x = track.scrollLeft + pad;
+    const nearest = shots.reduce((a, b) => (Math.abs(b.offsetLeft - x) < Math.abs(a.offsetLeft - x) ? b : a));
+    track.scrollTo({ left: nearest.offsetLeft - pad, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+  track.addEventListener('pointerup', end);
+  track.addEventListener('pointercancel', end);
+  track.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+});
+
 // Sections fade and rise in one by one: those on screen at load are staggered,
 // later ones come in as they're scrolled to. The head script adds .rv (and skips
 // it for reduced motion); __rv tells its fallback timer this script ran.
