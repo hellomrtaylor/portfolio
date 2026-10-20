@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("rv");setTimeout(function(){if(!window.__rv)document.documentElement.classList.add("rv-done")},2500)}</script>
-<link rel="stylesheet" href="../../assets/css/site.css?v=81f3ab73">
+<link rel="stylesheet" href="../../assets/css/site.css?v=c38c9786">
 </head>
 <body class="project-1">
 <a class="skip" href="#main">Skip to content</a>
@@ -231,18 +231,26 @@
       <div class="body">
 <p>As AI changes how we work, the design system has a new kind of user: the agents my team builds with. Codex and Figma Make can produce a screen in minutes, but without the system to draw on they guess, and their output drifts the same way our product once did.</p>
 <p>So I&rsquo;m moving Showcar&rsquo;s documentation into GitHub, alongside the code, where agents can read it. With our platform team, I&rsquo;m building an MCP server for the design system, so Codex and Figma Make can look up the right components, tokens and usage rules as they work. The aim is the one Showcar has always had: what gets specified is what gets built, whether a designer or an agent is doing the building.</p>
-<p>While the MCP server is in progress, a design system skill already gives agents the rules, and the difference shows in what they produce.</p>
+<p>While the MCP server is in progress, my Figma Make kit already gives agents the rules. Both pages below were built in one shot from a single prompt, the second with the kit. They play side by side, so you can compare them as they scroll.</p>
       </div>
     </div>
-<div class="figs-wrap"><div class="figs two">
-<figure><div class="shot natural" style="--ar: 1100 / 690">
-  <div class="todo" aria-hidden="true"><strong>Image to add</strong>The same prompt run without the design system skill.<code>assets/img/showcar/ai-before.webp</code></div>
-  <img src="../../assets/img/showcar/ai-before.webp" srcset="../../assets/img/showcar/ai-before-550.webp 550w, ../../assets/img/showcar/ai-before.webp 1100w" sizes="(max-width: 52rem) 100vw, 548px" width="1100" height="690" alt="" loading="lazy" onerror="this.remove()">
-</div><figcaption class="cap">Without the design system skill.</figcaption></figure>
-<figure><div class="shot natural" style="--ar: 1100 / 690">
-  <div class="todo" aria-hidden="true"><strong>Image to add</strong>The same prompt run with the design system skill.<code>assets/img/showcar/ai-after.webp</code></div>
-  <img src="../../assets/img/showcar/ai-after.webp" srcset="../../assets/img/showcar/ai-after-550.webp 550w, ../../assets/img/showcar/ai-after.webp 1100w" sizes="(max-width: 52rem) 100vw, 548px" width="1100" height="690" alt="" loading="lazy" onerror="this.remove()">
-</div><figcaption class="cap">With the design system skill.</figcaption></figure>
+<div class="figs-wrap"><div class="figs two" data-sync>
+<figure><div class="shot natural" style="--ar: 1120 / 602">
+  <video class="loop-video" muted loop playsinline preload="none" width="1120" height="602"
+    poster="../../assets/img/showcar/ai-before-poster.webp"
+    aria-label="Scrolling a car listing page built from one prompt without the kit: a full-width hero photo, breadcrumbs, a plain equipment list and a seller card, with a sticky call and message bar.">
+    <source src="../../assets/img/showcar/ai-before-1120.mp4" type="video/mp4">
+    <source src="../../assets/img/showcar/ai-before-1120.webm" type="video/webm">
+  </video>
+</div><figcaption class="cap">Without the kit: one prompt, one shot.</figcaption></figure>
+<figure><div class="shot natural" style="--ar: 1120 / 602">
+  <video class="loop-video" muted loop playsinline preload="none" width="1120" height="602"
+    poster="../../assets/img/showcar/ai-after-poster.webp"
+    aria-label="Scrolling a car listing page built from one prompt with the Figma Make kit: AutoScout24 header and branding, title, photo gallery with a warranty badge, a price card with a finance estimate and contact buttons, a searchable equipment list in collapsible groups, and a verified dealer card.">
+    <source src="../../assets/img/showcar/ai-after-1120.mp4" type="video/mp4">
+    <source src="../../assets/img/showcar/ai-after-1120.webm" type="video/webm">
+  </video>
+</div><figcaption class="cap">With my Figma Make kit: one prompt, one shot.</figcaption></figure>
 </div></div>
   </div>
 </section>
@@ -264,6 +272,6 @@
     <p class="copyright">&copy; 2026 Ali Taylor</p>
   </div>
 </section>
-<script src="../../assets/js/site.js?v=81f3ab73" defer></script>
+<script src="../../assets/js/site.js?v=c38c9786" defer></script>
 </body>
 </html>

@@ -133,6 +133,19 @@ document.querySelectorAll('video.loop-video').forEach((v) => {
   }, { threshold: 0.25 }).observe(v);
 });
 
+// Paired videos (a [data-sync] group) run on the first one's clock, so a
+// before and after scroll past the same point at the same moment
+document.querySelectorAll('[data-sync]').forEach((g) => {
+  const [lead, ...rest] = g.querySelectorAll('video');
+  if (!lead || reduceMotion) return;
+  const sync = () => rest.forEach((v) => {
+    if (Math.abs(v.currentTime - lead.currentTime) > 0.15) v.currentTime = lead.currentTime;
+  });
+  lead.addEventListener('play', () => { sync(); rest.forEach((v) => v.play().catch(() => {})); });
+  lead.addEventListener('pause', () => rest.forEach((v) => v.pause()));
+  lead.addEventListener('timeupdate', sync);
+});
+
 // Sections fade and rise in one by one: those on screen at load are staggered,
 // later ones come in as they're scrolled to. The head script adds .rv (and skips
 // it for reduced motion); __rv tells its fallback timer this script ran.
