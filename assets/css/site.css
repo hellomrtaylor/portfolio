@@ -446,7 +446,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .gallery .shot { scroll-snap-align: start; } /* snap to each screen, so a wide desktop shot can be read in parts on a phone */
 .gallery-shots { display: flex; gap: 1rem; }
 .gallery .shot { flex: none; height: var(--gh); aspect-ratio: var(--ar); background: #ffffff; }
-.gallery .cap { max-width: min(40rem, calc(100vw - 2 * var(--gutter))); }
+.gallery .cap { width: 0; min-width: 100%; } /* the caption wraps to the width of its screens instead of widening them */
 .gallery-nav { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem; }
 .gallery-nav button {
   width: 3rem; height: 3rem; border: 0; border-radius: 50%; cursor: pointer; position: relative;
