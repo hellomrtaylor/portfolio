@@ -33,6 +33,7 @@
   --tone-1: var(--mint-100);       /* Multi-Brand Design System */
   --tone-2: var(--strawberry-80);  /* Dealer Pricing Insights */
   --tone-3: var(--blueberry-80);   /* Selling Cars Across Europe */
+  --tone-4: var(--chocolate-80);   /* Selling Your Own Car */
 
   /* Type. Instrument Serif for display headings and case study titles; Instrument Sans for everything else.
      Loaded from Google Fonts in each page's <head>. */
@@ -409,6 +410,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .shot.tall { aspect-ratio: 4 / 5; }
 .shot.wide { aspect-ratio: 21 / 9; }
 .shot.square { aspect-ratio: 1; }
+.shot > iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
 .shot > img, .shot > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .shot.contain > img { object-fit: contain; }
 .shot .todo {
@@ -722,14 +724,15 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
    ========================================================================== */
 
 /* Case study pages keep neutral text; the chocolate defaults apply everywhere else */
-body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666; }
+body.project-1, body.project-2, body.project-3, body.project-4 { --fg: #111111; --muted: #666666; }
 /* the current case study's colour, kept even inside links that set --project to another study */
-body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var(--tone-2); } body.project-3 { --page-tone: var(--tone-3); }
+body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var(--tone-2); } body.project-3 { --page-tone: var(--tone-3); } body.project-4 { --page-tone: var(--tone-4); }
 
 .project-1 { --project: var(--tone-1); }
 .project-2 { --project: var(--tone-2); }
 .project-3 { --project: var(--tone-3); }
-.project-1, .project-2, .project-3 {
+.project-4 { --project: var(--tone-4); }
+.project-1, .project-2, .project-3, .project-4 {
   --project-tint: color-mix(in srgb, var(--project) 8%, var(--bg));   /* soft surfaces */
   --project-soft: color-mix(in srgb, var(--project) 20%, var(--bg));  /* stronger fills */
   --on-project: var(--bg);                                            /* text on --project */
@@ -747,6 +750,8 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
 .cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
 /* An image shown at its own proportions (no cropping at any width); set --ar inline, e.g. style="--ar: 2000 / 932" */
+.shot.embed { aspect-ratio: var(--ar, 16 / 10); }
+@media (max-width: 52rem) { .shot.embed { aspect-ratio: 4 / 5; } } /* a phone prototype needs height on a phone */
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
 /* Everything inside a themed case study page */
