@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("rv");setTimeout(function(){if(!window.__rv)document.documentElement.classList.add("rv-done")},2500)}</script>
-<link rel="stylesheet" href="../../assets/css/site.css?v=81f3ab73">
+<link rel="stylesheet" href="../../assets/css/site.css?v=95ef3896">
 </head>
 <body class="project-1">
 <a class="skip" href="#main">Skip to content</a>
@@ -31,9 +31,10 @@
       <details class="work-menu current">
         <summary>Work</summary>
           <ul>
-  <li><a href="../../work/showcar/" aria-current="page">Multi-Brand Design System</a></li>
-  <li><a href="../../work/competitive-insights/">Dealer Pricing Insights</a></li>
   <li><a href="../../work/cross-border/">Selling Cars Across Europe</a></li>
+  <li><a href="../../work/competitive-insights/">Dealer Pricing Insights</a></li>
+  <li><a href="../../work/showcar/" aria-current="page">Multi-Brand Design System</a></li>
+  <li><a href="../../work/private-sellers/">Selling Your Own Car</a></li>
           </ul>
       </details>
     </nav>
@@ -59,7 +60,7 @@
         <p class="lede">Scaling a multi-brand, code-synced design system without a dedicated team.</p>
       </div>
       <aside class="card" aria-label="Project details">
-        <div class="card-top"><span>Case study 1 of 3</span><span>AutoScout24</span></div>
+        <div class="card-top"><span>Case study 3 of 4</span><span>AutoScout24</span></div>
         <dl>
 <div><dt>Role</dt><dd>Design system lead</dd></div>
 <div><dt>Team</dt><dd>UX team and front-end engineers</dd></div>
@@ -114,6 +115,7 @@
         <h2 id="approach-h">Building it with people, not for them</h2>
       </div>
       <div class="body">
+<p>I was leading Showcar alongside my product work, so I couldn&rsquo;t build it all myself, and I didn&rsquo;t want to. A system one person owns breaks the moment they&rsquo;re busy. The bigger change was in how the organisation worked: Showcar had to become something designers and engineers across teams built together.</p>
 <ul>
 <li><strong>A way to contribute.</strong> I set up a contribution process: a dedicated Slack channel and a bi-monthly UI Guild call where designers could propose new components or changes to existing ones.</li>
 <li><strong>Components with the UX team.</strong> I worked with the UX team to design the components and write their documentation, so every addition shipped with guidance on how to use it.</li>
@@ -151,8 +153,9 @@
   <div class="fact"><b>38</b><span>components fully implemented</span></div>
   <div class="fact"><b>10+</b><span>products built on it</span></div>
 </div>
-<p>Showcar is now complete enough to build on. It underpins search, the private seller flow and the key dealer interfaces, and it supports multiple brands through its tokens. One system now carries 6 distinct brands, the foundation that running these businesses on one platform depended on.</p>
+<p>Showcar is now complete enough to build on. It underpins more than 10 products, including search, the homepage, listing creation, dealer inventory and dealer account pages. Through its tokens, one system carries four brands, the foundation that running these businesses on one platform depended on.</p>
 <p>Because design and code share the same tokens, what designers specify is what engineers build.</p>
+<p>The way teams work changed too. Designers who need something new bring it to the UI Guild instead of solving it alone, the community decides what goes in, and every contribution ships with documentation. Showcar went from a system nobody owned to one the UX team and engineers build together.</p>
       </div>
     </div>
 <div class="figs-wrap">
@@ -227,16 +230,36 @@
         <h2 id="next-h">AI agents are becoming a customer for the design system</h2>
       </div>
       <div class="body">
-<p>As AI transforms our workflow, the design system sits at the heart of that transformation. I'm now working on integrating it with Figma Make and Codex, and making the documentation machine-readable, so agents can build to the same standard as the team.</p>
+<p>As AI changes how we work, the design system has a new kind of user: the agents the team builds with. Codex and Figma Make can produce a screen in minutes, but without the system to draw on, their output drifts.</p>
+<p>So I&rsquo;m moving Showcar&rsquo;s documentation into GitHub, alongside the code, where agents can read it. With our platform team, I&rsquo;m building an MCP server for the design system, so agents can look up the right components, tokens and usage rules as they work. The aim is the one Showcar has always had: what gets specified is what gets built, whether a designer or an agent is doing the building.</p>
+<p>While the MCP server is in progress, my Figma Make kit already gives agents the rules. Both pages below were built in one shot from a single prompt, the second with the kit. They play side by side, so you can compare them as they scroll.</p>
       </div>
     </div>
+<div class="figs-wrap"><div class="figs two" data-sync>
+<figure><div class="shot natural" style="--ar: 1120 / 602">
+  <video class="loop-video" muted loop playsinline preload="none" width="1120" height="602"
+    poster="../../assets/img/showcar/ai-before-poster.webp"
+    aria-label="Scrolling a car listing page built from one prompt without the kit: a full-width hero photo, breadcrumbs, a plain equipment list and a seller card, with a sticky call and message bar.">
+    <source src="../../assets/img/showcar/ai-before-1120.mp4" type="video/mp4">
+    <source src="../../assets/img/showcar/ai-before-1120.webm" type="video/webm">
+  </video>
+</div><figcaption class="cap">Without the kit: one prompt, one shot.</figcaption></figure>
+<figure><div class="shot natural" style="--ar: 1120 / 602">
+  <video class="loop-video" muted loop playsinline preload="none" width="1120" height="602"
+    poster="../../assets/img/showcar/ai-after-poster.webp"
+    aria-label="Scrolling a car listing page built from one prompt with the Figma Make kit: AutoScout24 header and branding, title, photo gallery with a warranty badge, a price card with a finance estimate and contact buttons, a searchable equipment list in collapsible groups, and a verified dealer card.">
+    <source src="../../assets/img/showcar/ai-after-1120.mp4" type="video/mp4">
+    <source src="../../assets/img/showcar/ai-after-1120.webm" type="video/webm">
+  </video>
+</div><figcaption class="cap">With my Figma Make kit: one prompt, one shot.</figcaption></figure>
+</div></div>
   </div>
 </section>
 </main>
 
 <nav class="pager" aria-label="More case studies">
-  <a class="project-3" href="../../work/cross-border/"><span class="typed">Previous case study</span><span class="h3">Selling Cars Across Europe</span></a>
-  <a class="project-2" href="../../work/competitive-insights/"><span class="typed">Next case study</span><span class="h3">Dealer Pricing Insights</span></a>
+  <a class="project-2" href="../../work/competitive-insights/"><span class="typed">Previous case study</span><span class="h3">Dealer Pricing Insights</span></a>
+  <a class="project-4" href="../../work/private-sellers/"><span class="typed">Next case study</span><span class="h3">Selling Your Own Car</span></a>
 </nav>
 <section class="contact section" id="contact" aria-labelledby="contact-h">
   <div class="wrap">
@@ -244,12 +267,12 @@
       <h2 id="contact-h">Want the full story?</h2>
     </div>
     <div>
-      <p>The full multi-brand design system case study, with the numbers, is a conversation away.</p>
+      <p>Want to go deeper? I&rsquo;m happy to walk you through the work, the decisions behind it and what I&rsquo;d do differently.</p>
       <a class="btn" href="mailto:sayhi@alitaylor.nl">sayhi@alitaylor.nl</a>
     </div>
     <p class="copyright">&copy; 2026 Ali Taylor</p>
   </div>
 </section>
-<script src="../../assets/js/site.js?v=81f3ab73" defer></script>
+<script src="../../assets/js/site.js?v=95ef3896" defer></script>
 </body>
 </html>

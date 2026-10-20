@@ -33,6 +33,7 @@
   --tone-1: var(--mint-100);       /* Multi-Brand Design System */
   --tone-2: var(--strawberry-80);  /* Dealer Pricing Insights */
   --tone-3: var(--blueberry-80);   /* Selling Cars Across Europe */
+  --tone-4: var(--chocolate-80);   /* Selling Your Own Car */
 
   /* Type. Instrument Serif for display headings and case study titles; Instrument Sans for everything else.
      Loaded from Google Fonts in each page's <head>. */
@@ -178,6 +179,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 
 .work-menu { position: relative; }
+/* the blurred pills each form their own stack, so lift the site nav above the chapters pill, or its open menu slides under the chapters where they stack on smaller screens */
+.bar > .nav { position: relative; z-index: 1; }
 .work-menu summary { list-style: none; display: flex; align-items: center; gap: 0.5rem; }
 .work-menu summary::-webkit-details-marker { display: none; }
 .work-menu summary::after {
@@ -409,6 +412,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .shot.tall { aspect-ratio: 4 / 5; }
 .shot.wide { aspect-ratio: 21 / 9; }
 .shot.square { aspect-ratio: 1; }
+.shot > iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
 .shot > img, .shot > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .shot.contain > img { object-fit: contain; }
 .shot .todo {
@@ -424,6 +428,40 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .shot .todo > * { background: var(--fill); align-self: flex-start; padding: 0 0.5rem; }
 .shot .todo strong { color: var(--fg); font-weight: 600; }
 .shot .todo code { font-family: var(--sans); font-size: 0.75rem; word-break: break-all; line-height: 1rem; }
+
+/* Sideways gallery: groups of screens (mobile, then desktop) in one scrolling row,
+   moved by trackpad, mouse drag or the arrow buttons. The track's padding keeps
+   image shadows and focus rings from being clipped by the scroll box. */
+.gallery, .figs:has(> .gallery) { min-width: 0; } /* grid items: let the track scroll instead of widening the page */
+.gallery { --gh: clamp(17.5rem, 34vw, 27rem); }
+.gallery-track {
+  position: relative; display: flex; gap: 2.5rem; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-padding-inline: 0.5rem; scrollbar-width: none;
+  padding: 0.5rem; margin: -0.5rem; cursor: grab;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+.gallery-track.dragging { scroll-snap-type: none; cursor: grabbing; user-select: none; }
+.gallery-track img { -webkit-user-drag: none; }
+.gallery-item { flex: none; }
+.gallery .shot { scroll-snap-align: start; } /* snap to each screen, so a wide desktop shot can be read in parts on a phone */
+.gallery-shots { display: flex; gap: 1rem; }
+.gallery .shot { flex: none; height: var(--gh); aspect-ratio: var(--ar); background: #ffffff; }
+.gallery .cap { width: 0; min-width: 100%; } /* the caption wraps to the width of its screens instead of widening them */
+.gallery-nav { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem; }
+.gallery-nav button {
+  width: 3rem; height: 3rem; border: 0; border-radius: 50%; cursor: pointer; position: relative;
+  background: var(--page-tone, var(--project, var(--fg)));
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--chocolate-100) 25%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: background-color 0.25s ease, opacity 0.25s ease;
+}
+.gallery-nav button::after {
+  content: ""; position: absolute; inset: 0; background: var(--on-project, var(--bg));
+  -webkit-mask: var(--icon-arrow) 50% 50% / 1.5rem no-repeat; mask: var(--icon-arrow) 50% 50% / 1.5rem no-repeat;
+}
+.gallery-nav .prev::after { transform: scaleX(-1); }
+.gallery-nav button:focus-visible:not(:disabled) { background: color-mix(in srgb, var(--page-tone, var(--project, var(--fg))) 72%, #ffffff); }
+@media (hover: hover) { .gallery-nav button:hover:not(:disabled) { background: color-mix(in srgb, var(--page-tone, var(--project, var(--fg))) 72%, #ffffff); } }
+.gallery-nav button:disabled { opacity: 0.3; cursor: default; box-shadow: none; }
 
 figure { margin: 0; }
 figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; max-width: 40rem; line-height: 1rem; }
@@ -688,14 +726,15 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
    ========================================================================== */
 
 /* Case study pages keep neutral text; the chocolate defaults apply everywhere else */
-body.project-1, body.project-2, body.project-3 { --fg: #111111; --muted: #666666; }
+body.project-1, body.project-2, body.project-3, body.project-4 { --fg: #111111; --muted: #666666; }
 /* the current case study's colour, kept even inside links that set --project to another study */
-body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var(--tone-2); } body.project-3 { --page-tone: var(--tone-3); }
+body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var(--tone-2); } body.project-3 { --page-tone: var(--tone-3); } body.project-4 { --page-tone: var(--tone-4); }
 
 .project-1 { --project: var(--tone-1); }
 .project-2 { --project: var(--tone-2); }
 .project-3 { --project: var(--tone-3); }
-.project-1, .project-2, .project-3 {
+.project-4 { --project: var(--tone-4); }
+.project-1, .project-2, .project-3, .project-4 {
   --project-tint: color-mix(in srgb, var(--project) 8%, var(--bg));   /* soft surfaces */
   --project-soft: color-mix(in srgb, var(--project) 20%, var(--bg));  /* stronger fills */
   --on-project: var(--bg);                                            /* text on --project */
@@ -713,6 +752,8 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
 .cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
 /* An image shown at its own proportions (no cropping at any width); set --ar inline, e.g. style="--ar: 2000 / 932" */
+.shot.embed { aspect-ratio: var(--ar, 16 / 10); }
+@media (max-width: 52rem) { .shot.embed { aspect-ratio: 4 / 5; } } /* a phone prototype needs height on a phone */
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
 /* Everything inside a themed case study page */
