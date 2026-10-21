@@ -752,8 +752,16 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
 .cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
 /* An image shown at its own proportions (no cropping at any width); set --ar inline, e.g. style="--ar: 2000 / 932" */
-.shot.embed { aspect-ratio: var(--ar, 16 / 10); }
-@media (max-width: 52rem) { .shot.embed { aspect-ratio: 4 / 5; } } /* a phone prototype needs height on a phone */
+/* An embedded phone prototype: a phone-sized frame, centred. On phones it's too
+   cramped to use inline, so a button opens it in Figma instead. */
+.proto { display: grid; justify-items: center; }
+.proto .shot.embed { width: 450px; max-width: 100%; height: 800px; aspect-ratio: auto; }
+.proto .cap { text-align: center; }
+.proto-link { display: none; }
+@media (max-width: 40rem) {
+  .proto .shot.embed, .proto .cap { display: none; }
+  .proto-link { display: inline-flex; }
+}
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
 /* Everything inside a themed case study page */
