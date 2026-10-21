@@ -146,24 +146,23 @@ document.querySelectorAll('[data-sync]').forEach((g) => {
   lead.addEventListener('timeupdate', sync);
 });
 
-// Sideways galleries: the arrows step one group of screens at a time, a mouse can
+// Sideways galleries: the arrows step one screen at a time, a mouse can
 // drag the row (trackpads and touch scroll it natively), and each arrow fades out
 // at its end of the row
 document.querySelectorAll('[data-gallery]').forEach((g) => {
   const track = g.querySelector('.gallery-track');
   const prev = g.querySelector('.gallery-nav .prev');
   const next = g.querySelector('.gallery-nav .next');
-  const items = [...track.children];
   const shots = [...track.querySelectorAll('.shot')];
   const pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
   const update = () => {
     prev.disabled = track.scrollLeft <= 2;
     next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2
-      || !items.some((i) => i.offsetLeft > track.scrollLeft + pad + 2);
+      || !shots.some((i) => i.offsetLeft > track.scrollLeft + pad + 2);
   };
   const go = (dir) => {
     const x = track.scrollLeft + pad;
-    const target = dir > 0 ? items.find((i) => i.offsetLeft > x + 2) : items.slice().reverse().find((i) => i.offsetLeft < x - 2);
+    const target = dir > 0 ? shots.find((i) => i.offsetLeft > x + 2) : shots.slice().reverse().find((i) => i.offsetLeft < x - 2);
     track.scrollTo({ left: target ? target.offsetLeft - pad : (dir > 0 ? track.scrollWidth : 0), behavior: reduceMotion ? 'auto' : 'smooth' });
   };
   prev.addEventListener('click', () => go(-1));
