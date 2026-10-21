@@ -752,15 +752,17 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
 .cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
 /* An image shown at its own proportions (no cropping at any width); set --ar inline, e.g. style="--ar: 2000 / 932" */
-/* An embedded phone prototype: a phone-sized frame, centred. On phones it's too
-   cramped to use inline, so a button opens it in Figma instead. */
+/* An embedded phone prototype: a 450 x 800 frame, centred, shown only where the whole
+   frame fits on screen below the sticky nav (800px plus up to 160px of nav and frame,
+   so 60rem tall). Anywhere smaller, a button opens it in Figma instead. */
 .proto { display: grid; justify-items: center; }
 .proto .shot.embed { width: 450px; max-width: 100%; height: 800px; aspect-ratio: auto; }
 .proto .cap { text-align: center; }
-.proto-link { display: none; }
-@media (max-width: 40rem) {
-  .proto .shot.embed, .proto .cap { display: none; }
-  .proto-link { display: inline-flex; }
+.proto .shot.embed, .proto .cap { display: none; }
+@media (min-width: 30rem) and (min-height: 60rem) {
+  .proto .shot.embed { display: block; }
+  .proto .cap { display: block; }
+  .proto-link { display: none; }
 }
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
