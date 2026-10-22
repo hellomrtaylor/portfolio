@@ -655,6 +655,10 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 }
 .flow li small { display: block; font-size: 1rem; font-weight: 400; line-height: 1.5rem; color: var(--muted); margin-top: 0.5rem; } /* step detail: body */
 .flow li.me { background: var(--fill-strong); font-weight: 600; }
+/* numbered steps: a small counter badge above each step's title */
+.flow.numbered { counter-reset: step; }
+.flow.numbered li { counter-increment: step; }
+.flow.numbered li::before { content: counter(step); display: grid; place-items: center; width: 1.5rem; height: 1.5rem; margin-bottom: 0.75rem; border-radius: 50%; font-size: 0.75rem; font-weight: 700; line-height: 1; background: var(--project, var(--fg)); color: var(--on-project, var(--bg)); }
 /* chevron centred in the gap between steps */
 @media (max-width: 40rem) {
   .flow { flex-direction: column; }
