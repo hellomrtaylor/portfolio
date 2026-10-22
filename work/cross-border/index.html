@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("rv");setTimeout(function(){if(!window.__rv)document.documentElement.classList.add("rv-done")},2500)}</script>
-<link rel="stylesheet" href="../../assets/css/site.css?v=15a361cd">
+<link rel="stylesheet" href="../../assets/css/site.css?v=220cd95a">
 </head>
 <body class="project-3">
 <a class="skip" href="#main">Skip to content</a>
@@ -44,7 +44,7 @@
         <li><a href="#problem">The problem</a></li>
         <li><a href="#approach">Design</a></li>
         <li><a href="#results">Impact</a></li>
-        <li><a href="#next">What next</a></li>
+        <li><a href="#next">What I learned</a></li>
       </ol>
     </nav>
   </div>
@@ -53,7 +53,6 @@
 <main id="main">
 <section class="cs-hero project-3">
   <div class="wrap">
-    <a class="crumb" href="../../#work">Back to all work</a>
     <div class="cs-hero-grid">
       <div>
         <h1 class="display">Selling Cars Across Europe</h1>
@@ -84,7 +83,8 @@
         <h2 id="context-h">One inventory, all of Europe</h2>
       </div>
       <div class="body">
-<p>How could we use the scale of AutoScout24's Europe-wide inventory to supercharge our dealer-to-dealer offering, while helping dealers win along the way? I led design for a team of a PM, engineers, a researcher and a content designer to find out.</p>
+<p>How could we use the scale of AutoScout24's Europe-wide inventory to supercharge AutoProff, our dealer-to-dealer marketplace, while helping dealers win along the way? I led design for a team of a PM, engineers, a researcher and a content designer to find out.</p>
+<p>Success was measured in listings transferred to AutoProff. The assumption was that once the supply was there, the marketplace would take care of the rest.</p>
       </div>
     </div>
   </div>
@@ -97,7 +97,7 @@
         <h2 id="problem-h">Why dealers held back</h2>
       </div>
       <div class="body">
-<p>With our UX researcher, I designed the research questions and interview guide, and conducted several of the interviews in Italy myself. We wanted to understand why dealers weren't using AutoProff, our dealer-to-dealer marketplace, for the same inventory they published on AutoScout24.</p>
+<p>With our UX researcher, I designed the research questions and interview guide, and conducted several of the interviews in Italy myself. We wanted to understand why dealers weren't using AutoProff for the same inventory they published on AutoScout24.</p>
 <p>The findings were clear. B2B listings work differently, with their own pricing, more honest damage reporting and fewer images. They were also often less profitable than selling to consumers.</p>
       </div>
     </div>
@@ -143,7 +143,7 @@
   </div>
   <figcaption class="cap">B2B performance alongside B2C on every listing.</figcaption>
 </figure>
-<figure class="gallery-item">
+<figure class="gallery-item" id="rule-builder">
   <div class="gallery-shots">
     <div class="shot phone" style="--ar: 750 / 1380"><img src="../../assets/img/cross-border/m-rules.webp" width="750" height="1380" loading="lazy" alt="The B2B rules page on mobile, powered by AutoProff: 25 of 100 listings excluded, an existing rule for Mercedes Benz from 150.000km, and the start of a form to create a new exclusion rule."></div>
     <div class="shot" style="--ar: 1100 / 690"><img src="../../assets/img/cross-border/key-4.webp" srcset="../../assets/img/cross-border/key-4-550.webp 550w, ../../assets/img/cross-border/key-4.webp 1100w" sizes="(max-width: 52rem) 80vw, 690px" width="1100" height="690" loading="lazy" alt="The Set rules for Dealer Marketplace (B2B) page, powered by AutoProff. On the left, dealers create an exclusion rule by make, mileage, first registration, price or condition. On the right, current rules such as Mercedes Benz from 150.000km, with a count of 25 of 100 listings excluded."></div>
@@ -156,6 +156,16 @@
   <button type="button" class="next" aria-label="Next screens"></button>
 </div>
 </div>
+<aside class="decision" aria-label="Key decision">
+<div class="decision-head">
+<span class="decision-label">Key decision</span>
+<h3 class="decision-q">How do you give dealers control when the business has mandated <em>automatic publishing</em>?</h3>
+</div>
+<div class="decision-cols">
+<p><b>The constraint.</b> All of a dealer&rsquo;s inventory would go to AutoProff automatically, to kick-start the marketplace and avoid launching empty. But our research was clear that dealers wanted control over what they sold, and to whom.</p>
+<p><b>My proposal.</b> Rather than fight the mandate, we gave dealers control within it: a heads-up on the dashboard 14 days before listings went live, and a <a href="#rule-builder">rule builder</a> to keep any listings out, by make, mileage, age, price or condition. The rule builder took convincing. I made the case to our CPO that precise control was what would keep dealers in, rather than turning B2B off altogether.</p>
+</div>
+</aside>
 <figure><div class="shot natural" style="--ar: 2240 / 1378">
   <video class="loop-video" muted loop playsinline preload="none" width="2240" height="1378"
     poster="../../assets/img/cross-border/prototype-poster-1120.webp" data-hires-poster="../../assets/img/cross-border/prototype-poster.webp"
@@ -179,7 +189,8 @@
   <div class="fact"><b>85,000+</b><span>listings on AutoProff from Italy and Germany by September 2026</span></div>
   <div class="fact"><b>1,900+</b><span>AutoScout24 dealers trading on AutoProff by September 2026</span></div>
 </div>
-<p>Supply grew quickly. Listings doubled in a single month to more than 32,000 by April 2026, and by September there were over 60,000 from Italy alone. Demand followed at a healthy rate, but we hadn't accounted for dealers ignoring the leads they received, which caused a conversion problem on the platform.</p>
+<p>We beat the goal. Listings doubled in a single month to more than 32,000 by April 2026, and by September there were over 85,000 from Italy and Germany.</p>
+<p>But the assumption didn&rsquo;t hold. Demand arrived at a healthy rate, yet many dealers ignored the leads they received, and conversion stalled.</p>
       </div>
     </div>
   </div>
@@ -188,12 +199,12 @@
   <div class="wrap">
     <div class="chapter-grid">
       <div>
-        <span class="chapter-label">Chapter 5. What next</span>
-        <h2 id="next-h">From scale to engagement</h2>
+        <span class="chapter-label">Chapter 5. What I learned</span>
+        <h2 id="next-h">Supply isn&rsquo;t conversion</h2>
       </div>
       <div class="body">
-<p>With the supply side proven, the platform moved to opt-in and, in Germany, cleared out more than 1,200 dealers who never replied, focusing on those who wanted to trade. Seller response rose from 25% to 62% the following week.</p>
-<p>The next challenge is the other side of the marketplace: sourcing, helping dealers find and buy the stock they need. When we started that work in 2025, I was already building AI prototypes in Figma Make. We tested them in five dealer interviews, iterating between each one, so every session tested a better version than the last and we learned as much as possible, fast.</p>
+<p>Automatic publishing did exactly what it was meant to: it filled the marketplace. But many of those listings came from dealers who&rsquo;d never chosen to sell there, so buyers&rsquo; leads went unanswered. More listings didn&rsquo;t mean more sales.</p>
+<p>What I&rsquo;d do differently: test the assumption that supply drives conversion much sooner. A more gradual rollout, taking the time to understand what would convince dealers of the value before scaling up, would have shown us the conversion problem before it was spread across 85,000 listings.</p>
       </div>
     </div>
   </div>
@@ -216,6 +227,6 @@
     <p class="copyright">&copy; 2026 Ali Taylor</p>
   </div>
 </section>
-<script src="../../assets/js/site.js?v=15a361cd" defer></script>
+<script src="../../assets/js/site.js?v=220cd95a" defer></script>
 </body>
 </html>

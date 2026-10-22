@@ -443,6 +443,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .gallery-track.dragging { scroll-snap-type: none; cursor: grabbing; user-select: none; }
 .gallery-track img { -webkit-user-drag: none; }
 .gallery-item { flex: none; }
+.gallery { scroll-margin-top: calc(var(--frame) + var(--nav-space) + 1rem); } /* clears the sticky nav when a link jumps to a gallery screen */
 .gallery .shot { scroll-snap-align: start; } /* snap to each screen, so a wide desktop shot can be read in parts on a phone */
 .gallery-shots { display: flex; gap: 1rem; }
 .gallery .shot { flex: none; height: var(--gh); aspect-ratio: var(--ar); background: #ffffff; }
@@ -506,27 +507,16 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .drawer .card h3, .interests .card h3 { font-size: 1.5rem; line-height: 2rem; margin: 0 0 0.5rem; }
 .drawer .card p, .interests .card p { font-size: 1rem; line-height: 1.5rem; margin: 0; }
 
-/* ---------- Home: interests (roundel + title + text rows) ---------- */
+/* ---------- Home: interests (three centred columns: stamp, title, text) ---------- */
 
-.interests { max-width: 70rem; margin: round(clamp(2rem, 5vw, 3.5rem), 8px) auto 0; }
-.interest {
-  position: relative;
-  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr); align-items: start;
-  gap: 1rem round(clamp(1.5rem, 4vw, 3.5rem), 8px); padding-block: round(clamp(2rem, 4vw, 3rem), 8px) round(clamp(4rem, 8vw, 5.5rem), 8px);
-  border-top: 1px solid var(--chocolate-40);
-}
-/* The stamp hangs off the bottom-right corner of its paragraph */
-.interest-body { position: relative; }
-.interest .roundel {
-  position: absolute; right: 2.5rem; top: 100%; margin-top: -5rem; z-index: -1; width: round(clamp(6.5rem, 9vw, 8rem), 8px);
-  background: var(--bg); border-radius: 50%; transform: rotate(-8deg);
-}
-.interest:nth-child(2) .roundel { transform: rotate(6deg); }
-.interest h3 { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); line-height: 1.02; line-height: round(up, 1.02em, 8px); margin: 0; }
-.interest p { font-size: 1.5rem; line-height: 2rem; margin: 0; }
-@media (max-width: 48rem) {
-  .interest { grid-template-columns: 1fr; }
-  .interest .roundel { width: 6rem; right: 0.5rem; margin-top: -1.5rem; }
+.interests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: round(clamp(2rem, 4vw, 3rem), 8px); margin-top: round(clamp(2rem, 5vw, 3.5rem), 8px); text-align: center; }
+.interest { display: grid; gap: 1rem; justify-items: center; align-content: start; }
+.interest .roundel { width: round(clamp(7rem, 9vw, 8rem), 8px); transform: rotate(-6deg); }
+.interest:nth-child(2) .roundel { transform: rotate(5deg); }
+.interest h3 { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0.5rem 0 0; text-wrap: balance; }
+.interest p { font-size: 1rem; line-height: 1.5rem; margin: 0; max-width: 24rem; }
+@media (max-width: 52rem) {
+  .interests { grid-template-columns: 1fr; }
 }
 
 /* ---------- Contact block ---------- */
@@ -547,8 +537,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
    ========================================================================== */
 
 /* Pulled up behind the glass bar so the project colour shows through it */
-.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-flow)); padding: calc(var(--header-flow) + round(clamp(2.5rem, 6vw, 4.5rem), 8px)) 0 0; }
-.cs-hero .crumb { font-size: 1rem; margin-bottom: 1.5rem; display: inline-block; line-height: 1.5rem; }
+.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-flow)); padding: calc(var(--header-flow) + round(clamp(4rem, 9vw, 7.5rem), 8px)) 0 0; }
 .cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .cs-hero h1 { margin-bottom: 1rem; }
 .cs-hero .lede { margin: 0; }
@@ -585,16 +574,29 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 }
 
 
-/* Key decision callout */
-.decision { border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill); padding: 1rem 1.5rem; margin: 1.5rem 0; max-width: var(--measure); }
-.decision .typed { display: block; color: var(--muted); margin-bottom: 0.5rem; }
-.decision p { margin: 0; font-size: 1rem; line-height: 1.5rem; }
+/* A worked example in a chapter's left column, under the heading */
+.example { margin-top: round(clamp(1.5rem, 4vw, 2.5rem), 8px); padding-top: 1rem; border-top: 1px solid var(--line); display: grid; gap: 0.5rem; max-width: 24rem; }
+.example .typed { color: var(--project-ink, var(--project, var(--muted))); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.example .example-car { margin: 0; font-weight: 600; font-size: 1rem; line-height: 1.5rem; }
+.example ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.5rem; font-size: 0.875rem; line-height: 1.5rem; color: var(--muted); }
+
+/* Key decision: a white panel with a thick rule in the case study's colour, spanning the
+   chapter. The dilemma as a question on the left, the answer on the right */
+.decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem round(clamp(2rem, 5vw, 4rem), 8px); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); background: #ffffff; border-left: 4px solid var(--project, var(--fg)); padding: round(clamp(1.5rem, 5vw, 4rem), 8px); }
+.decision-head { display: grid; gap: 1.5rem; align-content: start; }
+.decision-label { font-size: 0.75rem; line-height: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; color: var(--project-ink, var(--project, var(--fg))); }
+.decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; text-wrap: balance; color: var(--fg); }
+.decision-q em { font-style: italic; color: var(--project-ink, var(--project, var(--fg))); }
+.decision-cols { display: grid; gap: 1.5rem; align-content: start; }
+.decision p { margin: 0; max-width: none; font-size: 0.875rem; line-height: 1.5rem; }
+.figs > .decision { margin-block: round(clamp(2.5rem, 6vw, 4rem), 8px); } /* between images, it needs a little more air than the image gap */
+@media (max-width: 52rem) { .decision { grid-template-columns: 1fr; } }
 
 /* Big numbers */
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1.5rem; margin: 0 0 2rem; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: 1.5rem; margin: 0 0 2rem; }
 .fact { border-top: 1px solid var(--fg); padding-top: 1rem; }
 .fact b { display: block; font-size: clamp(2.4rem, 2rem + 2vw, 3.5rem); font-weight: 700; line-height: 1; line-height: round(up, 1em, 8px); }
-.fact span { font-size: 0.75rem; color: var(--muted); line-height: 1rem; }
+.fact span { display: block; font-size: 0.75rem; color: var(--muted); line-height: 1rem; } /* block, so its own line height applies rather than the tile's */
 
 /* Next / previous */
 /* Previous / next case study: two compact links, each with a circle that carries an arrow on hover */
@@ -659,6 +661,19 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 }
 .flow li small { display: block; font-size: 1rem; font-weight: 400; line-height: 1.5rem; color: var(--muted); margin-top: 0.5rem; } /* step detail: body */
 .flow li.me { background: var(--fill-strong); font-weight: 600; }
+/* numbered steps: a small counter badge above each step's title */
+.flow.numbered { counter-reset: step; }
+.flow.numbered li { counter-increment: step; }
+.flow.numbered li::before { content: counter(step); display: grid; place-items: center; width: 1.5rem; height: 1.5rem; margin-bottom: 0.75rem; border-radius: 50%; font-size: 0.75rem; font-weight: 700; line-height: 1; background: var(--project, var(--fg)); color: var(--on-project, var(--bg)); }
+/* compact steps: a smaller vertical list for a chapter's left column, number beside the title */
+.side-flow { margin: round(clamp(1.5rem, 4vw, 2.5rem), 8px) 0 0; padding-top: 1rem; border-top: 1px solid var(--line); display: grid; gap: 0.75rem; max-width: 24rem; }
+.side-flow > .typed { color: var(--project-ink, var(--project, var(--muted))); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.flow.compact { flex-direction: column; gap: 0.5rem; }
+.flow.compact li { flex: none; display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); column-gap: 0.75rem; align-items: start; padding: 0.75rem 1rem; font-size: 0.875rem; line-height: 1.5rem; }
+.flow.compact li::before { grid-row: 1 / span 2; margin: 0; }
+.flow.compact li small { grid-column: 2; margin-top: 0; font-size: 0.875rem; line-height: 1.25rem; }
+.side-flow .cap { margin-top: 0; }
+.body .side-flow { max-width: var(--measure); }
 /* chevron centred in the gap between steps */
 @media (max-width: 40rem) {
   .flow { flex-direction: column; }
@@ -696,6 +711,19 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .fork .branch.rec { background: var(--fill); }
 .fork .branch.shipped { background: var(--fill-strong); }
 .fork .branch.rec .later { display: inline-block; margin-top: 0.5rem; font-size: 0.75rem; border: 1px dashed var(--muted); border-radius: var(--radius); padding: 0 0.5rem; line-height: 1rem; }
+/* Two questions side by side: the one we asked, and the one sellers had */
+.qpair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.qpair .q { border: 1px solid var(--fg); border-radius: var(--radius-lg); padding: round(clamp(1.5rem, 3vw, 2rem), 8px); display: grid; gap: 0.5rem; align-content: start; }
+.qpair .q .typed { color: var(--muted); }
+.qpair .q p { margin: 0; }
+.qpair .q small { font-size: 1rem; line-height: 1.5rem; color: var(--muted); }
+.qpair .before { border-style: dashed; }
+[class*="project-"] .qpair .before { border-color: var(--project); }
+[class*="project-"] .qpair .after { background: var(--project); border-color: var(--project); color: var(--on-project); }
+[class*="project-"] .qpair .after :is(.typed, small) { color: inherit; opacity: 0.85; }
+@media (max-width: 40rem) { .qpair { grid-template-columns: 1fr; } }
+.chapter-fig .qpair { grid-template-columns: 1fr; } /* stacked when it sits in the narrow left column */
+
 
 /* Funnel */
 .funnel { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; justify-items: center; }
@@ -778,8 +806,6 @@ body[class*="project-"] :is(.nav a[aria-current="page"], .chapters a.active, .br
 /* "Want the full story?" matches the case study hero; its button flips to Vanilla */
 [class*="project-"] .contact { background: var(--project); color: var(--on-project); }
 [class*="project-"] .contact .btn { background: var(--on-project); border-color: var(--on-project); color: var(--project); }
-[class*="project-"] .decision { background: var(--project-tint); border-color: var(--project); }
-[class*="project-"] .decision .typed { color: var(--project); }
 [class*="project-"] .fact { border-top-color: var(--project); }
 [class*="project-"] .fact b { color: var(--project); }
 
@@ -828,7 +854,7 @@ body[class*="project-"] .brand-tabs button:hover { background: var(--project-tin
 
 /* phones: the larger reading text (intro, interests, contact) steps down to body size */
 @media (max-width: 40rem) {
-  .lede, .interest p, .contact p:not(.copyright) { font-size: 1rem; line-height: 1.5rem; }
+  .lede, .contact p:not(.copyright) { font-size: 1rem; line-height: 1.5rem; }
 }
 
 /* ---------- Load-in: sections rise in one by one (see site.js) ---------- */

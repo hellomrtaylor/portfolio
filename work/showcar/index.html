@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("rv");setTimeout(function(){if(!window.__rv)document.documentElement.classList.add("rv-done")},2500)}</script>
-<link rel="stylesheet" href="../../assets/css/site.css?v=15a361cd">
+<link rel="stylesheet" href="../../assets/css/site.css?v=220cd95a">
 </head>
 <body class="project-1">
 <a class="skip" href="#main">Skip to content</a>
@@ -53,7 +53,6 @@
 <main id="main">
 <section class="cs-hero project-1">
   <div class="wrap">
-    <a class="crumb" href="../../#work">Back to all work</a>
     <div class="cs-hero-grid">
       <div>
         <h1 class="display">Multi-Brand Design System</h1>
@@ -84,7 +83,7 @@
         <h2 id="context-h">A system nobody owned</h2>
       </div>
       <div class="body">
-<p>When I took on leading Showcar, AutoScout24's design system, it had no owner. It was a loose collection of components, and how they were implemented in the product was patchy.</p>
+<p>When I took on leading Showcar, AutoScout24's design system, it had no owner. It was a loose collection of components, and adoption across the design team and engineering was patchy.</p>
 <p>A new brand acquisition meant the company needed a system that worked across the company, and fast. I led the project alongside my product work, bringing in the wider UX team to contribute next to my own hands-on work.</p>
       </div>
     </div>
@@ -125,7 +124,7 @@
       </div>
     </div>
 <div class="figs-wrap"><div class="figs">
-<figure><div class="diagram bare" role="group" aria-label="How a change gets into the system"><ol class="flow">
+<figure><div class="diagram bare" role="group" aria-label="How a change gets into the system"><ol class="flow numbered">
 <li>Propose<small>A designer with a need brings it to the UI Guild or the Slack channel</small></li>
 <li class="me">Quality gate<small>The community decides: a new component, or an update to an existing one</small></li>
 <li>Design and document<small>The contributor designs it and writes the documentation</small></li>
@@ -139,6 +138,16 @@
   <img src="../../assets/img/showcar/docs.webp?v=2" srcset="../../assets/img/showcar/docs-550.webp?v=2 550w, ../../assets/img/showcar/docs.webp?v=2 1100w" sizes="(max-width: 52rem) 100vw, 548px" width="1100" height="1100" loading="lazy" alt="Showcar button documentation: a Do's panel (use primary and secondary buttons to show importance; use transparent buttons for less important actions), a Don'ts panel (avoid multiple primary CTAs in one section, don't use floating buttons inline, avoid super-wide CTAs), and guidance on when to use hug or fill width, each with live examples.">
 </div><figcaption class="cap">Every component ships with documentation.</figcaption></figure>
 </div></div></div>
+<aside class="decision" aria-label="Key decision">
+<div class="decision-head">
+<span class="decision-label">Key decision</span>
+<h3 class="decision-q">How do you let a brand look different <em>without splitting the system</em>?</h3>
+</div>
+<div class="decision-cols">
+<p><b>The tension.</b> When LeasingMarkt joined the system, its design team wanted more font styles, and some of its components looked significantly different. The easy answers were a separate LeasingMarkt library, which would rebuild the drift Showcar existed to fix, or forcing the brand into our look.</p>
+<p><b>What I did.</b> I used Figma variables to give LeasingMarkt room within the same system. I added the extra font styles it needed, but set them to 0px in every other brand, so if anyone used them elsewhere the text simply disappeared. For other components, I used multiple variables to completely change the design for the LeasingMarkt brand without breaking the system.</p>
+</div>
+</aside>
   </div>
 </section>
 <section class="chapter" id="results" aria-labelledby="results-h">
@@ -150,12 +159,12 @@
       </div>
       <div class="body">
 <div class="facts">
-  <div class="fact"><b>38</b><span>components fully implemented</span></div>
-  <div class="fact"><b>10+</b><span>products built on it</span></div>
+  <div class="fact"><b>26</b><span>teams designing with it in Figma</span></div>
+  <div class="fact"><b>30k</b><span>component inserts a week</span></div>
+  <div class="fact"><b>&lt;0.05%</b><span>of inserts detached, across the most-used components</span></div>
 </div>
-<p>Showcar is now complete enough to build on. It underpins more than 10 products, including search, the homepage, listing creation, dealer inventory and dealer account pages. Through its tokens, one system carries six brands, four of which share a homepage, the foundation that running these businesses on one platform depended on.</p>
-<p>Because design and code share the same tokens, what designers specify is what engineers build.</p>
-<p>The way teams work changed too. Designers who need something new bring it to the UI Guild instead of solving it alone, the community decides what goes in, and every contribution ships with documentation. Showcar went from a system nobody owned to one the UX team and engineers build together.</p>
+<p>Showcar is now the default way AutoScout24 designs and builds. In Figma, 26 teams use it, inserting around 30,000 components a week. Designers almost never break away from it: across the most-used components, fewer than 1 in 2,000 inserts are detached, so what gets designed stays on the system.</p>
+<p>In code, 38 components are fully implemented, underpinning more than 10 products, including search, the homepage, listing creation, dealer inventory and dealer account pages. Adding two new brands, AutoTrader.nl and gebrauchtwagen.at, took about two weeks of development.</p>
       </div>
     </div>
 <div class="figs-wrap">
@@ -273,6 +282,6 @@
     <p class="copyright">&copy; 2026 Ali Taylor</p>
   </div>
 </section>
-<script src="../../assets/js/site.js?v=15a361cd" defer></script>
+<script src="../../assets/js/site.js?v=220cd95a" defer></script>
 </body>
 </html>
