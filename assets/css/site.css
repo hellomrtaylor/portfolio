@@ -583,7 +583,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .decision-q em { font-style: italic; color: var(--project-ink, var(--project, var(--fg))); }
 .decision-cols { display: grid; gap: 1.5rem; align-content: start; }
 .decision p { margin: 0; max-width: none; font-size: 0.875rem; line-height: 1.5rem; }
-.figs > .decision { margin-block: round(clamp(1rem, 3vw, 2rem), 8px); } /* between images, it needs a little more air than the image gap */
+.figs > .decision { margin-block: round(clamp(2.5rem, 6vw, 4rem), 8px); } /* between images, it needs a little more air than the image gap */
 @media (max-width: 52rem) { .decision { grid-template-columns: 1fr; } }
 
 /* Big numbers */
