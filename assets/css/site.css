@@ -574,15 +574,16 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 }
 
 
-/* Key decision: a split panel spanning the chapter. The dilemma as a question on the
-   case study's colour, the answer on a white card beside it */
-.decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
-.decision-head { background: var(--project, var(--fg)); color: var(--on-project, var(--bg)); padding: round(clamp(1.5rem, 3vw, 2.5rem), 8px); display: grid; gap: 1rem; align-content: start; }
-.decision-label { font-size: 0.75rem; line-height: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; opacity: 0.85; }
-.decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; text-wrap: balance; }
-.decision-q em { font-style: italic; }
-.decision-cols { background: #ffffff; color: #111111; padding: round(clamp(1.5rem, 3vw, 2.5rem), 8px); display: grid; gap: 1rem; align-content: start; }
-.decision p { margin: 0; max-width: none; font-size: 1rem; line-height: 1.5rem; }
+/* Key decision: a white panel with a thick rule in the case study's colour, spanning the
+   chapter. The dilemma as a question on the left, the answer on the right */
+.decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem round(clamp(2rem, 5vw, 4rem), 8px); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); background: #ffffff; border-left: 4px solid var(--project, var(--fg)); padding: round(clamp(1.5rem, 5vw, 4rem), 8px); }
+.decision-head { display: grid; gap: 1.5rem; align-content: start; }
+.decision-label { font-size: 0.75rem; line-height: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; color: var(--project-ink, var(--project, var(--fg))); }
+.decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; text-wrap: balance; color: var(--fg); }
+.decision-q em { font-style: italic; color: var(--project-ink, var(--project, var(--fg))); }
+.decision-cols { display: grid; gap: 1.5rem; align-content: start; }
+.decision p { margin: 0; max-width: none; font-size: 1.125rem; line-height: 2rem; }
+@media (max-width: 40rem) { .decision p { font-size: 1rem; line-height: 1.5rem; } }
 @media (max-width: 52rem) { .decision { grid-template-columns: 1fr; } }
 
 /* Big numbers */
