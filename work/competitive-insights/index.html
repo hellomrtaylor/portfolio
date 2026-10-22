@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("rv");setTimeout(function(){if(!window.__rv)document.documentElement.classList.add("rv-done")},2500)}</script>
-<link rel="stylesheet" href="../../assets/css/site.css?v=42312dc2">
+<link rel="stylesheet" href="../../assets/css/site.css?v=14ab1c4c">
 </head>
 <body class="project-2">
 <a class="skip" href="#main">Skip to content</a>
@@ -94,6 +94,17 @@
       <div>
         <span class="chapter-label">Chapter 2. The problem</span>
         <h2 id="problem-h">Pricing by eye</h2>
+        <figure class="side-flow" role="group" aria-label="How dealers priced a car: five manual steps">
+          <span class="typed">How dealers priced a car</span>
+          <ol class="flow numbered compact">
+<li>Check the stock<small>Look through their stock to spot which cars need attention</small></li>
+<li>Search the marketplace<small>Open a consumer marketplace and hunt for similar cars</small></li>
+<li>Compare by eye<small>Work out which of those cars have similar equipment</small></li>
+<li>Decide<small>Judge whether a price drop is needed</small></li>
+<li>Adjust the price<small>Go back to their own tools and change it, if needed</small></li>
+</ol>
+          <figcaption class="cap">How dealers priced a car: hours of searching, then a gut-feel call.</figcaption>
+        </figure>
       </div>
       <div class="body">
 <p>After reviewing existing research, I built a research plan to fill the gaps in our knowledge. Along with our UX researcher, we ran interviews with dealers in Italy and Germany.</p>
@@ -103,13 +114,6 @@
         <img src="../../assets/img/competitive-insights/workshop.webp" srcset="../../assets/img/competitive-insights/workshop-550.webp 550w, ../../assets/img/competitive-insights/workshop.webp 1100w" sizes="(max-width: 52rem) 100vw, 410px" width="1100" height="690" loading="lazy" alt="Workshop artefacts: a research synthesis board, key insights on sticky notes grouped by when, why and how dealers check the competition, and hand-drawn sketches answering how-might-we questions such as alerting dealers when a competitor changes price, voted on with red dots.">
       </div><figcaption class="cap">From research insights to how-might-we sketches.</figcaption></figure>
     </div>
-<div class="figs-wrap"><figure><div class="diagram bare" role="group" aria-label="How dealers priced a car: five manual steps"><ol class="flow numbered">
-<li>Check the stock<small>Look through their stock to spot which cars need attention</small></li>
-<li>Search the marketplace<small>Open a consumer marketplace and hunt for similar cars</small></li>
-<li>Compare by eye<small>Work out which of those cars have similar equipment</small></li>
-<li>Decide<small>Judge whether a price drop is needed</small></li>
-<li>Adjust the price<small>Go back to their own tools and change it, if needed</small></li>
-</ol></div><figcaption class="cap">How dealers priced a car: hours of searching, then a gut-feel call.</figcaption></figure></div>
 <aside class="decision" aria-label="Key decision">
 <div class="decision-head">
 <span class="decision-label">Key decision</span>
@@ -140,9 +144,9 @@
         </div>
       </div>
       <div class="body">
-<p>I turned these insights into ideas and built alignment through workshops with the product team. When we tested the prototype with dealers in Germany, Italy and Belgium, they found it important and very informative, but it wasn&rsquo;t prominent enough, and switching between their stock list and the competition view was a hassle. So I built it right into the stock list, a click away from any car.</p>
-<p><b>Competition dealers can trust.</b> Rather than ask dealers to pick their rivals, we defined the competition from buyer behaviour: the cars people browsing that listing also looked at, filtered to the same make and model within 50km. To make that set credible, we showed how it was built on screen, listed the actual cars rather than just averages, and placed the dealer&rsquo;s own listing among them.</p>
-<p>I then designed a way for dealers to refine their competition, narrowing it to cars closer in mileage and age. The share of dealers opening the filter nearly doubled, from 3% to 5.9%, and 72% of them saved their refined set. That showed dealers were tailoring the comparison, not dismissing it.</p>
+<p>I turned these insights into ideas and built alignment through workshops with the product team. When we tested the prototype with dealers in Germany, Italy and Belgium, they found it tackled an important problem, but switching between their stock list and the competition view was a hassle. So I built it right into the stock list, a click away from any car.</p>
+<p>Rather than ask dealers to pick their rivals, we defined the competition from buyer behaviour: the cars people browsing that listing also looked at, filtered to the same make and model, locally. To make that set credible, we showed how it was built on screen, listed the actual cars rather than just averages, and placed the dealer&rsquo;s own listing among them.</p>
+<p>After the initial launch, I designed a follow-up that let dealers refine their competition even further, narrowing it to cars closer in mileage and age. 72% of the dealers who opened the filter saved a refined set, showing really strong engagement.</p>
       </div>
     </div>
 <div class="figs-wrap"><figure><div class="shot natural" style="--ar: 2240 / 1378">
@@ -167,7 +171,7 @@
   <div class="fact"><b>8&ndash;10%</b><span>of logged-in dealers used it weekly, while every other DealerIQ feature sat below 5%</span></div>
   <div class="fact"><b>No. 1</b><span>DealerIQ feature in Germany and Italy within six months</span></div>
 </div>
-<p>We launched Competitive Insights as the flagship feature of our new tiered pricing system. Two months in, it was already the most-used feature in the bundle, and within six months it was the most-used feature in the DealerIQ suite in both Germany and Italy.</p>
+<p>We launched Competitive Insights as the flagship feature of our new tiered pricing system. Within six months, it was the most-used feature in the whole DealerIQ suite in both Germany and Italy.</p>
 <p>It became a core part of the value story for the tiered packages, a programme that brought in &euro;528k of upcharge revenue in Germany and &euro;241k in Italy in a single month.</p>
 <p>Dealers on our Dealer Council said it helped them justify pricing decisions and adjust their strategy. Sales teams saw the value too. Asked how much each feature helps convince dealers to upgrade to the top package, sales in Germany and Austria rated Competitive Insights at least 7 out of 10.</p>
       </div>
@@ -182,7 +186,7 @@
         <h2 id="next-h">Closing the loop</h2>
       </div>
       <div class="body">
-<p>Trust remained the work. Dealers still flagged comparisons that didn&rsquo;t feel like for like, such as a top-trim car against base models, and asked for the evidence that closes the loop: transaction and sold data, and proof that a price change turns into a sale.</p>
+<p>Trust remained the work. Dealers still flagged comparisons that didn&rsquo;t feel like for like, such as a top-trim car against base models, and the team is following up with a new competitor model to solve it. Dealers also asked for the evidence that closes the loop: transaction and sold data, and proof that a price change turns into a sale.</p>
       </div>
     </div>
   </div>
@@ -206,6 +210,6 @@
     <p class="copyright">&copy; 2026 Ali Taylor</p>
   </div>
 </section>
-<script src="../../assets/js/site.js?v=42312dc2" defer></script>
+<script src="../../assets/js/site.js?v=14ab1c4c" defer></script>
 </body>
 </html>

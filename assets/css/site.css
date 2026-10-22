@@ -585,7 +585,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem round(clamp(2rem, 5vw, 4rem), 8px); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); background: #ffffff; border-left: 4px solid var(--project, var(--fg)); padding: round(clamp(1.5rem, 5vw, 4rem), 8px); }
 .decision-head { display: grid; gap: 1.5rem; align-content: start; }
 .decision-label { font-size: 0.75rem; line-height: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; color: var(--project-ink, var(--project, var(--fg))); }
-.decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; text-wrap: balance; color: var(--fg); }
+.decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; text-wrap: balance; color: var(--fg); }
 .decision-q em { font-style: italic; color: var(--project-ink, var(--project, var(--fg))); }
 .decision-cols { display: grid; gap: 1.5rem; align-content: start; }
 .decision p { margin: 0; max-width: none; font-size: 0.875rem; line-height: 1.5rem; }
@@ -665,6 +665,14 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .flow.numbered { counter-reset: step; }
 .flow.numbered li { counter-increment: step; }
 .flow.numbered li::before { content: counter(step); display: grid; place-items: center; width: 1.5rem; height: 1.5rem; margin-bottom: 0.75rem; border-radius: 50%; font-size: 0.75rem; font-weight: 700; line-height: 1; background: var(--project, var(--fg)); color: var(--on-project, var(--bg)); }
+/* compact steps: a smaller vertical list for a chapter's left column, number beside the title */
+.side-flow { margin: round(clamp(1.5rem, 4vw, 2.5rem), 8px) 0 0; padding-top: 1rem; border-top: 1px solid var(--line); display: grid; gap: 0.75rem; max-width: 24rem; }
+.side-flow > .typed { color: var(--project-ink, var(--project, var(--muted))); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.flow.compact { flex-direction: column; gap: 0.5rem; }
+.flow.compact li { flex: none; display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); column-gap: 0.75rem; align-items: start; padding: 0.75rem 1rem; font-size: 0.875rem; line-height: 1.5rem; }
+.flow.compact li::before { grid-row: 1 / span 2; margin: 0; }
+.flow.compact li small { grid-column: 2; margin-top: 0; font-size: 0.875rem; line-height: 1.25rem; }
+.side-flow .cap { margin-top: 0; }
 /* chevron centred in the gap between steps */
 @media (max-width: 40rem) {
   .flow { flex-direction: column; }
