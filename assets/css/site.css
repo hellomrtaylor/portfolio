@@ -702,25 +702,18 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .fork .branch.rec { background: var(--fill); }
 .fork .branch.shipped { background: var(--fill-strong); }
 .fork .branch.rec .later { display: inline-block; margin-top: 0.5rem; font-size: 0.75rem; border: 1px dashed var(--muted); border-radius: var(--radius); padding: 0 0.5rem; line-height: 1rem; }
-/* A three-way fork, a dashed "before" branch, and a question-led variant
-   ("how much is my car worth?" answered before "how should I sell?") */
-.fork.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.fork.three::before { left: 16.667%; right: 16.667%; }
-.fork.three .branch:nth-child(3) { position: relative; }
-.fork.three .branch:nth-child(3)::before { content: ""; position: absolute; left: 50%; top: -2rem; height: 2rem; border-left: 1px solid var(--fg); }
-.fork .branch.muted { background: var(--bg); border-style: dashed; }
-.fork .root.q { font-weight: 600; }
-.compare { display: grid; gap: 2rem; }
-.compare .typed { display: block; margin-bottom: 1rem; color: var(--muted); }
-.answer { display: grid; justify-items: center; gap: 0.5rem; margin-bottom: 1rem; }
-.answer .pill { border-radius: var(--radius-lg); background: var(--project, var(--fg)); color: var(--on-project, var(--bg)); padding: 0.5rem 1rem; line-height: 1.5rem; font-weight: 600; text-align: center; }
-.answer small { color: var(--muted); font-size: 0.75rem; line-height: 1rem; }
-.answer::after { content: ""; height: 1.5rem; border-left: 1px solid var(--fg); }
-@media (max-width: 40rem) {
-  .fork.three { grid-template-columns: 1fr; padding-top: 0; }
-  .fork.three::before, .fork.three .branch:nth-child(3)::before { display: none; }
-  .fork.three .root { position: static; transform: none; margin-bottom: 0.5rem; justify-self: start; white-space: normal; }
-}
+/* Two questions side by side: the one we asked, and the one sellers had */
+.qpair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.qpair .q { border: 1px solid var(--fg); border-radius: var(--radius-lg); padding: round(clamp(1.5rem, 3vw, 2rem), 8px); display: grid; gap: 0.5rem; align-content: start; }
+.qpair .q .typed { color: var(--muted); }
+.qpair .q p { margin: 0; }
+.qpair .q small { font-size: 1rem; line-height: 1.5rem; color: var(--muted); }
+.qpair .before { border-style: dashed; }
+[class*="project-"] .qpair .before { border-color: var(--project); }
+[class*="project-"] .qpair .after { background: var(--project); border-color: var(--project); color: var(--on-project); }
+[class*="project-"] .qpair .after :is(.typed, small) { color: inherit; opacity: 0.85; }
+@media (max-width: 40rem) { .qpair { grid-template-columns: 1fr; } }
+
 
 /* Funnel */
 .funnel { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; justify-items: center; }
