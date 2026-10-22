@@ -713,6 +713,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 [class*="project-"] .qpair .after { background: var(--project); border-color: var(--project); color: var(--on-project); }
 [class*="project-"] .qpair .after :is(.typed, small) { color: inherit; opacity: 0.85; }
 @media (max-width: 40rem) { .qpair { grid-template-columns: 1fr; } }
+.chapter-fig .qpair { grid-template-columns: 1fr; } /* stacked when it sits in the narrow left column */
 
 
 /* Funnel */
