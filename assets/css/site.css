@@ -443,6 +443,7 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .gallery-track.dragging { scroll-snap-type: none; cursor: grabbing; user-select: none; }
 .gallery-track img { -webkit-user-drag: none; }
 .gallery-item { flex: none; }
+.gallery { scroll-margin-top: calc(var(--frame) + var(--nav-space) + 1rem); } /* clears the sticky nav when a link jumps to a gallery screen */
 .gallery .shot { scroll-snap-align: start; } /* snap to each screen, so a wide desktop shot can be read in parts on a phone */
 .gallery-shots { display: flex; gap: 1rem; }
 .gallery .shot { flex: none; height: var(--gh); aspect-ratio: var(--ar); background: #ffffff; }

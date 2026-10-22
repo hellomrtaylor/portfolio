@@ -198,6 +198,21 @@ document.querySelectorAll('[data-gallery]').forEach((g) => {
   track.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
 });
 
+// Links to a screen inside a gallery (href="#id" on a .gallery-item) scroll the page
+// to the gallery, then slide the gallery along to that screen
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  const target = document.getElementById(a.getAttribute('href').slice(1));
+  const track = target && target.closest('.gallery-track');
+  if (!track) return;
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const behavior = reduceMotion ? 'auto' : 'smooth';
+    track.closest('.gallery').scrollIntoView({ behavior, block: 'start' });
+    const pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    track.scrollTo({ left: target.offsetLeft - pad, behavior });
+  });
+});
+
 // Sections fade and rise in one by one: those on screen at load are staggered,
 // later ones come in as they're scrolled to. The head script adds .rv (and skips
 // it for reduced motion); __rv tells its fallback timer this script ran.
