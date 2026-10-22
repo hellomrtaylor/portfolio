@@ -537,8 +537,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
    ========================================================================== */
 
 /* Pulled up behind the glass bar so the project colour shows through it */
-.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-flow)); padding: calc(var(--header-flow) + round(clamp(2.5rem, 6vw, 4.5rem), 8px)) 0 0; }
-.cs-hero .crumb { font-size: 1rem; margin-bottom: 1.5rem; display: inline-block; line-height: 1.5rem; }
+.cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-flow)); padding: calc(var(--header-flow) + round(clamp(4rem, 9vw, 7.5rem), 8px)) 0 0; }
 .cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .cs-hero h1 { margin-bottom: 1rem; }
 .cs-hero .lede { margin: 0; }
