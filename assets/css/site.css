@@ -574,6 +574,12 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 }
 
 
+/* A worked example in a chapter's left column, under the heading */
+.example { margin-top: round(clamp(1.5rem, 4vw, 2.5rem), 8px); padding-top: 1rem; border-top: 1px solid var(--line); display: grid; gap: 0.5rem; max-width: 24rem; }
+.example .typed { color: var(--project-ink, var(--project, var(--muted))); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.example .example-car { margin: 0; font-weight: 600; font-size: 1rem; line-height: 1.5rem; }
+.example ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.5rem; font-size: 0.875rem; line-height: 1.5rem; color: var(--muted); }
+
 /* Key decision: a white panel with a thick rule in the case study's colour, spanning the
    chapter. The dilemma as a question on the left, the answer on the right */
 .decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem round(clamp(2rem, 5vw, 4rem), 8px); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); background: #ffffff; border-left: 4px solid var(--project, var(--fg)); padding: round(clamp(1.5rem, 5vw, 4rem), 8px); }
