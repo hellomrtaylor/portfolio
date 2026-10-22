@@ -673,6 +673,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .flow.compact li::before { grid-row: 1 / span 2; margin: 0; }
 .flow.compact li small { grid-column: 2; margin-top: 0; font-size: 0.875rem; line-height: 1.25rem; }
 .side-flow .cap { margin-top: 0; }
+.body .side-flow { max-width: var(--measure); }
 /* chevron centred in the gap between steps */
 @media (max-width: 40rem) {
   .flow { flex-direction: column; }
