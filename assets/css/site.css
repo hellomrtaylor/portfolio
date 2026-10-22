@@ -585,16 +585,17 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 }
 
 
-/* Key decision callout */
-.decision { border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill); padding: 1rem 1.5rem; margin: 1.5rem 0; max-width: var(--measure); }
-.decision .typed { display: block; color: var(--muted); margin-bottom: 0.5rem; }
-.decision p { margin: 0; font-size: 1rem; line-height: 1.5rem; }
-.decision :is(p, ul) + :is(p, ul) { margin-top: 0.75rem; }
-.decision .decision-title { font-weight: 600; }
-.decision.wide { max-width: none; margin: round(clamp(2rem, 5vw, 3rem), 8px) 0 0; } /* spans the chapter, under the two-column text */
-.decision-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem round(clamp(1.5rem, 4vw, 3rem), 8px); margin-top: 0.75rem; }
+/* Key decision: the dilemma as a big question, then the answer in two columns,
+   spanning the chapter under its two-column text */
+.decision { display: grid; gap: 1.5rem; margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); }
+.decision-label { font-size: 0.75rem; line-height: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; color: var(--project, var(--fg)); }
+.decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; max-width: 50rem; text-wrap: balance; }
+.decision-q em { font-style: italic; color: var(--project, var(--fg)); }
+.decision-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem round(clamp(2rem, 5vw, 3rem), 8px); border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.decision-cols > div { display: grid; gap: 0.75rem; align-content: start; }
+.decision p { margin: 0; max-width: none; }
+.decision ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.5rem; }
 @media (max-width: 52rem) { .decision-cols { grid-template-columns: 1fr; } }
-.decision ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.5rem; font-size: 1rem; line-height: 1.5rem; }
 
 /* Big numbers */
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: 1.5rem; margin: 0 0 2rem; }
@@ -797,8 +798,6 @@ body[class*="project-"] :is(.nav a[aria-current="page"], .chapters a.active, .br
 /* "Want the full story?" matches the case study hero; its button flips to Vanilla */
 [class*="project-"] .contact { background: var(--project); color: var(--on-project); }
 [class*="project-"] .contact .btn { background: var(--on-project); border-color: var(--on-project); color: var(--project); }
-[class*="project-"] .decision { background: var(--project-tint); border-color: var(--project); }
-[class*="project-"] .decision .typed { color: var(--project); }
 [class*="project-"] .fact { border-top-color: var(--project); }
 [class*="project-"] .fact b { color: var(--project); }
 

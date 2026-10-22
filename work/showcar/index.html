@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("rv");setTimeout(function(){if(!window.__rv)document.documentElement.classList.add("rv-done")},2500)}</script>
-<link rel="stylesheet" href="../../assets/css/site.css?v=4b58fd1c">
+<link rel="stylesheet" href="../../assets/css/site.css?v=189b9bed">
 </head>
 <body class="project-1">
 <a class="skip" href="#main">Skip to content</a>
@@ -139,21 +139,13 @@
   <img src="../../assets/img/showcar/docs.webp?v=2" srcset="../../assets/img/showcar/docs-550.webp?v=2 550w, ../../assets/img/showcar/docs.webp?v=2 1100w" sizes="(max-width: 52rem) 100vw, 548px" width="1100" height="1100" loading="lazy" alt="Showcar button documentation: a Do's panel (use primary and secondary buttons to show importance; use transparent buttons for less important actions), a Don'ts panel (avoid multiple primary CTAs in one section, don't use floating buttons inline, avoid super-wide CTAs), and guidance on when to use hug or fill width, each with live examples.">
 </div><figcaption class="cap">Every component ships with documentation.</figcaption></figure>
 </div></div></div>
-<aside class="decision wide" aria-label="Key decision">
-<span class="typed">Key decision</span>
-<p class="decision-title">One system, a brand that wanted to be different</p>
+<aside class="decision" aria-label="Key decision">
+<span class="decision-label">Key decision</span>
+<h3 class="decision-q">How do you let a brand look different <em>without splitting the system</em>?</h3>
 <div class="decision-cols">
-<div>
-<p><b>The tension.</b> When LeasingMarkt joined the system, its design team wanted more font styles than Showcar offered, and some of its components looked significantly different from ours. The easy answers were a separate LeasingMarkt library, which would rebuild the drift Showcar existed to fix, or forcing the brand into our look, which would lose its identity and its team&rsquo;s support.</p>
-</div>
-<div>
-<p><b>What I did.</b> I used Figma variables to give LeasingMarkt room within the same system:</p>
-<ul>
-<li><b>Extra type styles, only for LeasingMarkt.</b> I added the font styles they needed, but set them to 0px in every other brand. If a designer working on another brand used one, the text simply disappeared, so the extra styles couldn&rsquo;t leak into other brands.</li>
-<li><b>One component, two looks.</b> For the segmented control, I used radius, padding and colour variables to completely change its design for LeasingMarkt. It&rsquo;s still one component, with one set of documentation and one implementation.</li>
-</ul>
-<p><b>The result.</b> LeasingMarkt got the styling it needed, everyone was happy with the outcome, and the system proved it could flex for a brand without splitting.</p>
-</div>
+<div><p><b>The tension.</b> When LeasingMarkt joined the system, its design team wanted more font styles than Showcar offered, and some of its components looked significantly different from ours. The easy answers were a separate LeasingMarkt library, which would rebuild the drift Showcar existed to fix, or forcing the brand into our look, which would lose its identity and its team&rsquo;s support.</p></div>
+<div><p><b>What I did.</b> I used Figma variables to give LeasingMarkt room within the same system. I added the extra font styles it needed, but set them to 0px in every other brand, so if anyone used them elsewhere the text simply disappeared. And for the segmented control, radius, padding and colour variables completely change its design for LeasingMarkt, while it stays one component, with one set of documentation and one implementation.</p>
+<p><b>The result.</b> LeasingMarkt got the styling it needed, everyone was happy with the outcome, and the system proved it could flex for a brand without splitting.</p></div>
 </div>
 </aside>
   </div>
@@ -292,6 +284,6 @@
     <p class="copyright">&copy; 2026 Ali Taylor</p>
   </div>
 </section>
-<script src="../../assets/js/site.js?v=4b58fd1c" defer></script>
+<script src="../../assets/js/site.js?v=189b9bed" defer></script>
 </body>
 </html>
