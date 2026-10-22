@@ -589,9 +589,12 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .decision { border: 1px solid var(--fg); border-radius: var(--radius-lg); background: var(--fill); padding: 1rem 1.5rem; margin: 1.5rem 0; max-width: var(--measure); }
 .decision .typed { display: block; color: var(--muted); margin-bottom: 0.5rem; }
 .decision p { margin: 0; font-size: 1rem; line-height: 1.5rem; }
+.decision :is(p, ul) + :is(p, ul) { margin-top: 0.75rem; }
+.decision .decision-title { font-weight: 600; }
+.decision ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.5rem; font-size: 1rem; line-height: 1.5rem; }
 
 /* Big numbers */
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1.5rem; margin: 0 0 2rem; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: 1.5rem; margin: 0 0 2rem; }
 .fact { border-top: 1px solid var(--fg); padding-top: 1rem; }
 .fact b { display: block; font-size: clamp(2.4rem, 2rem + 2vw, 3.5rem); font-weight: 700; line-height: 1; line-height: round(up, 1em, 8px); }
 .fact span { font-size: 0.75rem; color: var(--muted); line-height: 1rem; }
@@ -696,6 +699,25 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .fork .branch.rec { background: var(--fill); }
 .fork .branch.shipped { background: var(--fill-strong); }
 .fork .branch.rec .later { display: inline-block; margin-top: 0.5rem; font-size: 0.75rem; border: 1px dashed var(--muted); border-radius: var(--radius); padding: 0 0.5rem; line-height: 1rem; }
+/* A three-way fork, a dashed "before" branch, and a question-led variant
+   ("how much is my car worth?" answered before "how should I sell?") */
+.fork.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fork.three::before { left: 16.667%; right: 16.667%; }
+.fork.three .branch:nth-child(3) { position: relative; }
+.fork.three .branch:nth-child(3)::before { content: ""; position: absolute; left: 50%; top: -2rem; height: 2rem; border-left: 1px solid var(--fg); }
+.fork .branch.muted { background: var(--bg); border-style: dashed; }
+.fork .root.q { font-weight: 600; }
+.compare { display: grid; gap: 2rem; }
+.compare .typed { display: block; margin-bottom: 1rem; color: var(--muted); }
+.answer { display: grid; justify-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+.answer .pill { border-radius: var(--radius-lg); background: var(--project, var(--fg)); color: var(--on-project, var(--bg)); padding: 0.5rem 1rem; line-height: 1.5rem; font-weight: 600; text-align: center; }
+.answer small { color: var(--muted); font-size: 0.75rem; line-height: 1rem; }
+.answer::after { content: ""; height: 1.5rem; border-left: 1px solid var(--fg); }
+@media (max-width: 40rem) {
+  .fork.three { grid-template-columns: 1fr; padding-top: 0; }
+  .fork.three::before, .fork.three .branch:nth-child(3)::before { display: none; }
+  .fork.three .root { position: static; transform: none; margin-bottom: 0.5rem; justify-self: start; white-space: normal; }
+}
 
 /* Funnel */
 .funnel { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; justify-items: center; }
