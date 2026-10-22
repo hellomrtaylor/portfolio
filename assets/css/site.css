@@ -596,7 +596,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: 1.5rem; margin: 0 0 2rem; }
 .fact { border-top: 1px solid var(--fg); padding-top: 1rem; }
 .fact b { display: block; font-size: clamp(2.4rem, 2rem + 2vw, 3.5rem); font-weight: 700; line-height: 1; line-height: round(up, 1em, 8px); }
-.fact span { font-size: 0.75rem; color: var(--muted); line-height: 1rem; }
+.fact span { display: block; font-size: 0.75rem; color: var(--muted); line-height: 1rem; } /* block, so its own line height applies rather than the tile's */
 
 /* Next / previous */
 /* Previous / next case study: two compact links, each with a circle that carries an arrow on hover */
