@@ -591,6 +591,9 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .decision p { margin: 0; font-size: 1rem; line-height: 1.5rem; }
 .decision :is(p, ul) + :is(p, ul) { margin-top: 0.75rem; }
 .decision .decision-title { font-weight: 600; }
+.decision.wide { max-width: none; margin: round(clamp(2rem, 5vw, 3rem), 8px) 0 0; } /* spans the chapter, under the two-column text */
+.decision-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem round(clamp(1.5rem, 4vw, 3rem), 8px); margin-top: 0.75rem; }
+@media (max-width: 52rem) { .decision-cols { grid-template-columns: 1fr; } }
 .decision ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.5rem; font-size: 1rem; line-height: 1.5rem; }
 
 /* Big numbers */
