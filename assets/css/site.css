@@ -582,7 +582,11 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 
 /* Key decision: a white panel with a thick rule in the case study's colour, spanning the
    chapter. The dilemma as a question on the left, the answer on the right */
-.decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem round(clamp(2rem, 5vw, 4rem), 8px); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); background: #ffffff; border-left: 4px solid var(--project, var(--fg)); padding: round(clamp(1.5rem, 5vw, 4rem), 8px); }
+.decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem round(clamp(2rem, 5vw, 4rem), 8px); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); border: 1px solid color-mix(in srgb, #ffffff 70%, transparent); border-radius: var(--radius-lg); padding: round(clamp(1.5rem, 5vw, 4rem), 8px);
+  /* glass card: a faint wash of the case study's colour inside, and a soft glow spilling out round the edges */
+  background: radial-gradient(ellipse 70% 90% at 35% 55%, color-mix(in srgb, var(--project, var(--fg)) 7%, transparent), transparent), color-mix(in srgb, #ffffff 72%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6); backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow: inset 4px 0 0 var(--project, var(--fg)), inset 0 1px 0 rgba(255,255,255,0.8), 0 0 80px -24px color-mix(in srgb, var(--project, var(--fg)) 35%, transparent), 0 20px 50px -28px color-mix(in srgb, var(--chocolate-100) 30%, transparent); }
 .decision-head { display: grid; gap: 1.5rem; align-content: start; }
 .decision-label { font-size: 0.75rem; line-height: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; color: var(--project-ink, var(--project, var(--fg))); }
 .decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; text-wrap: balance; color: var(--fg); }
