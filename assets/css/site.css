@@ -511,8 +511,13 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 
 .interests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: round(clamp(2rem, 4vw, 3rem), 8px); margin-top: round(clamp(2rem, 5vw, 3.5rem), 8px); text-align: center; }
 .interest { display: grid; gap: 1rem; justify-items: center; align-content: start; }
-.interest .roundel { width: round(clamp(7rem, 9vw, 8rem), 8px); transform: rotate(-6deg); }
-.interest:nth-child(2) .roundel { transform: rotate(5deg); }
+.interest .roundel { --tilt: -6deg; width: round(clamp(7rem, 9vw, 8rem), 8px); transform: rotate(var(--tilt)); cursor: default; user-select: none; }
+.interest:nth-child(2) .roundel { --tilt: 5deg; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  /* a playful wobble when you hover a column; decoration only, so the cursor stays the default arrow */
+  .interest .roundel { transition: transform 0.5s cubic-bezier(0.3, 1.6, 0.5, 1); }
+  .interest:hover .roundel { transform: rotate(calc(var(--tilt) * -2)) scale(1.08); }
+}
 .interest h3 { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0.5rem 0 0; text-wrap: balance; }
 .interest p { font-size: 1rem; line-height: 1.5rem; margin: 0; max-width: 24rem; }
 @media (max-width: 52rem) {
