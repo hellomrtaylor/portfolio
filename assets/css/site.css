@@ -511,8 +511,13 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 
 .interests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: round(clamp(2rem, 4vw, 3rem), 8px); margin-top: round(clamp(2rem, 5vw, 3.5rem), 8px); text-align: center; }
 .interest { display: grid; gap: 1rem; justify-items: center; align-content: start; }
-.interest .roundel { width: round(clamp(7rem, 9vw, 8rem), 8px); transform: rotate(-6deg); }
-.interest:nth-child(2) .roundel { transform: rotate(5deg); }
+.interest .roundel { --tilt: -6deg; width: round(clamp(7rem, 9vw, 8rem), 8px); transform: rotate(var(--tilt)); cursor: default; user-select: none; }
+.interest:nth-child(2) .roundel { --tilt: 5deg; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  /* a playful wobble when you hover a column; decoration only, so the cursor stays the default arrow */
+  .interest .roundel { transition: transform 0.5s cubic-bezier(0.3, 1.6, 0.5, 1); }
+  .interest:hover .roundel { transform: rotate(calc(var(--tilt) * -2)) scale(1.08); }
+}
 .interest h3 { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0.5rem 0 0; text-wrap: balance; }
 .interest p { font-size: 1rem; line-height: 1.5rem; margin: 0; max-width: 24rem; }
 @media (max-width: 52rem) {
@@ -582,10 +587,15 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 
 /* Key decision: a white panel with a thick rule in the case study's colour, spanning the
    chapter. The dilemma as a question on the left, the answer on the right */
-.decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem round(clamp(2rem, 5vw, 4rem), 8px); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); background: #ffffff; border-left: 4px solid var(--project, var(--fg)); padding: round(clamp(1.5rem, 5vw, 4rem), 8px); }
+.decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem round(clamp(2rem, 5vw, 4rem), 8px); margin-top: round(clamp(2.5rem, 6vw, 4rem), 8px); border: 1px solid color-mix(in srgb, #ffffff 70%, transparent); border-radius: var(--radius-lg); padding: round(clamp(1.5rem, 5vw, 4rem), 8px);
+  /* glass card: a faint wash of the case study's colour inside, and a soft glow spilling out round the edges */
+  background: radial-gradient(ellipse 70% 90% at 35% 55%, color-mix(in srgb, var(--project, var(--fg)) var(--glow-wash, 7%), transparent), transparent), color-mix(in srgb, #ffffff 72%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6); backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 0 80px -24px color-mix(in srgb, var(--project, var(--fg)) var(--glow-halo, 35%), transparent), 0 20px 50px -28px color-mix(in srgb, var(--chocolate-100) 30%, transparent); }
+.project-2 { --glow-wash: 3%; --glow-halo: 16%; } /* the red is much louder than the other tones, so its glow is turned down */
 .decision-head { display: grid; gap: 1.5rem; align-content: start; }
 .decision-label { font-size: 0.75rem; line-height: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; color: var(--project-ink, var(--project, var(--fg))); }
-.decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; text-wrap: balance; color: var(--fg); }
+.decision-q { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem); line-height: 1.05; line-height: round(1.05em, 8px); margin: 0; padding-bottom: 1.5rem; border-bottom: 2px solid var(--project, var(--fg)); text-wrap: balance; color: var(--fg); }
 .decision-q em { font-style: italic; color: var(--project-ink, var(--project, var(--fg))); }
 .decision-cols { display: grid; gap: 1.5rem; align-content: start; }
 .decision p { margin: 0; max-width: none; font-size: 0.875rem; line-height: 1.5rem; }
@@ -816,6 +826,18 @@ body[class*="project-"] :is(.nav a[aria-current="page"], .chapters a.active, .br
 [class*="project-"] :is(.flow li.me, .hub .gate, .hub .out, .funnel li:nth-child(4), .fork .branch.shipped) { background: var(--project); color: var(--on-project); }
 [class*="project-"] :is(.flow li.me, .hub .gate, .funnel li:nth-child(4), .fork .branch.shipped) :is(small, .typed) { color: inherit; opacity: 0.85; }
 [class*="project-"] .flow li small { color: #333333; } /* 10.6:1 on the step tint (was 4.8:1) */
+/* diagrams as frosted glass, matching the nav pills; the highlighted step and the "after" box stay in the case study's colour */
+[class*="project-"] :is(.flow li, .qpair .q) {
+  background: color-mix(in srgb, #ffffff 55%, transparent); color: #111111;
+  -webkit-backdrop-filter: blur(16px) saturate(1.6); backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid color-mix(in srgb, #ffffff 70%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), 0 10px 30px -14px color-mix(in srgb, var(--chocolate-100) 35%, transparent);
+}
+[class*="project-"] :is(.flow li.me, .qpair .q.after) {
+  background: color-mix(in srgb, var(--project) 88%, transparent); color: var(--on-project);
+  border-color: color-mix(in srgb, #ffffff 30%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 10px 30px -14px color-mix(in srgb, var(--chocolate-100) 45%, transparent);
+}
 [class*="project-"] .fork::before { border-color: var(--project); }
 [class*="project-"] .fork .branch.rec .later { border-color: var(--project); color: var(--project); }
 [class*="project-"] .venn .set { border-color: var(--project); }
