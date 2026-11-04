@@ -242,6 +242,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .card dl div { display: grid; grid-template-columns: calc(var(--margin) - 0.5rem) 1fr; gap: 1rem; }
 .card dt { color: var(--muted); }
 .card dd { margin: 0; }
+.card dl .result { margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--line); } /* the outcome, for readers who only skim the card */
+.card .result dd { font-weight: 600; }
 
 /* Label badge (was a rubber stamp) */
 .stamp {
@@ -790,16 +792,8 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
 .cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
 /* An image shown at its own proportions (no cropping at any width); set --ar inline, e.g. style="--ar: 2000 / 932" */
-/* An embedded phone prototype: a phone-sized frame, centred. On phones it's too
-   cramped to use inline, so a button opens it in Figma instead. */
-.proto { display: grid; justify-items: center; }
-.proto .shot.embed { width: 450px; max-width: 100%; height: 800px; aspect-ratio: auto; }
-.proto .cap { text-align: center; }
-.proto-link { display: none; }
-@media (max-width: 40rem) {
-  .proto .shot.embed, .proto .cap { display: none; }
-  .proto-link { display: inline-flex; }
-}
+/* a link out to the clickable prototype, centred under the gallery */
+.proto { display: flex; justify-content: center; margin: 0; max-width: none; }
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
 /* Everything inside a themed case study page */
