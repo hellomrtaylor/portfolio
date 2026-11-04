@@ -531,7 +531,10 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .contact .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: center; }
 .contact h2 { font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem); }
 .contact p:not(.copyright) { font-size: 1.5rem; line-height: 2rem; }
-.contact .copyright { grid-column: 1 / -1; margin: round(clamp(1.5rem, 4vw, 3rem), 8px) 0 0; font-size: 0.75rem; line-height: 1rem; }
+.contact .footer-row { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; margin-top: round(clamp(1.5rem, 4vw, 3rem), 8px); font-size: 0.875rem; line-height: 1.5rem; }
+.contact .copyright { margin: 0; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.footer-links a { color: inherit; text-underline-offset: 3px; }
 @media (max-width: 48rem) { .contact .wrap { grid-template-columns: 1fr; } }
 
 .site-footer { padding: 1.5rem 0 2rem; font-size: 0.75rem; line-height: 1rem; }
@@ -543,16 +546,31 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 
 /* Pulled up behind the glass bar so the project colour shows through it */
 .cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-flow)); padding: calc(var(--header-flow) + round(clamp(4rem, 9vw, 7.5rem), 8px)) 0 0; }
-.cs-hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .cs-hero h1 { margin-bottom: 1rem; }
-.cs-hero .lede { margin: 0; }
-.cs-hero .card { background: var(--bg); max-width: 24rem; justify-self: end; width: 100%; }
+.cs-hero .lede { margin: 0; max-width: 40rem; }
+.cs-meta { max-width: none; margin: 1rem 0 0; font-size: 0.875rem; line-height: 1.5rem; opacity: 0.8; }
+/* The fast track: problem, my part, key decision and result, read left to right. Each links to its chapter. */
+.summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.15fr); margin-top: round(clamp(2rem, 4vw, 2.5rem), 8px); background: var(--bg); color: var(--chocolate-100); border-radius: var(--radius-lg); overflow: hidden; }
+.summary-item { display: grid; gap: 0.5rem; align-content: start; padding: 1.25rem 1.5rem 1.5rem; color: inherit; text-decoration: none; border-left: 1px solid var(--line); font-size: 0.875rem; line-height: 1.25rem; }
+.summary-item:first-child { border-left: 0; }
+.summary-item:hover .summary-text { text-decoration: underline; text-underline-offset: 3px; }
+.summary-label { font-size: 0.75rem; line-height: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; color: var(--project-ink, var(--project)); }
+.summary-result { background: color-mix(in srgb, var(--project) 8%, var(--bg)); }
+.summary-result b { font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem); line-height: 1; color: var(--project-ink, var(--project)); }
+.summary-result .summary-text { font-weight: 600; }
+.decision, .chapter-fig { scroll-margin-top: calc(var(--frame) + var(--nav-space) + 1rem); } /* summary links jump here */
 .cs-hero .hero-shot { margin-top: round(clamp(2rem, 5vw, 3rem), 8px); margin-bottom: -1px; }
 .cs-hero .hero-shot .shot { border-radius: var(--radius-lg) var(--radius-lg) 0 0; aspect-ratio: 16 / 8; }
 @media (max-width: 52rem) {
-  .cs-hero-grid { grid-template-columns: 1fr; }
-  .cs-hero .card { justify-self: start; }
+  .summary { grid-template-columns: 1fr 1fr; }
+  .summary-item:nth-child(3) { border-left: 0; }
+  .summary-item:nth-child(n+3) { border-top: 1px solid var(--line); }
   .cs-hero .hero-shot .shot { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 30rem) {
+  .summary { grid-template-columns: 1fr; }
+  .summary-item { border-left: 0; border-top: 1px solid var(--line); }
+  .summary-item:first-child { border-top: 0; }
 }
 
 
@@ -788,18 +806,9 @@ body.project-1 { --page-tone: var(--tone-1); } body.project-2 { --page-tone: var
 
 /* Case study hero */
 .cs-hero[class*="project-"] { background: var(--project); border-bottom-color: var(--project); color: var(--on-project); }
-.cs-hero[class*="project-"] .card { color: var(--chocolate-100); border-color: var(--project); }
 /* An image shown at its own proportions (no cropping at any width); set --ar inline, e.g. style="--ar: 2000 / 932" */
-/* An embedded phone prototype: a phone-sized frame, centred. On phones it's too
-   cramped to use inline, so a button opens it in Figma instead. */
-.proto { display: grid; justify-items: center; }
-.proto .shot.embed { width: 450px; max-width: 100%; height: 800px; aspect-ratio: auto; }
-.proto .cap { text-align: center; }
-.proto-link { display: none; }
-@media (max-width: 40rem) {
-  .proto .shot.embed, .proto .cap { display: none; }
-  .proto-link { display: inline-flex; }
-}
+/* a link out to the clickable prototype, centred under the gallery */
+.proto { display: flex; justify-content: center; margin: 0; max-width: none; }
 .shot.natural, .cs-hero .hero-shot .shot.natural { aspect-ratio: var(--ar, 16 / 10); background: #ffffff; }
 
 /* Everything inside a themed case study page */
