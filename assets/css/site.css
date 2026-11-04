@@ -389,8 +389,6 @@ body:has(> .home-solo) { min-height: 100vh; min-height: 100dvh; display: flex; f
 .book-meta { font-family: var(--sans); font-size: 0.75rem; color: var(--muted); line-height: 1rem; }
 .book h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; line-height: round(1.05em, 8px); font-size: clamp(2rem, 1.6rem + 1.8vw, 3.2rem); }
 .book p { margin: 0; line-height: 1.5rem; }
-.book .book-result { padding-top: 1rem; border-top: 1px solid currentColor; font-weight: 600; } /* the headline result, for readers who don’t click through */
-.book-result b { display: block; font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem); line-height: 1; margin-bottom: 0.5rem; }
 .book-cta { margin-top: auto; padding-top: 1rem; font-size: 1rem; font-weight: 600; line-height: 1.5rem; }
 .book .shot { border: 0; box-shadow: none; border-radius: 0; min-height: 18rem; aspect-ratio: auto; height: 100%; }
 .book .shot:has(> img) { background: transparent; } /* cover images with transparent gaps show the card colour */
@@ -550,7 +548,7 @@ figcaption.cap { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; ma
 .cs-hero { background: var(--tone, var(--fill)); border-bottom: 1px solid var(--fg); margin-top: calc(-1 * var(--header-flow)); padding: calc(var(--header-flow) + round(clamp(4rem, 9vw, 7.5rem), 8px)) 0 0; }
 .cs-hero h1 { margin-bottom: 1rem; }
 .cs-hero .lede { margin: 0; max-width: 40rem; }
-.cs-meta { margin: 1rem 0 0; font-size: 0.875rem; line-height: 1.5rem; opacity: 0.8; }
+.cs-meta { max-width: none; margin: 1rem 0 0; font-size: 0.875rem; line-height: 1.5rem; opacity: 0.8; }
 /* The fast track: problem, my part, key decision and result, read left to right. Each links to its chapter. */
 .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.15fr); margin-top: round(clamp(2rem, 4vw, 2.5rem), 8px); background: var(--bg); color: var(--chocolate-100); border-radius: var(--radius-lg); overflow: hidden; }
 .summary-item { display: grid; gap: 0.5rem; align-content: start; padding: 1.25rem 1.5rem 1.5rem; color: inherit; text-decoration: none; border-left: 1px solid var(--line); font-size: 0.875rem; line-height: 1.25rem; }
