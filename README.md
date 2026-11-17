@@ -27,6 +27,14 @@ V=$(cat assets/css/site.css assets/js/site.js | sha256sum | cut -c1-8)
 grep -rl 'site\.\(css\|js\)?v=' --include=*.html . | xargs sed -i -E "s#(site\.(css|js))\?v=[^\"]*#\1?v=$V#g"
 ```
 
+## CV
+
+`assets/docs/Ali-Taylor-CV.pdf` is printed from `tools/cv/cv.html` (fonts alongside it). Edit the HTML, then from the repo root:
+
+```sh
+google-chrome --headless --no-pdf-header-footer --print-to-pdf=assets/docs/Ali-Taylor-CV.pdf tools/cv/cv.html
+```
+
 ## Publish on GitHub Pages
 
 1. Copy everything in this folder into the root of the repo your domain already points at. Replace what's there. Keep the `CNAME` file (it contains `alitaylor.nl`).
